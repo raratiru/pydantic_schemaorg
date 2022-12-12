@@ -20,42 +20,85 @@ class Course(LearningResource, CreativeWork):
     See: https://schema.org/Course
     Model depth: 3
     """
-    type_: str = Field(default="Course", alias='@type', const=True)
-    occupationalCredentialAwarded: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'EducationalOccupationalCredential']], AnyUrl, 'URL', str, 'Text', 'EducationalOccupationalCredential']] = Field(
+
+    type_: str = Field(default="Course", alias="@type", const=True)
+    occupationalCredentialAwarded: Optional[
+        Union[
+            List[
+                Union[AnyUrl, "URL", str, "Text", "EducationalOccupationalCredential"]
+            ],
+            AnyUrl,
+            "URL",
+            str,
+            "Text",
+            "EducationalOccupationalCredential",
+        ]
+    ] = Field(
         default=None,
         description="A description of the qualification, award, certificate, diploma or other occupational"
-     "credential awarded as a consequence of successful completion of this course or program.",
+        "credential awarded as a consequence of successful completion of this course or program.",
     )
-    coursePrerequisites: Optional[Union[List[Union[str, 'Text', 'AlignmentObject', 'Course']], str, 'Text', 'AlignmentObject', 'Course']] = Field(
+    coursePrerequisites: Optional[
+        Union[
+            List[Union[str, "Text", "AlignmentObject", "Course"]],
+            str,
+            "Text",
+            "AlignmentObject",
+            "Course",
+        ]
+    ] = Field(
         default=None,
         description="Requirements for taking the Course. May be completion of another [[Course]] or a textual"
-     "description like \"permission of instructor\". Requirements may be a pre-requisite"
-     "competency, referenced using [[AlignmentObject]].",
+        'description like "permission of instructor". Requirements may be a pre-requisite'
+        "competency, referenced using [[AlignmentObject]].",
     )
-    educationalCredentialAwarded: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'EducationalOccupationalCredential']], AnyUrl, 'URL', str, 'Text', 'EducationalOccupationalCredential']] = Field(
+    educationalCredentialAwarded: Optional[
+        Union[
+            List[
+                Union[AnyUrl, "URL", str, "Text", "EducationalOccupationalCredential"]
+            ],
+            AnyUrl,
+            "URL",
+            str,
+            "Text",
+            "EducationalOccupationalCredential",
+        ]
+    ] = Field(
         default=None,
         description="A description of the qualification, award, certificate, diploma or other educational"
-     "credential awarded as a consequence of successful completion of this course or program.",
+        "credential awarded as a consequence of successful completion of this course or program.",
     )
-    courseCode: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    courseCode: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The identifier for the [[Course]] used by the course [[provider]] (e.g. CS101 or 6.001).",
     )
-    numberOfCredits: Optional[Union[List[Union[int, 'Integer', 'StructuredValue', str]], int, 'Integer', 'StructuredValue', str]] = Field(
+    numberOfCredits: Optional[
+        Union[
+            List[Union[int, "Integer", "StructuredValue", str]],
+            int,
+            "Integer",
+            "StructuredValue",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The number of credits or units awarded by a Course or required to complete an EducationalOccupationalProgram.",
     )
-    hasCourseInstance: Optional[Union[List[Union['CourseInstance', str]], 'CourseInstance', str]] = Field(
+    hasCourseInstance: Optional[
+        Union[List[Union["CourseInstance", str]], "CourseInstance", str]
+    ] = Field(
         default=None,
         description="An offering of the course at a specific time and place or through specific media or mode"
-     "of study or to a specific section of students.",
+        "of study or to a specific section of students.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.EducationalOccupationalCredential import EducationalOccupationalCredential
+    from pydantic_schemaorg.EducationalOccupationalCredential import (
+        EducationalOccupationalCredential,
+    )
     from pydantic_schemaorg.AlignmentObject import AlignmentObject
     from pydantic_schemaorg.Integer import Integer
     from pydantic_schemaorg.StructuredValue import StructuredValue

@@ -14,28 +14,42 @@ class MedicalTest(MedicalEntity):
     See: https://schema.org/MedicalTest
     Model depth: 3
     """
-    type_: str = Field(default="MedicalTest", alias='@type', const=True)
-    affectedBy: Optional[Union[List[Union['Drug', str]], 'Drug', str]] = Field(
+
+    type_: str = Field(default="MedicalTest", alias="@type", const=True)
+    affectedBy: Optional[Union[List[Union["Drug", str]], "Drug", str]] = Field(
         default=None,
         description="Drugs that affect the test's results.",
     )
-    normalRange: Optional[Union[List[Union[str, 'Text', 'MedicalEnumeration']], str, 'Text', 'MedicalEnumeration']] = Field(
+    normalRange: Optional[
+        Union[
+            List[Union[str, "Text", "MedicalEnumeration"]],
+            str,
+            "Text",
+            "MedicalEnumeration",
+        ]
+    ] = Field(
         default=None,
         description="Range of acceptable values for a typical patient, when applicable.",
     )
-    signDetected: Optional[Union[List[Union['MedicalSign', str]], 'MedicalSign', str]] = Field(
+    signDetected: Optional[
+        Union[List[Union["MedicalSign", str]], "MedicalSign", str]
+    ] = Field(
         default=None,
         description="A sign detected by the test.",
     )
-    usedToDiagnose: Optional[Union[List[Union['MedicalCondition', str]], 'MedicalCondition', str]] = Field(
+    usedToDiagnose: Optional[
+        Union[List[Union["MedicalCondition", str]], "MedicalCondition", str]
+    ] = Field(
         default=None,
         description="A condition the test is used to diagnose.",
     )
-    usesDevice: Optional[Union[List[Union['MedicalDevice', str]], 'MedicalDevice', str]] = Field(
+    usesDevice: Optional[
+        Union[List[Union["MedicalDevice", str]], "MedicalDevice", str]
+    ] = Field(
         default=None,
         description="Device used to perform the test.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Drug import Drug

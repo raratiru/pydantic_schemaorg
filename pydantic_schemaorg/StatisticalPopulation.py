@@ -25,23 +25,28 @@ class StatisticalPopulation(Intangible):
     See: https://schema.org/StatisticalPopulation
     Model depth: 3
     """
-    type_: str = Field(default="StatisticalPopulation", alias='@type', const=True)
-    constrainingProperty: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+
+    type_: str = Field(default="StatisticalPopulation", alias="@type", const=True)
+    constrainingProperty: Optional[
+        Union[List[Union[int, "Integer", str]], int, "Integer", str]
+    ] = Field(
         default=None,
         description="Indicates a property used as a constraint to define a [[StatisticalPopulation]] with"
-     "respect to the set of entities corresponding to an indicated type (via [[populationType]]).",
+        "respect to the set of entities corresponding to an indicated type (via [[populationType]]).",
     )
-    populationType: Optional[Union[List[Union['Class', str]], 'Class', str]] = Field(
+    populationType: Optional[Union[List[Union["Class", str]], "Class", str]] = Field(
         default=None,
         description="Indicates the populationType common to all members of a [[StatisticalPopulation]].",
     )
-    numConstraints: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+    numConstraints: Optional[
+        Union[List[Union[int, "Integer", str]], int, "Integer", str]
+    ] = Field(
         default=None,
         description="Indicates the number of constraints (not counting [[populationType]]) defined for"
-     "a particular [[StatisticalPopulation]]. This helps applications understand if they"
-     "have access to a sufficiently complete description of a [[StatisticalPopulation]].",
+        "a particular [[StatisticalPopulation]]. This helps applications understand if they"
+        "have access to a sufficiently complete description of a [[StatisticalPopulation]].",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Integer import Integer

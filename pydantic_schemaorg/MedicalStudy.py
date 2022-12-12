@@ -21,30 +21,47 @@ class MedicalStudy(MedicalEntity):
     See: https://schema.org/MedicalStudy
     Model depth: 3
     """
-    type_: str = Field(default="MedicalStudy", alias='@type', const=True)
-    studySubject: Optional[Union[List[Union['MedicalEntity', str]], 'MedicalEntity', str]] = Field(
+
+    type_: str = Field(default="MedicalStudy", alias="@type", const=True)
+    studySubject: Optional[
+        Union[List[Union["MedicalEntity", str]], "MedicalEntity", str]
+    ] = Field(
         default=None,
         description="A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs,"
-     "etc. investigated by the study.",
+        "etc. investigated by the study.",
     )
-    studyLocation: Optional[Union[List[Union['AdministrativeArea', str]], 'AdministrativeArea', str]] = Field(
+    studyLocation: Optional[
+        Union[List[Union["AdministrativeArea", str]], "AdministrativeArea", str]
+    ] = Field(
         default=None,
         description="The location in which the study is taking/took place.",
     )
-    healthCondition: Optional[Union[List[Union['MedicalCondition', str]], 'MedicalCondition', str]] = Field(
+    healthCondition: Optional[
+        Union[List[Union["MedicalCondition", str]], "MedicalCondition", str]
+    ] = Field(
         default=None,
         description="Specifying the health condition(s) of a patient, medical study, or other target audience.",
     )
-    status: Optional[Union[List[Union[str, 'Text', 'EventStatusType', 'MedicalStudyStatus']], str, 'Text', 'EventStatusType', 'MedicalStudyStatus']] = Field(
+    status: Optional[
+        Union[
+            List[Union[str, "Text", "EventStatusType", "MedicalStudyStatus"]],
+            str,
+            "Text",
+            "EventStatusType",
+            "MedicalStudyStatus",
+        ]
+    ] = Field(
         default=None,
         description="The status of the study (enumerated).",
     )
-    sponsor: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    sponsor: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="A person or organization that supports a thing through a pledge, promise, or financial"
-     "contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
+        "contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.MedicalEntity import MedicalEntity

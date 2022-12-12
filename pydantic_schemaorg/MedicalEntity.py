@@ -14,45 +14,64 @@ class MedicalEntity(Thing):
     See: https://schema.org/MedicalEntity
     Model depth: 2
     """
-    type_: str = Field(default="MedicalEntity", alias='@type', const=True)
-    recognizingAuthority: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
+
+    type_: str = Field(default="MedicalEntity", alias="@type", const=True)
+    recognizingAuthority: Optional[
+        Union[List[Union["Organization", str]], "Organization", str]
+    ] = Field(
         default=None,
         description="If applicable, the organization that officially recognizes this entity as part of its"
-     "endorsed system of medicine.",
+        "endorsed system of medicine.",
     )
-    relevantSpecialty: Optional[Union[List[Union['MedicalSpecialty', str]], 'MedicalSpecialty', str]] = Field(
+    relevantSpecialty: Optional[
+        Union[List[Union["MedicalSpecialty", str]], "MedicalSpecialty", str]
+    ] = Field(
         default=None,
         description="If applicable, a medical specialty in which this entity is relevant.",
     )
-    medicineSystem: Optional[Union[List[Union['MedicineSystem', str]], 'MedicineSystem', str]] = Field(
+    medicineSystem: Optional[
+        Union[List[Union["MedicineSystem", str]], "MedicineSystem", str]
+    ] = Field(
         default=None,
         description="The system of medicine that includes this MedicalEntity, for example 'evidence-based',"
-     "'homeopathic', 'chiropractic', etc.",
+        "'homeopathic', 'chiropractic', etc.",
     )
-    funding: Optional[Union[List[Union['Grant', str]], 'Grant', str]] = Field(
+    funding: Optional[Union[List[Union["Grant", str]], "Grant", str]] = Field(
         default=None,
         description="A [[Grant]] that directly or indirectly provide funding or sponsorship for this item."
-     "See also [[ownershipFundingInfo]].",
+        "See also [[ownershipFundingInfo]].",
     )
-    legalStatus: Optional[Union[List[Union[str, 'Text', 'DrugLegalStatus', 'MedicalEnumeration']], str, 'Text', 'DrugLegalStatus', 'MedicalEnumeration']] = Field(
+    legalStatus: Optional[
+        Union[
+            List[Union[str, "Text", "DrugLegalStatus", "MedicalEnumeration"]],
+            str,
+            "Text",
+            "DrugLegalStatus",
+            "MedicalEnumeration",
+        ]
+    ] = Field(
         default=None,
         description="The drug or supplement's legal status, including any controlled substance schedules"
-     "that apply.",
+        "that apply.",
     )
-    study: Optional[Union[List[Union['MedicalStudy', str]], 'MedicalStudy', str]] = Field(
+    study: Optional[
+        Union[List[Union["MedicalStudy", str]], "MedicalStudy", str]
+    ] = Field(
         default=None,
         description="A medical study or trial related to this entity.",
     )
-    guideline: Optional[Union[List[Union['MedicalGuideline', str]], 'MedicalGuideline', str]] = Field(
+    guideline: Optional[
+        Union[List[Union["MedicalGuideline", str]], "MedicalGuideline", str]
+    ] = Field(
         default=None,
         description="A medical guideline related to this entity.",
     )
-    code: Optional[Union[List[Union['MedicalCode', str]], 'MedicalCode', str]] = Field(
+    code: Optional[Union[List[Union["MedicalCode", str]], "MedicalCode", str]] = Field(
         default=None,
         description="A medical code for the entity, taken from a controlled vocabulary or ontology such as"
-     "ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.",
+        "ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Organization import Organization

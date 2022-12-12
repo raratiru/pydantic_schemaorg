@@ -14,34 +14,43 @@ class MusicRelease(MusicPlaylist):
     See: https://schema.org/MusicRelease
     Model depth: 4
     """
-    type_: str = Field(default="MusicRelease", alias='@type', const=True)
-    releaseOf: Optional[Union[List[Union['MusicAlbum', str]], 'MusicAlbum', str]] = Field(
+
+    type_: str = Field(default="MusicRelease", alias="@type", const=True)
+    releaseOf: Optional[
+        Union[List[Union["MusicAlbum", str]], "MusicAlbum", str]
+    ] = Field(
         default=None,
         description="The album this is a release of.",
     )
-    musicReleaseFormat: Optional[Union[List[Union['MusicReleaseFormatType', str]], 'MusicReleaseFormatType', str]] = Field(
+    musicReleaseFormat: Optional[
+        Union[List[Union["MusicReleaseFormatType", str]], "MusicReleaseFormatType", str]
+    ] = Field(
         default=None,
         description="Format of this release (the type of recording media used, i.e. compact disc, digital"
-     "media, LP, etc.).",
+        "media, LP, etc.).",
     )
-    duration: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
+    duration: Optional[Union[List[Union["Duration", str]], "Duration", str]] = Field(
         default=None,
         description="The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601).",
     )
-    recordLabel: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
+    recordLabel: Optional[
+        Union[List[Union["Organization", str]], "Organization", str]
+    ] = Field(
         default=None,
         description="The label that issued the release.",
     )
-    catalogNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    catalogNumber: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The catalog number for the release.",
     )
-    creditedTo: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    creditedTo: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="The group the release is credited to if different than the byArtist. For example, Red"
-     "and Blue is credited to \"Stefani Germanotta Band\", but by Lady Gaga.",
+        'and Blue is credited to "Stefani Germanotta Band", but by Lady Gaga.',
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.MusicAlbum import MusicAlbum

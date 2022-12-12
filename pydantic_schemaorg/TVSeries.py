@@ -16,79 +16,104 @@ class TVSeries(CreativeWorkSeries, CreativeWork):
     See: https://schema.org/TVSeries
     Model depth: 3
     """
-    type_: str = Field(default="TVSeries", alias='@type', const=True)
-    actors: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+
+    type_: str = Field(default="TVSeries", alias="@type", const=True)
+    actors: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="An actor, e.g. in TV, radio, movie, video games etc. Actors can be associated with individual"
-     "items or with a series, episode, clip.",
+        "items or with a series, episode, clip.",
     )
-    containsSeason: Optional[Union[List[Union['CreativeWorkSeason', str]], 'CreativeWorkSeason', str]] = Field(
+    containsSeason: Optional[
+        Union[List[Union["CreativeWorkSeason", str]], "CreativeWorkSeason", str]
+    ] = Field(
         default=None,
         description="A season that is part of the media series.",
     )
-    numberOfSeasons: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+    numberOfSeasons: Optional[
+        Union[List[Union[int, "Integer", str]], int, "Integer", str]
+    ] = Field(
         default=None,
         description="The number of seasons in this series.",
     )
-    actor: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    actor: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="An actor, e.g. in TV, radio, movie, video games etc., or in an event. Actors can be associated"
-     "with individual items or with a series, episode, clip.",
+        "with individual items or with a series, episode, clip.",
     )
-    season: Optional[Union[List[Union[AnyUrl, 'URL', 'CreativeWorkSeason', str]], AnyUrl, 'URL', 'CreativeWorkSeason', str]] = Field(
+    season: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", "CreativeWorkSeason", str]],
+            AnyUrl,
+            "URL",
+            "CreativeWorkSeason",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A season in a media series.",
     )
-    trailer: Optional[Union[List[Union['VideoObject', str]], 'VideoObject', str]] = Field(
+    trailer: Optional[
+        Union[List[Union["VideoObject", str]], "VideoObject", str]
+    ] = Field(
         default=None,
         description="The trailer of a movie or TV/radio series, season, episode, etc.",
     )
-    productionCompany: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
+    productionCompany: Optional[
+        Union[List[Union["Organization", str]], "Organization", str]
+    ] = Field(
         default=None,
         description="The production company or studio responsible for the item, e.g. series, video game,"
-     "episode etc.",
+        "episode etc.",
     )
-    countryOfOrigin: Optional[Union[List[Union['Country', str]], 'Country', str]] = Field(
+    countryOfOrigin: Optional[
+        Union[List[Union["Country", str]], "Country", str]
+    ] = Field(
         default=None,
         description="The country of origin of something, including products as well as creative works such"
-     "as movie and TV content. In the case of TV and movie, this would be the country of the principle"
-     "offices of the production company or individual responsible for the movie. For other"
-     "kinds of [[CreativeWork]] it is difficult to provide fully general guidance, and properties"
-     "such as [[contentLocation]] and [[locationCreated]] may be more applicable. In the"
-     "case of products, the country of origin of the product. The exact interpretation of this"
-     "may vary by context and product type, and cannot be fully enumerated here.",
+        "as movie and TV content. In the case of TV and movie, this would be the country of the principle"
+        "offices of the production company or individual responsible for the movie. For other"
+        "kinds of [[CreativeWork]] it is difficult to provide fully general guidance, and properties"
+        "such as [[contentLocation]] and [[locationCreated]] may be more applicable. In the"
+        "case of products, the country of origin of the product. The exact interpretation of this"
+        "may vary by context and product type, and cannot be fully enumerated here.",
     )
-    episodes: Optional[Union[List[Union['Episode', str]], 'Episode', str]] = Field(
+    episodes: Optional[Union[List[Union["Episode", str]], "Episode", str]] = Field(
         default=None,
         description="An episode of a TV/radio series or season.",
     )
-    seasons: Optional[Union[List[Union['CreativeWorkSeason', str]], 'CreativeWorkSeason', str]] = Field(
+    seasons: Optional[
+        Union[List[Union["CreativeWorkSeason", str]], "CreativeWorkSeason", str]
+    ] = Field(
         default=None,
         description="A season in a media series.",
     )
-    episode: Optional[Union[List[Union['Episode', str]], 'Episode', str]] = Field(
+    episode: Optional[Union[List[Union["Episode", str]], "Episode", str]] = Field(
         default=None,
         description="An episode of a TV, radio or game media within a series or season.",
     )
-    director: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    director: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="A director of e.g. TV, radio, movie, video gaming etc. content, or of an event. Directors"
-     "can be associated with individual items or with a series, episode, clip.",
+        "can be associated with individual items or with a series, episode, clip.",
     )
-    numberOfEpisodes: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+    numberOfEpisodes: Optional[
+        Union[List[Union[int, "Integer", str]], int, "Integer", str]
+    ] = Field(
         default=None,
         description="The number of episodes in this season or series.",
     )
-    directors: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    directors: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="A director of e.g. TV, radio, movie, video games etc. content. Directors can be associated"
-     "with individual items or with a series, episode, clip.",
+        "with individual items or with a series, episode, clip.",
     )
-    musicBy: Optional[Union[List[Union['Person', 'MusicGroup', str]], 'Person', 'MusicGroup', str]] = Field(
+    musicBy: Optional[
+        Union[List[Union["Person", "MusicGroup", str]], "Person", "MusicGroup", str]
+    ] = Field(
         default=None,
         description="The composer of the soundtrack.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Person import Person

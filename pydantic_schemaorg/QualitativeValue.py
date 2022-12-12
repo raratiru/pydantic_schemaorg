@@ -15,52 +15,92 @@ class QualitativeValue(Enumeration):
     See: https://schema.org/QualitativeValue
     Model depth: 4
     """
-    type_: str = Field(default="QualitativeValue", alias='@type', const=True)
-    greater: Optional[Union[List[Union['QualitativeValue', str]], 'QualitativeValue', str]] = Field(
+
+    type_: str = Field(default="QualitativeValue", alias="@type", const=True)
+    greater: Optional[
+        Union[List[Union["QualitativeValue", str]], "QualitativeValue", str]
+    ] = Field(
         default=None,
         description="This ordering relation for qualitative values indicates that the subject is greater"
-     "than the object.",
+        "than the object.",
     )
-    additionalProperty: Optional[Union[List[Union['PropertyValue', str]], 'PropertyValue', str]] = Field(
+    additionalProperty: Optional[
+        Union[List[Union["PropertyValue", str]], "PropertyValue", str]
+    ] = Field(
         default=None,
         description="A property-value pair representing an additional characteristic of the entity, e.g."
-     "a product feature or another characteristic for which there is no matching property"
-     "in schema.org. Note: Publishers should be aware that applications designed to use specific"
-     "schema.org properties (e.g. https://schema.org/width, https://schema.org/color,"
-     "https://schema.org/gtin13, ...) will typically expect such data to be provided using"
-     "those properties, rather than using the generic property/value mechanism.",
+        "a product feature or another characteristic for which there is no matching property"
+        "in schema.org. Note: Publishers should be aware that applications designed to use specific"
+        "schema.org properties (e.g. https://schema.org/width, https://schema.org/color,"
+        "https://schema.org/gtin13, ...) will typically expect such data to be provided using"
+        "those properties, rather than using the generic property/value mechanism.",
     )
-    valueReference: Optional[Union[List[Union[str, 'Text', 'Enumeration', 'QualitativeValue', 'DefinedTerm', 'StructuredValue', 'PropertyValue', 'QuantitativeValue', 'MeasurementTypeEnumeration']], str, 'Text', 'Enumeration', 'QualitativeValue', 'DefinedTerm', 'StructuredValue', 'PropertyValue', 'QuantitativeValue', 'MeasurementTypeEnumeration']] = Field(
+    valueReference: Optional[
+        Union[
+            List[
+                Union[
+                    str,
+                    "Text",
+                    "Enumeration",
+                    "QualitativeValue",
+                    "DefinedTerm",
+                    "StructuredValue",
+                    "PropertyValue",
+                    "QuantitativeValue",
+                    "MeasurementTypeEnumeration",
+                ]
+            ],
+            str,
+            "Text",
+            "Enumeration",
+            "QualitativeValue",
+            "DefinedTerm",
+            "StructuredValue",
+            "PropertyValue",
+            "QuantitativeValue",
+            "MeasurementTypeEnumeration",
+        ]
+    ] = Field(
         default=None,
         description="A secondary value that provides additional information on the original value, e.g."
-     "a reference temperature or a type of measurement.",
+        "a reference temperature or a type of measurement.",
     )
-    equal: Optional[Union[List[Union['QualitativeValue', str]], 'QualitativeValue', str]] = Field(
+    equal: Optional[
+        Union[List[Union["QualitativeValue", str]], "QualitativeValue", str]
+    ] = Field(
         default=None,
         description="This ordering relation for qualitative values indicates that the subject is equal to"
-     "the object.",
+        "the object.",
     )
-    lesser: Optional[Union[List[Union['QualitativeValue', str]], 'QualitativeValue', str]] = Field(
+    lesser: Optional[
+        Union[List[Union["QualitativeValue", str]], "QualitativeValue", str]
+    ] = Field(
         default=None,
         description="This ordering relation for qualitative values indicates that the subject is lesser"
-     "than the object.",
+        "than the object.",
     )
-    greaterOrEqual: Optional[Union[List[Union['QualitativeValue', str]], 'QualitativeValue', str]] = Field(
+    greaterOrEqual: Optional[
+        Union[List[Union["QualitativeValue", str]], "QualitativeValue", str]
+    ] = Field(
         default=None,
         description="This ordering relation for qualitative values indicates that the subject is greater"
-     "than or equal to the object.",
+        "than or equal to the object.",
     )
-    lesserOrEqual: Optional[Union[List[Union['QualitativeValue', str]], 'QualitativeValue', str]] = Field(
+    lesserOrEqual: Optional[
+        Union[List[Union["QualitativeValue", str]], "QualitativeValue", str]
+    ] = Field(
         default=None,
         description="This ordering relation for qualitative values indicates that the subject is lesser"
-     "than or equal to the object.",
+        "than or equal to the object.",
     )
-    nonEqual: Optional[Union[List[Union['QualitativeValue', str]], 'QualitativeValue', str]] = Field(
+    nonEqual: Optional[
+        Union[List[Union["QualitativeValue", str]], "QualitativeValue", str]
+    ] = Field(
         default=None,
         description="This ordering relation for qualitative values indicates that the subject is not equal"
-     "to the object.",
+        "to the object.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.PropertyValue import PropertyValue

@@ -16,24 +16,33 @@ class OwnershipInfo(StructuredValue):
     See: https://schema.org/OwnershipInfo
     Model depth: 4
     """
-    type_: str = Field(default="OwnershipInfo", alias='@type', const=True)
-    ownedThrough: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
+
+    type_: str = Field(default="OwnershipInfo", alias="@type", const=True)
+    ownedThrough: Optional[
+        Union[List[Union[datetime, "DateTime", str]], datetime, "DateTime", str]
+    ] = Field(
         default=None,
         description="The date and time of giving up ownership on the product.",
     )
-    ownedFrom: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
+    ownedFrom: Optional[
+        Union[List[Union[datetime, "DateTime", str]], datetime, "DateTime", str]
+    ] = Field(
         default=None,
         description="The date and time of obtaining the product.",
     )
-    acquiredFrom: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    acquiredFrom: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="The organization or person from which the product was acquired.",
     )
-    typeOfGood: Optional[Union[List[Union['Product', 'Service', str]], 'Product', 'Service', str]] = Field(
+    typeOfGood: Optional[
+        Union[List[Union["Product", "Service", str]], "Product", "Service", str]
+    ] = Field(
         default=None,
         description="The product that this structured value is referring to.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.DateTime import DateTime

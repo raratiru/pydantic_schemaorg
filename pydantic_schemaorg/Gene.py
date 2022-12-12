@@ -17,26 +17,48 @@ class Gene(BioChemEntity):
     See: https://schema.org/Gene
     Model depth: 3
     """
-    type_: str = Field(default="Gene", alias='@type', const=True)
-    expressedIn: Optional[Union[List[Union['AnatomicalSystem', 'BioChemEntity', 'DefinedTerm', 'AnatomicalStructure', str]], 'AnatomicalSystem', 'BioChemEntity', 'DefinedTerm', 'AnatomicalStructure', str]] = Field(
+
+    type_: str = Field(default="Gene", alias="@type", const=True)
+    expressedIn: Optional[
+        Union[
+            List[
+                Union[
+                    "AnatomicalSystem",
+                    "BioChemEntity",
+                    "DefinedTerm",
+                    "AnatomicalStructure",
+                    str,
+                ]
+            ],
+            "AnatomicalSystem",
+            "BioChemEntity",
+            "DefinedTerm",
+            "AnatomicalStructure",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="Tissue, organ, biological sample, etc in which activity of this gene has been observed"
-     "experimentally. For example brain, digestive system.",
+        "experimentally. For example brain, digestive system.",
     )
-    hasBioPolymerSequence: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    hasBioPolymerSequence: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="A symbolic representation of a BioChemEntity. For example, a nucleotide sequence of"
-     "a Gene or an amino acid sequence of a Protein.",
+        "a Gene or an amino acid sequence of a Protein.",
     )
-    encodesBioChemEntity: Optional[Union[List[Union['BioChemEntity', str]], 'BioChemEntity', str]] = Field(
+    encodesBioChemEntity: Optional[
+        Union[List[Union["BioChemEntity", str]], "BioChemEntity", str]
+    ] = Field(
         default=None,
         description="Another BioChemEntity encoded by this one.",
     )
-    alternativeOf: Optional[Union[List[Union['Gene', str]], 'Gene', str]] = Field(
+    alternativeOf: Optional[Union[List[Union["Gene", str]], "Gene", str]] = Field(
         default=None,
         description="Another gene which is a variation of this one.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.AnatomicalSystem import AnatomicalSystem

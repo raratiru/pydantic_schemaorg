@@ -23,27 +23,47 @@ class MediaReview(Review):
     See: https://schema.org/MediaReview
     Model depth: 4
     """
-    type_: str = Field(default="MediaReview", alias='@type', const=True)
-    originalMediaLink: Optional[Union[List[Union[AnyUrl, 'URL', 'MediaObject', 'WebPage', str]], AnyUrl, 'URL', 'MediaObject', 'WebPage', str]] = Field(
+
+    type_: str = Field(default="MediaReview", alias="@type", const=True)
+    originalMediaLink: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", "MediaObject", "WebPage", str]],
+            AnyUrl,
+            "URL",
+            "MediaObject",
+            "WebPage",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="Link to the page containing an original version of the content, or directly to an online"
-     "copy of the original [[MediaObject]] content, e.g. video file.",
+        "copy of the original [[MediaObject]] content, e.g. video file.",
     )
-    originalMediaContextDescription: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    originalMediaContextDescription: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="Describes, in a [[MediaReview]] when dealing with [[DecontextualizedContent]],"
-     "background information that can contribute to better interpretation of the [[MediaObject]].",
+        "background information that can contribute to better interpretation of the [[MediaObject]].",
     )
-    mediaAuthenticityCategory: Optional[Union[List[Union['MediaManipulationRatingEnumeration', str]], 'MediaManipulationRatingEnumeration', str]] = Field(
+    mediaAuthenticityCategory: Optional[
+        Union[
+            List[Union["MediaManipulationRatingEnumeration", str]],
+            "MediaManipulationRatingEnumeration",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="Indicates a MediaManipulationRatingEnumeration classification of a media object"
-     "(in the context of how it was published or shared).",
+        "(in the context of how it was published or shared).",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.MediaObject import MediaObject
     from pydantic_schemaorg.WebPage import WebPage
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.MediaManipulationRatingEnumeration import MediaManipulationRatingEnumeration
+    from pydantic_schemaorg.MediaManipulationRatingEnumeration import (
+        MediaManipulationRatingEnumeration,
+    )

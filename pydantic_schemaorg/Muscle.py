@@ -15,28 +15,31 @@ class Muscle(AnatomicalStructure):
     See: https://schema.org/Muscle
     Model depth: 4
     """
-    type_: str = Field(default="Muscle", alias='@type', const=True)
-    nerve: Optional[Union[List[Union['Nerve', str]], 'Nerve', str]] = Field(
+
+    type_: str = Field(default="Muscle", alias="@type", const=True)
+    nerve: Optional[Union[List[Union["Nerve", str]], "Nerve", str]] = Field(
         default=None,
         description="The underlying innervation associated with the muscle.",
     )
-    muscleAction: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    muscleAction: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The movement the muscle generates.",
     )
-    bloodSupply: Optional[Union[List[Union['Vessel', str]], 'Vessel', str]] = Field(
+    bloodSupply: Optional[Union[List[Union["Vessel", str]], "Vessel", str]] = Field(
         default=None,
         description="The blood vessel that carries blood from the heart to the muscle.",
     )
-    antagonist: Optional[Union[List[Union['Muscle', str]], 'Muscle', str]] = Field(
+    antagonist: Optional[Union[List[Union["Muscle", str]], "Muscle", str]] = Field(
         default=None,
         description="The muscle whose action counteracts the specified muscle.",
     )
-    insertion: Optional[Union[List[Union['AnatomicalStructure', str]], 'AnatomicalStructure', str]] = Field(
+    insertion: Optional[
+        Union[List[Union["AnatomicalStructure", str]], "AnatomicalStructure", str]
+    ] = Field(
         default=None,
         description="The place of attachment of a muscle, or what the muscle moves.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Nerve import Nerve

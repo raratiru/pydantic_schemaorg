@@ -16,21 +16,36 @@ class Hospital(EmergencyService, CivicStructure, MedicalOrganization):
     See: https://schema.org/Hospital
     Model depth: 4
     """
-    type_: str = Field(default="Hospital", alias='@type', const=True)
-    healthcareReportingData: Optional[Union[List[Union['CDCPMDRecord', 'Dataset', str]], 'CDCPMDRecord', 'Dataset', str]] = Field(
+
+    type_: str = Field(default="Hospital", alias="@type", const=True)
+    healthcareReportingData: Optional[
+        Union[
+            List[Union["CDCPMDRecord", "Dataset", str]], "CDCPMDRecord", "Dataset", str
+        ]
+    ] = Field(
         default=None,
         description="Indicates data describing a hospital, e.g. a CDC [[CDCPMDRecord]] or as some kind of"
-     "[[Dataset]].",
+        "[[Dataset]].",
     )
-    medicalSpecialty: Optional[Union[List[Union['MedicalSpecialty', str]], 'MedicalSpecialty', str]] = Field(
+    medicalSpecialty: Optional[
+        Union[List[Union["MedicalSpecialty", str]], "MedicalSpecialty", str]
+    ] = Field(
         default=None,
         description="A medical specialty of the provider.",
     )
-    availableService: Optional[Union[List[Union['MedicalTest', 'MedicalTherapy', 'MedicalProcedure', str]], 'MedicalTest', 'MedicalTherapy', 'MedicalProcedure', str]] = Field(
+    availableService: Optional[
+        Union[
+            List[Union["MedicalTest", "MedicalTherapy", "MedicalProcedure", str]],
+            "MedicalTest",
+            "MedicalTherapy",
+            "MedicalProcedure",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A medical service available from this provider.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.CDCPMDRecord import CDCPMDRecord

@@ -23,23 +23,51 @@ class Grant(Intangible):
     See: https://schema.org/Grant
     Model depth: 3
     """
-    type_: str = Field(default="Grant", alias='@type', const=True)
-    fundedItem: Optional[Union[List[Union['Organization', 'CreativeWork', 'Person', 'Event', 'BioChemEntity', 'MedicalEntity', 'Product', str]], 'Organization', 'CreativeWork', 'Person', 'Event', 'BioChemEntity', 'MedicalEntity', 'Product', str]] = Field(
+
+    type_: str = Field(default="Grant", alias="@type", const=True)
+    fundedItem: Optional[
+        Union[
+            List[
+                Union[
+                    "Organization",
+                    "CreativeWork",
+                    "Person",
+                    "Event",
+                    "BioChemEntity",
+                    "MedicalEntity",
+                    "Product",
+                    str,
+                ]
+            ],
+            "Organization",
+            "CreativeWork",
+            "Person",
+            "Event",
+            "BioChemEntity",
+            "MedicalEntity",
+            "Product",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="Indicates something directly or indirectly funded or sponsored through a [[Grant]]."
-     "See also [[ownershipFundingInfo]].",
+        "See also [[ownershipFundingInfo]].",
     )
-    funder: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    funder: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="A person or organization that supports (sponsors) something through some kind of financial"
-     "contribution.",
+        "contribution.",
     )
-    sponsor: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    sponsor: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="A person or organization that supports a thing through a pledge, promise, or financial"
-     "contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
+        "contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Organization import Organization

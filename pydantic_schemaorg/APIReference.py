@@ -14,28 +14,31 @@ class APIReference(TechArticle):
     See: https://schema.org/APIReference
     Model depth: 5
     """
-    type_: str = Field(default="APIReference", alias='@type', const=True)
-    programmingModel: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+
+    type_: str = Field(default="APIReference", alias="@type", const=True)
+    programmingModel: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Indicates whether API is managed or unmanaged.",
     )
-    targetPlatform: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    targetPlatform: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Type of app development: phone, Metro style, desktop, XBox, etc.",
     )
-    assembly: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    assembly: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Library file name, e.g., mscorlib.dll, system.web.dll.",
     )
-    assemblyVersion: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    assemblyVersion: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Associated product/technology version. E.g., .NET Framework 4.5.",
     )
-    executableLibraryName: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    executableLibraryName: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="Library file name, e.g., mscorlib.dll, system.web.dll.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

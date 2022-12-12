@@ -16,44 +16,73 @@ class HowToDirection(ListItem, CreativeWork):
     See: https://schema.org/HowToDirection
     Model depth: 3
     """
-    type_: str = Field(default="HowToDirection", alias='@type', const=True)
-    prepTime: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
+
+    type_: str = Field(default="HowToDirection", alias="@type", const=True)
+    prepTime: Optional[Union[List[Union["Duration", str]], "Duration", str]] = Field(
         default=None,
         description="The length of time it takes to prepare the items to be used in instructions or a direction,"
-     "in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
+        "in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
     )
-    afterMedia: Optional[Union[List[Union[AnyUrl, 'URL', 'MediaObject', str]], AnyUrl, 'URL', 'MediaObject', str]] = Field(
+    afterMedia: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", "MediaObject", str]],
+            AnyUrl,
+            "URL",
+            "MediaObject",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A media object representing the circumstances after performing this direction.",
     )
-    beforeMedia: Optional[Union[List[Union[AnyUrl, 'URL', 'MediaObject', str]], AnyUrl, 'URL', 'MediaObject', str]] = Field(
+    beforeMedia: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", "MediaObject", str]],
+            AnyUrl,
+            "URL",
+            "MediaObject",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A media object representing the circumstances before performing this direction.",
     )
-    tool: Optional[Union[List[Union[str, 'Text', 'HowToTool']], str, 'Text', 'HowToTool']] = Field(
+    tool: Optional[
+        Union[List[Union[str, "Text", "HowToTool"]], str, "Text", "HowToTool"]
+    ] = Field(
         default=None,
         description="A sub property of instrument. An object used (but not consumed) when performing instructions"
-     "or a direction.",
+        "or a direction.",
     )
-    duringMedia: Optional[Union[List[Union[AnyUrl, 'URL', 'MediaObject', str]], AnyUrl, 'URL', 'MediaObject', str]] = Field(
+    duringMedia: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", "MediaObject", str]],
+            AnyUrl,
+            "URL",
+            "MediaObject",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A media object representing the circumstances while performing this direction.",
     )
-    performTime: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
+    performTime: Optional[Union[List[Union["Duration", str]], "Duration", str]] = Field(
         default=None,
         description="The length of time it takes to perform instructions or a direction (not including time"
-     "to prepare the supplies), in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
+        "to prepare the supplies), in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
     )
-    supply: Optional[Union[List[Union[str, 'Text', 'HowToSupply']], str, 'Text', 'HowToSupply']] = Field(
+    supply: Optional[
+        Union[List[Union[str, "Text", "HowToSupply"]], str, "Text", "HowToSupply"]
+    ] = Field(
         default=None,
         description="A sub-property of instrument. A supply consumed when performing instructions or a direction.",
     )
-    totalTime: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
+    totalTime: Optional[Union[List[Union["Duration", str]], "Duration", str]] = Field(
         default=None,
         description="The total time required to perform instructions or a direction (including time to prepare"
-     "the supplies), in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
+        "the supplies), in [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601).",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Duration import Duration

@@ -17,16 +17,27 @@ class MedicalClinic(MedicalBusiness, MedicalOrganization):
     See: https://schema.org/MedicalClinic
     Model depth: 4
     """
-    type_: str = Field(default="MedicalClinic", alias='@type', const=True)
-    medicalSpecialty: Optional[Union[List[Union['MedicalSpecialty', str]], 'MedicalSpecialty', str]] = Field(
+
+    type_: str = Field(default="MedicalClinic", alias="@type", const=True)
+    medicalSpecialty: Optional[
+        Union[List[Union["MedicalSpecialty", str]], "MedicalSpecialty", str]
+    ] = Field(
         default=None,
         description="A medical specialty of the provider.",
     )
-    availableService: Optional[Union[List[Union['MedicalTest', 'MedicalTherapy', 'MedicalProcedure', str]], 'MedicalTest', 'MedicalTherapy', 'MedicalProcedure', str]] = Field(
+    availableService: Optional[
+        Union[
+            List[Union["MedicalTest", "MedicalTherapy", "MedicalProcedure", str]],
+            "MedicalTest",
+            "MedicalTherapy",
+            "MedicalProcedure",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A medical service available from this provider.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.MedicalSpecialty import MedicalSpecialty

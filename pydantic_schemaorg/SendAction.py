@@ -17,16 +17,28 @@ class SendAction(TransferAction):
     See: https://schema.org/SendAction
     Model depth: 4
     """
-    type_: str = Field(default="SendAction", alias='@type', const=True)
-    deliveryMethod: Optional[Union[List[Union['DeliveryMethod', str]], 'DeliveryMethod', str]] = Field(
+
+    type_: str = Field(default="SendAction", alias="@type", const=True)
+    deliveryMethod: Optional[
+        Union[List[Union["DeliveryMethod", str]], "DeliveryMethod", str]
+    ] = Field(
         default=None,
         description="A sub property of instrument. The method of delivery.",
     )
-    recipient: Optional[Union[List[Union['Audience', 'Organization', 'Person', 'ContactPoint', str]], 'Audience', 'Organization', 'Person', 'ContactPoint', str]] = Field(
+    recipient: Optional[
+        Union[
+            List[Union["Audience", "Organization", "Person", "ContactPoint", str]],
+            "Audience",
+            "Organization",
+            "Person",
+            "ContactPoint",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A sub property of participant. The participant who is at the receiving end of the action.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.DeliveryMethod import DeliveryMethod

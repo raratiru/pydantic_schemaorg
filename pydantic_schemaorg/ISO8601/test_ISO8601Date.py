@@ -15,11 +15,18 @@ from pydantic import BaseModel
 
 from pydantic_schemaorg.ISO8601.ISO8601Date import ISO8601Date
 
+
 class TestModel(BaseModel):
     testDate: ISO8601Date
 
 
-test_dates = {'1997', '1997-07', '1997-07-16', '1997-07-16T19:20+01:00', '1997-07-16T19:20:30+01:00',
-              '1997-07-16T19:20:30.45+01:00'}
+test_dates = {
+    "1997",
+    "1997-07",
+    "1997-07-16",
+    "1997-07-16T19:20+01:00",
+    "1997-07-16T19:20:30+01:00",
+    "1997-07-16T19:20:30.45+01:00",
+}
 for test_date in test_dates:
     TestModel(testDate=test_date)

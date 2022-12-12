@@ -15,29 +15,48 @@ class HealthPlanCostSharingSpecification(Intangible):
     See: https://schema.org/HealthPlanCostSharingSpecification
     Model depth: 3
     """
-    type_: str = Field(default="HealthPlanCostSharingSpecification", alias='@type', const=True)
-    healthPlanCoinsuranceRate: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
+
+    type_: str = Field(
+        default="HealthPlanCostSharingSpecification", alias="@type", const=True
+    )
+    healthPlanCoinsuranceRate: Optional[
+        Union[
+            List[Union[StrictInt, StrictFloat, "Number", str]],
+            StrictInt,
+            StrictFloat,
+            "Number",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The rate of coinsurance expressed as a number between 0.0 and 1.0.",
     )
-    healthPlanCopayOption: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    healthPlanCopayOption: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="Whether the copay is before or after deductible, etc. TODO: Is this a closed set?",
     )
-    healthPlanPharmacyCategory: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    healthPlanPharmacyCategory: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="The category or type of pharmacy associated with this cost sharing.",
     )
-    healthPlanCopay: Optional[Union[List[Union['PriceSpecification', str]], 'PriceSpecification', str]] = Field(
+    healthPlanCopay: Optional[
+        Union[List[Union["PriceSpecification", str]], "PriceSpecification", str]
+    ] = Field(
         default=None,
         description="The copay amount.",
     )
-    healthPlanCoinsuranceOption: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    healthPlanCoinsuranceOption: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="Whether the coinsurance applies before or after deductible, etc. TODO: Is this a closed"
-     "set?",
+        "set?",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Number import Number

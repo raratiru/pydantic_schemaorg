@@ -15,25 +15,55 @@ class Taxon(Thing):
     See: https://schema.org/Taxon
     Model depth: 2
     """
-    type_: str = Field(default="Taxon", alias='@type', const=True)
-    parentTaxon: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'Taxon']], AnyUrl, 'URL', str, 'Text', 'Taxon']] = Field(
+
+    type_: str = Field(default="Taxon", alias="@type", const=True)
+    parentTaxon: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", str, "Text", "Taxon"]],
+            AnyUrl,
+            "URL",
+            str,
+            "Text",
+            "Taxon",
+        ]
+    ] = Field(
         default=None,
         description="Closest parent taxon of the taxon in question.",
     )
-    taxonRank: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'PropertyValue']], AnyUrl, 'URL', str, 'Text', 'PropertyValue']] = Field(
+    taxonRank: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", str, "Text", "PropertyValue"]],
+            AnyUrl,
+            "URL",
+            str,
+            "Text",
+            "PropertyValue",
+        ]
+    ] = Field(
         default=None,
         description="The taxonomic rank of this taxon given preferably as a URI from a controlled vocabulary"
-     "– typically the ranks from TDWG TaxonRank ontology or equivalent Wikidata URIs.",
+        "– typically the ranks from TDWG TaxonRank ontology or equivalent Wikidata URIs.",
     )
-    childTaxon: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'Taxon']], AnyUrl, 'URL', str, 'Text', 'Taxon']] = Field(
+    childTaxon: Optional[
+        Union[
+            List[Union[AnyUrl, "URL", str, "Text", "Taxon"]],
+            AnyUrl,
+            "URL",
+            str,
+            "Text",
+            "Taxon",
+        ]
+    ] = Field(
         default=None,
         description="Closest child taxa of the taxon in question.",
     )
-    hasDefinedTerm: Optional[Union[List[Union['DefinedTerm', str]], 'DefinedTerm', str]] = Field(
+    hasDefinedTerm: Optional[
+        Union[List[Union["DefinedTerm", str]], "DefinedTerm", str]
+    ] = Field(
         default=None,
         description="A Defined Term contained in this term set.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.URL import URL

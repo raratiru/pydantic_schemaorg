@@ -15,26 +15,38 @@ class CommunicateAction(InteractAction):
     See: https://schema.org/CommunicateAction
     Model depth: 4
     """
-    type_: str = Field(default="CommunicateAction", alias='@type', const=True)
-    about: Optional[Union[List[Union['Thing', str]], 'Thing', str]] = Field(
+
+    type_: str = Field(default="CommunicateAction", alias="@type", const=True)
+    about: Optional[Union[List[Union["Thing", str]], "Thing", str]] = Field(
         default=None,
         description="The subject matter of the content.",
     )
-    recipient: Optional[Union[List[Union['Audience', 'Organization', 'Person', 'ContactPoint', str]], 'Audience', 'Organization', 'Person', 'ContactPoint', str]] = Field(
+    recipient: Optional[
+        Union[
+            List[Union["Audience", "Organization", "Person", "ContactPoint", str]],
+            "Audience",
+            "Organization",
+            "Person",
+            "ContactPoint",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A sub property of participant. The participant who is at the receiving end of the action.",
     )
-    language: Optional[Union[List[Union['Language', str]], 'Language', str]] = Field(
+    language: Optional[Union[List[Union["Language", str]], "Language", str]] = Field(
         default=None,
         description="A sub property of instrument. The language used on this action.",
     )
-    inLanguage: Optional[Union[List[Union[str, 'Text', 'Language']], str, 'Text', 'Language']] = Field(
+    inLanguage: Optional[
+        Union[List[Union[str, "Text", "Language"]], str, "Text", "Language"]
+    ] = Field(
         default=None,
         description="The language of the content or performance or used in an action. Please use one of the language"
-     "codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also"
-     "[[availableLanguage]].",
+        "codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also"
+        "[[availableLanguage]].",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Thing import Thing

@@ -40,7 +40,7 @@ class Import(BaseModel):
 
 class PydanticClass(PydanticBase):
     fields: List[PydanticField]
-    parents: List['PydanticClass']
+    parents: List["PydanticClass"]
     depth: int = 1
     parent_imports: List[Import]
     field_imports: List[Import]
@@ -61,8 +61,8 @@ class PydanticClass(PydanticBase):
             "return",
             "yield",
         }:
-            return f'{filename}_'
-        return values['valid_name']
+            return f"{filename}_"
+        return values["valid_name"]
 
 
 PydanticClass.update_forward_refs()

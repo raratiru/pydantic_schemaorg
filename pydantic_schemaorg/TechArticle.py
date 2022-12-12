@@ -15,16 +15,17 @@ class TechArticle(Article):
     See: https://schema.org/TechArticle
     Model depth: 4
     """
-    type_: str = Field(default="TechArticle", alias='@type', const=True)
-    proficiencyLevel: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+
+    type_: str = Field(default="TechArticle", alias="@type", const=True)
+    proficiencyLevel: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Proficiency needed for this content; expected values: 'Beginner', 'Expert'.",
     )
-    dependencies: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    dependencies: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Prerequisites needed to fulfill steps in article.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

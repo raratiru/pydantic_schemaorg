@@ -15,9 +15,7 @@ THIS_PATH = Path(__file__).parent
 
 def write_base_class():
     with open(f"{PACKAGE_NAME}/SchemaOrgBase.py", "w") as model_file:
-        with open(
-                THIS_PATH / "templates/schema_org_base.py.tpl"
-        ) as template_file:
+        with open(THIS_PATH / "templates/schema_org_base.py.tpl") as template_file:
             template = jinja_env.from_string(template_file.read())
             template_args = dict(
                 schemaorg_version=os.getenv("SCHEMAORG_VERSION"),
@@ -28,10 +26,10 @@ def write_base_class():
 
 
 def copy_utils():
-    os.makedirs(f'{PACKAGE_NAME}/ISO8601', exist_ok=True)
-    for file in os.listdir(f'{THIS_PATH}/ISO8601'):
-        if file.endswith('.py'):
-            shutil.copy(f'{THIS_PATH}/ISO8601/{file}', f'{PACKAGE_NAME}/ISO8601')
+    os.makedirs(f"{PACKAGE_NAME}/ISO8601", exist_ok=True)
+    for file in os.listdir(f"{THIS_PATH}/ISO8601"):
+        if file.endswith(".py"):
+            shutil.copy(f"{THIS_PATH}/ISO8601/{file}", f"{PACKAGE_NAME}/ISO8601")
 
 
 def init_package():

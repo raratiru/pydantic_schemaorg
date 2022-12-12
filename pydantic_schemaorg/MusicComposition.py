@@ -14,49 +14,62 @@ class MusicComposition(CreativeWork):
     See: https://schema.org/MusicComposition
     Model depth: 3
     """
-    type_: str = Field(default="MusicComposition", alias='@type', const=True)
-    iswcCode: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+
+    type_: str = Field(default="MusicComposition", alias="@type", const=True)
+    iswcCode: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The International Standard Musical Work Code for the composition.",
     )
-    lyrics: Optional[Union[List[Union['CreativeWork', str]], 'CreativeWork', str]] = Field(
+    lyrics: Optional[
+        Union[List[Union["CreativeWork", str]], "CreativeWork", str]
+    ] = Field(
         default=None,
         description="The words in the song.",
     )
-    musicalKey: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    musicalKey: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The key, mode, or scale this composition uses.",
     )
-    includedComposition: Optional[Union[List[Union['MusicComposition', str]], 'MusicComposition', str]] = Field(
+    includedComposition: Optional[
+        Union[List[Union["MusicComposition", str]], "MusicComposition", str]
+    ] = Field(
         default=None,
         description="Smaller compositions included in this work (e.g. a movement in a symphony).",
     )
-    recordedAs: Optional[Union[List[Union['MusicRecording', str]], 'MusicRecording', str]] = Field(
+    recordedAs: Optional[
+        Union[List[Union["MusicRecording", str]], "MusicRecording", str]
+    ] = Field(
         default=None,
         description="An audio recording of the work.",
     )
-    composer: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    composer: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="The person or organization who wrote a composition, or who is the composer of a work performed"
-     "at some event.",
+        "at some event.",
     )
-    musicCompositionForm: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    musicCompositionForm: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="The type of composition (e.g. overture, sonata, symphony, etc.).",
     )
-    firstPerformance: Optional[Union[List[Union['Event', str]], 'Event', str]] = Field(
+    firstPerformance: Optional[Union[List[Union["Event", str]], "Event", str]] = Field(
         default=None,
         description="The date and place the work was first performed.",
     )
-    lyricist: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    lyricist: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="The person who wrote the words.",
     )
-    musicArrangement: Optional[Union[List[Union['MusicComposition', str]], 'MusicComposition', str]] = Field(
+    musicArrangement: Optional[
+        Union[List[Union["MusicComposition", str]], "MusicComposition", str]
+    ] = Field(
         default=None,
         description="An arrangement derived from the composition.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

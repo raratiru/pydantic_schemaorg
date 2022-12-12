@@ -18,143 +18,183 @@ class Drug(Substance, Product):
     See: https://schema.org/Drug
     Model depth: 3
     """
-    type_: str = Field(default="Drug", alias='@type', const=True)
-    includedInHealthInsurancePlan: Optional[Union[List[Union['HealthInsurancePlan', str]], 'HealthInsurancePlan', str]] = Field(
+
+    type_: str = Field(default="Drug", alias="@type", const=True)
+    includedInHealthInsurancePlan: Optional[
+        Union[List[Union["HealthInsurancePlan", str]], "HealthInsurancePlan", str]
+    ] = Field(
         default=None,
         description="The insurance plans that cover this drug.",
     )
-    clincalPharmacology: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    clincalPharmacology: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Description of the absorption and elimination of drugs, including their concentration"
-     "(pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).",
+        "(pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).",
     )
-    warning: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
+    warning: Optional[
+        Union[List[Union[AnyUrl, "URL", str, "Text"]], AnyUrl, "URL", str, "Text"]
+    ] = Field(
         default=None,
         description="Any FDA or other warnings about the drug (text or URL).",
     )
-    activeIngredient: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    activeIngredient: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="An active ingredient, typically chemical compounds and/or biologic substances.",
     )
-    nonProprietaryName: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    nonProprietaryName: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The generic name of this drug or supplement.",
     )
-    foodWarning: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    foodWarning: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Any precaution, guidance, contraindication, etc. related to consumption of specific"
-     "foods while taking this drug.",
+        "foods while taking this drug.",
     )
-    availableStrength: Optional[Union[List[Union['DrugStrength', str]], 'DrugStrength', str]] = Field(
+    availableStrength: Optional[
+        Union[List[Union["DrugStrength", str]], "DrugStrength", str]
+    ] = Field(
         default=None,
         description="An available dosage strength for the drug.",
     )
-    breastfeedingWarning: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    breastfeedingWarning: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding"
-     "mothers.",
+        "mothers.",
     )
-    dosageForm: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    dosageForm: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension',"
-     "'injection'.",
+        "'injection'.",
     )
-    isAvailableGenerically: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+    isAvailableGenerically: Optional[
+        Union[List[Union[StrictBool, "Boolean", str]], StrictBool, "Boolean", str]
+    ] = Field(
         default=None,
         description="True if the drug is available in a generic form (regardless of name).",
     )
-    relatedDrug: Optional[Union[List[Union['Drug', str]], 'Drug', str]] = Field(
+    relatedDrug: Optional[Union[List[Union["Drug", str]], "Drug", str]] = Field(
         default=None,
         description="Any other drug related to this one, for example commonly-prescribed alternatives.",
     )
-    labelDetails: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
+    labelDetails: Optional[
+        Union[List[Union[AnyUrl, "URL", str]], AnyUrl, "URL", str]
+    ] = Field(
         default=None,
         description="Link to the drug's label details.",
     )
-    doseSchedule: Optional[Union[List[Union['DoseSchedule', str]], 'DoseSchedule', str]] = Field(
+    doseSchedule: Optional[
+        Union[List[Union["DoseSchedule", str]], "DoseSchedule", str]
+    ] = Field(
         default=None,
         description="A dosing schedule for the drug for a given population, either observed, recommended,"
-     "or maximum dose based on the type used.",
+        "or maximum dose based on the type used.",
     )
-    drugUnit: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    drugUnit: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The unit in which the drug is measured, e.g. '5 mg tablet'.",
     )
-    administrationRoute: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    administrationRoute: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="A route by which this drug may be administered, e.g. 'oral'.",
     )
-    proprietaryName: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    proprietaryName: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Proprietary name given to the diet plan, typically by its originator or creator.",
     )
-    clinicalPharmacology: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    clinicalPharmacology: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="Description of the absorption and elimination of drugs, including their concentration"
-     "(pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).",
+        "(pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).",
     )
-    prescriptionStatus: Optional[Union[List[Union[str, 'Text', 'DrugPrescriptionStatus']], str, 'Text', 'DrugPrescriptionStatus']] = Field(
+    prescriptionStatus: Optional[
+        Union[
+            List[Union[str, "Text", "DrugPrescriptionStatus"]],
+            str,
+            "Text",
+            "DrugPrescriptionStatus",
+        ]
+    ] = Field(
         default=None,
         description="Indicates the status of drug prescription, e.g. local catalogs classifications or"
-     "whether the drug is available by prescription or over-the-counter, etc.",
+        "whether the drug is available by prescription or over-the-counter, etc.",
     )
-    prescribingInfo: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
+    prescribingInfo: Optional[
+        Union[List[Union[AnyUrl, "URL", str]], AnyUrl, "URL", str]
+    ] = Field(
         default=None,
         description="Link to prescribing information for the drug.",
     )
-    pregnancyWarning: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    pregnancyWarning: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Any precaution, guidance, contraindication, etc. related to this drug's use during"
-     "pregnancy.",
+        "pregnancy.",
     )
-    legalStatus: Optional[Union[List[Union[str, 'Text', 'DrugLegalStatus', 'MedicalEnumeration']], str, 'Text', 'DrugLegalStatus', 'MedicalEnumeration']] = Field(
+    legalStatus: Optional[
+        Union[
+            List[Union[str, "Text", "DrugLegalStatus", "MedicalEnumeration"]],
+            str,
+            "Text",
+            "DrugLegalStatus",
+            "MedicalEnumeration",
+        ]
+    ] = Field(
         default=None,
         description="The drug or supplement's legal status, including any controlled substance schedules"
-     "that apply.",
+        "that apply.",
     )
-    overdosage: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    overdosage: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Any information related to overdose on a drug, including signs or symptoms, treatments,"
-     "contact information for emergency response.",
+        "contact information for emergency response.",
     )
-    isProprietary: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+    isProprietary: Optional[
+        Union[List[Union[StrictBool, "Boolean", str]], StrictBool, "Boolean", str]
+    ] = Field(
         default=None,
         description="True if this item's name is a proprietary/brand name (vs. generic name).",
     )
-    rxcui: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    rxcui: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The RxCUI drug identifier from RXNORM.",
     )
-    alcoholWarning: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    alcoholWarning: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Any precaution, guidance, contraindication, etc. related to consumption of alcohol"
-     "while taking this drug.",
+        "while taking this drug.",
     )
-    drugClass: Optional[Union[List[Union['DrugClass', str]], 'DrugClass', str]] = Field(
+    drugClass: Optional[Union[List[Union["DrugClass", str]], "DrugClass", str]] = Field(
         default=None,
         description="The class of drug this belongs to (e.g., statins).",
     )
-    interactingDrug: Optional[Union[List[Union['Drug', str]], 'Drug', str]] = Field(
+    interactingDrug: Optional[Union[List[Union["Drug", str]], "Drug", str]] = Field(
         default=None,
         description="Another drug that is known to interact with this drug in a way that impacts the effect of"
-     "this drug or causes a risk to the patient. Note: disease interactions are typically captured"
-     "as contraindications.",
+        "this drug or causes a risk to the patient. Note: disease interactions are typically captured"
+        "as contraindications.",
     )
-    pregnancyCategory: Optional[Union[List[Union['DrugPregnancyCategory', str]], 'DrugPregnancyCategory', str]] = Field(
+    pregnancyCategory: Optional[
+        Union[List[Union["DrugPregnancyCategory", str]], "DrugPregnancyCategory", str]
+    ] = Field(
         default=None,
         description="Pregnancy category of this drug.",
     )
-    maximumIntake: Optional[Union[List[Union['MaximumDoseSchedule', str]], 'MaximumDoseSchedule', str]] = Field(
+    maximumIntake: Optional[
+        Union[List[Union["MaximumDoseSchedule", str]], "MaximumDoseSchedule", str]
+    ] = Field(
         default=None,
         description="Recommended intake of this supplement for a given population as defined by a specific"
-     "recommending authority.",
+        "recommending authority.",
     )
-    mechanismOfAction: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    mechanismOfAction: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The specific biochemical interaction through which this drug or supplement produces"
-     "its pharmacological effect.",
+        "its pharmacological effect.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.HealthInsurancePlan import HealthInsurancePlan

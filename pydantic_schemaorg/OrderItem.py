@@ -16,28 +16,49 @@ class OrderItem(Intangible):
     See: https://schema.org/OrderItem
     Model depth: 3
     """
-    type_: str = Field(default="OrderItem", alias='@type', const=True)
-    orderItemStatus: Optional[Union[List[Union['OrderStatus', str]], 'OrderStatus', str]] = Field(
+
+    type_: str = Field(default="OrderItem", alias="@type", const=True)
+    orderItemStatus: Optional[
+        Union[List[Union["OrderStatus", str]], "OrderStatus", str]
+    ] = Field(
         default=None,
         description="The current status of the order item.",
     )
-    orderQuantity: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
+    orderQuantity: Optional[
+        Union[
+            List[Union[StrictInt, StrictFloat, "Number", str]],
+            StrictInt,
+            StrictFloat,
+            "Number",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The number of the item ordered. If the property is not set, assume the quantity is one.",
     )
-    orderDelivery: Optional[Union[List[Union['ParcelDelivery', str]], 'ParcelDelivery', str]] = Field(
+    orderDelivery: Optional[
+        Union[List[Union["ParcelDelivery", str]], "ParcelDelivery", str]
+    ] = Field(
         default=None,
         description="The delivery of the parcel related to this order or order item.",
     )
-    orderedItem: Optional[Union[List[Union['Product', 'OrderItem', 'Service', str]], 'Product', 'OrderItem', 'Service', str]] = Field(
+    orderedItem: Optional[
+        Union[
+            List[Union["Product", "OrderItem", "Service", str]],
+            "Product",
+            "OrderItem",
+            "Service",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The item ordered.",
     )
-    orderItemNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    orderItemNumber: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The identifier of the order item.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.OrderStatus import OrderStatus

@@ -16,31 +16,46 @@ class TypeAndQuantityNode(StructuredValue):
     See: https://schema.org/TypeAndQuantityNode
     Model depth: 4
     """
-    type_: str = Field(default="TypeAndQuantityNode", alias='@type', const=True)
-    amountOfThisGood: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
+
+    type_: str = Field(default="TypeAndQuantityNode", alias="@type", const=True)
+    amountOfThisGood: Optional[
+        Union[
+            List[Union[StrictInt, StrictFloat, "Number", str]],
+            StrictInt,
+            StrictFloat,
+            "Number",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The quantity of the goods included in the offer.",
     )
-    businessFunction: Optional[Union[List[Union['BusinessFunction', str]], 'BusinessFunction', str]] = Field(
+    businessFunction: Optional[
+        Union[List[Union["BusinessFunction", str]], "BusinessFunction", str]
+    ] = Field(
         default=None,
         description="The business function (e.g. sell, lease, repair, dispose) of the offer or component"
-     "of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.",
+        "of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.",
     )
-    unitCode: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
+    unitCode: Optional[
+        Union[List[Union[AnyUrl, "URL", str, "Text"]], AnyUrl, "URL", str, "Text"]
+    ] = Field(
         default=None,
         description="The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL."
-     "Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.",
+        "Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.",
     )
-    unitText: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    unitText: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="A string or text indicating the unit of measurement. Useful if you cannot provide a standard"
-     "unit code for <a href='unitCode'>unitCode</a>.",
+        "unit code for <a href='unitCode'>unitCode</a>.",
     )
-    typeOfGood: Optional[Union[List[Union['Product', 'Service', str]], 'Product', 'Service', str]] = Field(
+    typeOfGood: Optional[
+        Union[List[Union["Product", "Service", str]], "Product", "Service", str]
+    ] = Field(
         default=None,
         description="The product that this structured value is referring to.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Number import Number

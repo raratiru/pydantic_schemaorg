@@ -23,21 +23,28 @@ class Claim(CreativeWork):
     See: https://schema.org/Claim
     Model depth: 3
     """
-    type_: str = Field(default="Claim", alias='@type', const=True)
-    claimInterpreter: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+
+    type_: str = Field(default="Claim", alias="@type", const=True)
+    claimInterpreter: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="For a [[Claim]] interpreted from [[MediaObject]] content sed to indicate a claim contained,"
-     "implied or refined from the content of a [[MediaObject]].",
+        "implied or refined from the content of a [[MediaObject]].",
     )
-    appearance: Optional[Union[List[Union['CreativeWork', str]], 'CreativeWork', str]] = Field(
+    appearance: Optional[
+        Union[List[Union["CreativeWork", str]], "CreativeWork", str]
+    ] = Field(
         default=None,
         description="Indicates an occurrence of a [[Claim]] in some [[CreativeWork]].",
     )
-    firstAppearance: Optional[Union[List[Union['CreativeWork', str]], 'CreativeWork', str]] = Field(
+    firstAppearance: Optional[
+        Union[List[Union["CreativeWork", str]], "CreativeWork", str]
+    ] = Field(
         default=None,
         description="Indicates the first known occurrence of a [[Claim]] in some [[CreativeWork]].",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Organization import Organization

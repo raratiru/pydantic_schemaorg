@@ -15,21 +15,26 @@ class HealthPlanNetwork(Intangible):
     See: https://schema.org/HealthPlanNetwork
     Model depth: 3
     """
-    type_: str = Field(default="HealthPlanNetwork", alias='@type', const=True)
-    healthPlanNetworkTier: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+
+    type_: str = Field(default="HealthPlanNetwork", alias="@type", const=True)
+    healthPlanNetworkTier: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="The tier(s) for this network.",
     )
-    healthPlanNetworkId: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    healthPlanNetworkId: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Name or unique ID of network. (Networks are often reused across different insurance"
-     "plans.)",
+        "plans.)",
     )
-    healthPlanCostSharing: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+    healthPlanCostSharing: Optional[
+        Union[List[Union[StrictBool, "Boolean", str]], StrictBool, "Boolean", str]
+    ] = Field(
         default=None,
         description="The costs to the patient for services under this network or formulary.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

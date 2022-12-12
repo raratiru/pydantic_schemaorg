@@ -15,17 +15,22 @@ class SellAction(TradeAction):
     See: https://schema.org/SellAction
     Model depth: 4
     """
-    type_: str = Field(default="SellAction", alias='@type', const=True)
-    buyer: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+
+    type_: str = Field(default="SellAction", alias="@type", const=True)
+    buyer: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="A sub property of participant. The participant/person/organization that bought the"
-     "object.",
+        "object.",
     )
-    warrantyPromise: Optional[Union[List[Union['WarrantyPromise', str]], 'WarrantyPromise', str]] = Field(
+    warrantyPromise: Optional[
+        Union[List[Union["WarrantyPromise", str]], "WarrantyPromise", str]
+    ] = Field(
         default=None,
         description="The warranty promise(s) included in the offer.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Organization import Organization

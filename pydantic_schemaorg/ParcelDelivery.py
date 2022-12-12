@@ -16,59 +16,92 @@ class ParcelDelivery(Intangible):
     See: https://schema.org/ParcelDelivery
     Model depth: 3
     """
-    type_: str = Field(default="ParcelDelivery", alias='@type', const=True)
-    itemShipped: Optional[Union[List[Union['Product', str]], 'Product', str]] = Field(
+
+    type_: str = Field(default="ParcelDelivery", alias="@type", const=True)
+    itemShipped: Optional[Union[List[Union["Product", str]], "Product", str]] = Field(
         default=None,
         description="Item(s) being shipped.",
     )
-    trackingNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    trackingNumber: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Shipper tracking number.",
     )
-    expectedArrivalUntil: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
+    expectedArrivalUntil: Optional[
+        Union[
+            List[Union[datetime, "DateTime", date, "Date", str]],
+            datetime,
+            "DateTime",
+            date,
+            "Date",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The latest date the package may arrive.",
     )
-    provider: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    provider: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="The service provider, service operator, or service performer; the goods producer."
-     "Another party (a seller) may offer those services or goods on behalf of the provider."
-     "A provider may also serve as the seller.",
+        "Another party (a seller) may offer those services or goods on behalf of the provider."
+        "A provider may also serve as the seller.",
     )
-    deliveryAddress: Optional[Union[List[Union['PostalAddress', str]], 'PostalAddress', str]] = Field(
+    deliveryAddress: Optional[
+        Union[List[Union["PostalAddress", str]], "PostalAddress", str]
+    ] = Field(
         default=None,
         description="Destination address.",
     )
-    expectedArrivalFrom: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
+    expectedArrivalFrom: Optional[
+        Union[
+            List[Union[datetime, "DateTime", date, "Date", str]],
+            datetime,
+            "DateTime",
+            date,
+            "Date",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The earliest date the package may arrive.",
     )
-    carrier: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
+    carrier: Optional[
+        Union[List[Union["Organization", str]], "Organization", str]
+    ] = Field(
         default=None,
         description="'carrier' is an out-dated term indicating the 'provider' for parcel delivery and flights.",
     )
-    originAddress: Optional[Union[List[Union['PostalAddress', str]], 'PostalAddress', str]] = Field(
+    originAddress: Optional[
+        Union[List[Union["PostalAddress", str]], "PostalAddress", str]
+    ] = Field(
         default=None,
         description="Shipper's address.",
     )
-    deliveryStatus: Optional[Union[List[Union['DeliveryEvent', str]], 'DeliveryEvent', str]] = Field(
+    deliveryStatus: Optional[
+        Union[List[Union["DeliveryEvent", str]], "DeliveryEvent", str]
+    ] = Field(
         default=None,
         description="New entry added as the package passes through each leg of its journey (from shipment to"
-     "final delivery).",
+        "final delivery).",
     )
-    trackingUrl: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
+    trackingUrl: Optional[
+        Union[List[Union[AnyUrl, "URL", str]], AnyUrl, "URL", str]
+    ] = Field(
         default=None,
         description="Tracking url for the parcel delivery.",
     )
-    partOfOrder: Optional[Union[List[Union['Order', str]], 'Order', str]] = Field(
+    partOfOrder: Optional[Union[List[Union["Order", str]], "Order", str]] = Field(
         default=None,
         description="The overall order the items in this delivery were included in.",
     )
-    hasDeliveryMethod: Optional[Union[List[Union['DeliveryMethod', str]], 'DeliveryMethod', str]] = Field(
+    hasDeliveryMethod: Optional[
+        Union[List[Union["DeliveryMethod", str]], "DeliveryMethod", str]
+    ] = Field(
         default=None,
         description="Method used for delivery or shipping.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Product import Product

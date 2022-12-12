@@ -14,12 +14,22 @@ class PayAction(TradeAction):
     See: https://schema.org/PayAction
     Model depth: 4
     """
-    type_: str = Field(default="PayAction", alias='@type', const=True)
-    recipient: Optional[Union[List[Union['Audience', 'Organization', 'Person', 'ContactPoint', str]], 'Audience', 'Organization', 'Person', 'ContactPoint', str]] = Field(
+
+    type_: str = Field(default="PayAction", alias="@type", const=True)
+    recipient: Optional[
+        Union[
+            List[Union["Audience", "Organization", "Person", "ContactPoint", str]],
+            "Audience",
+            "Organization",
+            "Person",
+            "ContactPoint",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="A sub property of participant. The participant who is at the receiving end of the action.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Audience import Audience

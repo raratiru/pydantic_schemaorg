@@ -14,57 +14,64 @@ class VideoObject(MediaObject):
     See: https://schema.org/VideoObject
     Model depth: 4
     """
-    type_: str = Field(default="VideoObject", alias='@type', const=True)
-    actors: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+
+    type_: str = Field(default="VideoObject", alias="@type", const=True)
+    actors: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="An actor, e.g. in TV, radio, movie, video games etc. Actors can be associated with individual"
-     "items or with a series, episode, clip.",
+        "items or with a series, episode, clip.",
     )
-    actor: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    actor: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="An actor, e.g. in TV, radio, movie, video games etc., or in an event. Actors can be associated"
-     "with individual items or with a series, episode, clip.",
+        "with individual items or with a series, episode, clip.",
     )
-    caption: Optional[Union[List[Union[str, 'Text', 'MediaObject']], str, 'Text', 'MediaObject']] = Field(
+    caption: Optional[
+        Union[List[Union[str, "Text", "MediaObject"]], str, "Text", "MediaObject"]
+    ] = Field(
         default=None,
         description="The caption for this object. For downloadable machine formats (closed caption, subtitles"
-     "etc.) use MediaObject and indicate the [[encodingFormat]].",
+        "etc.) use MediaObject and indicate the [[encodingFormat]].",
     )
-    thumbnail: Optional[Union[List[Union['ImageObject', str]], 'ImageObject', str]] = Field(
+    thumbnail: Optional[
+        Union[List[Union["ImageObject", str]], "ImageObject", str]
+    ] = Field(
         default=None,
         description="Thumbnail image for an image or video.",
     )
-    embeddedTextCaption: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    embeddedTextCaption: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="Represents textual captioning from a [[MediaObject]], e.g. text of a 'meme'.",
     )
-    director: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    director: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="A director of e.g. TV, radio, movie, video gaming etc. content, or of an event. Directors"
-     "can be associated with individual items or with a series, episode, clip.",
+        "can be associated with individual items or with a series, episode, clip.",
     )
-    videoFrameSize: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    videoFrameSize: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The frame size of the video.",
     )
-    directors: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
+    directors: Optional[Union[List[Union["Person", str]], "Person", str]] = Field(
         default=None,
         description="A director of e.g. TV, radio, movie, video games etc. content. Directors can be associated"
-     "with individual items or with a series, episode, clip.",
+        "with individual items or with a series, episode, clip.",
     )
-    transcript: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    transcript: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="If this MediaObject is an AudioObject or VideoObject, the transcript of that object.",
     )
-    musicBy: Optional[Union[List[Union['Person', 'MusicGroup', str]], 'Person', 'MusicGroup', str]] = Field(
+    musicBy: Optional[
+        Union[List[Union["Person", "MusicGroup", str]], "Person", "MusicGroup", str]
+    ] = Field(
         default=None,
         description="The composer of the soundtrack.",
     )
-    videoQuality: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    videoQuality: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The quality of the video.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Person import Person

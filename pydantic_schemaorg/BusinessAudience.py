@@ -15,20 +15,27 @@ class BusinessAudience(Audience):
     See: https://schema.org/BusinessAudience
     Model depth: 4
     """
-    type_: str = Field(default="BusinessAudience", alias='@type', const=True)
-    yearlyRevenue: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+
+    type_: str = Field(default="BusinessAudience", alias="@type", const=True)
+    yearlyRevenue: Optional[
+        Union[List[Union["QuantitativeValue", str]], "QuantitativeValue", str]
+    ] = Field(
         default=None,
         description="The size of the business in annual revenue.",
     )
-    numberOfEmployees: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+    numberOfEmployees: Optional[
+        Union[List[Union["QuantitativeValue", str]], "QuantitativeValue", str]
+    ] = Field(
         default=None,
         description="The number of employees in an organization, e.g. business.",
     )
-    yearsInOperation: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+    yearsInOperation: Optional[
+        Union[List[Union["QuantitativeValue", str]], "QuantitativeValue", str]
+    ] = Field(
         default=None,
         description="The age of the business.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.QuantitativeValue import QuantitativeValue

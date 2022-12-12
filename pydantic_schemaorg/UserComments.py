@@ -18,29 +18,45 @@ class UserComments(UserInteraction):
     See: https://schema.org/UserComments
     Model depth: 4
     """
-    type_: str = Field(default="UserComments", alias='@type', const=True)
-    commentText: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+
+    type_: str = Field(default="UserComments", alias="@type", const=True)
+    commentText: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The text of the UserComment.",
     )
-    replyToUrl: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
+    replyToUrl: Optional[
+        Union[List[Union[AnyUrl, "URL", str]], AnyUrl, "URL", str]
+    ] = Field(
         default=None,
         description="The URL at which a reply may be posted to the specified UserComment.",
     )
-    creator: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+    creator: Optional[
+        Union[List[Union["Organization", "Person", str]], "Organization", "Person", str]
+    ] = Field(
         default=None,
         description="The creator/author of this CreativeWork. This is the same as the Author property for"
-     "CreativeWork.",
+        "CreativeWork.",
     )
-    commentTime: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
+    commentTime: Optional[
+        Union[
+            List[Union[datetime, "DateTime", date, "Date", str]],
+            datetime,
+            "DateTime",
+            date,
+            "Date",
+            str,
+        ]
+    ] = Field(
         default=None,
         description="The time at which the UserComment was made.",
     )
-    discusses: Optional[Union[List[Union['CreativeWork', str]], 'CreativeWork', str]] = Field(
+    discusses: Optional[
+        Union[List[Union["CreativeWork", str]], "CreativeWork", str]
+    ] = Field(
         default=None,
         description="Specifies the CreativeWork associated with the UserComment.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

@@ -18,29 +18,34 @@ class AlignmentObject(Intangible):
     See: https://schema.org/AlignmentObject
     Model depth: 3
     """
-    type_: str = Field(default="AlignmentObject", alias='@type', const=True)
-    targetName: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+
+    type_: str = Field(default="AlignmentObject", alias="@type", const=True)
+    targetName: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The name of a node in an established educational framework.",
     )
-    targetUrl: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
+    targetUrl: Optional[
+        Union[List[Union[AnyUrl, "URL", str]], AnyUrl, "URL", str]
+    ] = Field(
         default=None,
         description="The URL of a node in an established educational framework.",
     )
-    alignmentType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    alignmentType: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="A category of alignment between the learning resource and the framework node. Recommended"
-     "values include: 'requires', 'textComplexity', 'readingLevel', and 'educationalSubject'.",
+        "values include: 'requires', 'textComplexity', 'readingLevel', and 'educationalSubject'.",
     )
-    targetDescription: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    targetDescription: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
         default=None,
         description="The description of a node in an established educational framework.",
     )
-    educationalFramework: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    educationalFramework: Optional[
+        Union[List[Union[str, "Text"]], str, "Text"]
+    ] = Field(
         default=None,
         description="The framework to which the resource being described is aligned.",
     )
-    
+
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
