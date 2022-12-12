@@ -6,7 +6,7 @@ from pydantic_schemaorg.CreativeWork import CreativeWork
 
 
 class Season(CreativeWork):
-    """A media season e.g. tv, radio, video game etc.
+    """A media season, e.g. TV, radio, video game etc.
 
     See: https://schema.org/Season
     Model depth: 3

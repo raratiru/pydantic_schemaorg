@@ -17,10 +17,23 @@ class Recipe(HowTo):
     Model depth: 4
     """
     type_: str = Field(default="Recipe", alias='@type', const=True)
-    recipeInstructions: Optional[Union[List[Union[str, 'Text', 'ItemList', 'CreativeWork']], str, 'Text', 'ItemList', 'CreativeWork']] = Field(
+    recipeYield: Optional[Union[List[Union[str, 'Text', 'QuantitativeValue']], str, 'Text', 'QuantitativeValue']] = Field(
         default=None,
-        description="A step in making the recipe, in the form of a single item (document, video, etc.) or an ordered"
-     "list with HowToStep and/or HowToSection items.",
+        description="The quantity produced by the recipe (for example, number of people served, number of"
+     "servings, etc).",
+    )
+    nutrition: Optional[Union[List[Union['NutritionInformation', str]], 'NutritionInformation', str]] = Field(
+        default=None,
+        description="Nutrition information about the recipe or menu item.",
+    )
+    cookingMethod: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The method of cooking, such as Frying, Steaming, ...",
+    )
+    suitableForDiet: Optional[Union[List[Union['RestrictedDiet', str]], 'RestrictedDiet', str]] = Field(
+        default=None,
+        description="Indicates a dietary restriction or guideline for which this recipe or menu item is suitable,"
+     "e.g. diabetic, halal etc.",
     )
     cookTime: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
         default=None,
@@ -34,9 +47,10 @@ class Recipe(HowTo):
         default=None,
         description="The cuisine of the recipe (for example, French or Ethiopian).",
     )
-    nutrition: Optional[Union[List[Union['NutritionInformation', str]], 'NutritionInformation', str]] = Field(
+    recipeInstructions: Optional[Union[List[Union[str, 'Text', 'ItemList', 'CreativeWork']], str, 'Text', 'ItemList', 'CreativeWork']] = Field(
         default=None,
-        description="Nutrition information about the recipe or menu item.",
+        description="A step in making the recipe, in the form of a single item (document, video, etc.) or an ordered"
+     "list with HowToStep and/or HowToSection items.",
     )
     recipeIngredient: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
@@ -46,27 +60,13 @@ class Recipe(HowTo):
         default=None,
         description="The category of the recipe—for example, appetizer, entree, etc.",
     )
-    suitableForDiet: Optional[Union[List[Union['RestrictedDiet', str]], 'RestrictedDiet', str]] = Field(
-        default=None,
-        description="Indicates a dietary restriction or guideline for which this recipe or menu item is suitable,"
-     "e.g. diabetic, halal etc.",
-    )
-    recipeYield: Optional[Union[List[Union[str, 'Text', 'QuantitativeValue']], str, 'Text', 'QuantitativeValue']] = Field(
-        default=None,
-        description="The quantity produced by the recipe (for example, number of people served, number of"
-     "servings, etc).",
-    )
-    cookingMethod: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The method of cooking, such as Frying, Steaming, ...",
-    )
     
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.ItemList import ItemList
-    from pydantic_schemaorg.CreativeWork import CreativeWork
-    from pydantic_schemaorg.Duration import Duration
+    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
     from pydantic_schemaorg.NutritionInformation import NutritionInformation
     from pydantic_schemaorg.RestrictedDiet import RestrictedDiet
-    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
+    from pydantic_schemaorg.Duration import Duration
+    from pydantic_schemaorg.ItemList import ItemList
+    from pydantic_schemaorg.CreativeWork import CreativeWork

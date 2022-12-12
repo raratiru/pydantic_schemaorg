@@ -9,7 +9,7 @@ from pydantic_schemaorg.CommunicateAction import CommunicateAction
 
 
 class ReplyAction(CommunicateAction):
-    """The act of responding to a question/message asked/sent by the object. Related to [[AskAction]]"
+    """The act of responding to a question/message asked/sent by the object. Related to [[AskAction]]."
      "Related actions: * [[AskAction]]: Appears generally as an origin of a ReplyAction.
 
     See: https://schema.org/ReplyAction

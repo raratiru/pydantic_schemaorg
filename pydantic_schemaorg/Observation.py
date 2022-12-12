@@ -23,33 +23,33 @@ class Observation(Intangible):
     Model depth: 3
     """
     type_: str = Field(default="Observation", alias='@type', const=True)
-    measuredProperty: Optional[Union[List[Union['Property', str]], 'Property', str]] = Field(
+    observedNode: Optional[Union[List[Union['StatisticalPopulation', str]], 'StatisticalPopulation', str]] = Field(
         default=None,
-        description="The measuredProperty of an [[Observation]], either a schema.org property, a property"
-     "from other RDF-compatible systems e.g. W3C RDF Data Cube, or schema.org extensions"
-     "such as [GS1's](https://www.gs1.org/voc/?show=properties).",
-    )
-    observationDate: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
-        default=None,
-        description="The observationDate of an [[Observation]].",
+        description="The observedNode of an [[Observation]], often a [[StatisticalPopulation]].",
     )
     marginOfError: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
         description="A marginOfError for an [[Observation]].",
     )
-    observedNode: Optional[Union[List[Union['StatisticalPopulation', str]], 'StatisticalPopulation', str]] = Field(
-        default=None,
-        description="The observedNode of an [[Observation]], often a [[StatisticalPopulation]].",
-    )
     measuredValue: Optional[Union[List[Union['DataType', str]], 'DataType', str]] = Field(
         default=None,
         description="The measuredValue of an [[Observation]].",
     )
+    observationDate: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
+        default=None,
+        description="The observationDate of an [[Observation]].",
+    )
+    measuredProperty: Optional[Union[List[Union['Property', str]], 'Property', str]] = Field(
+        default=None,
+        description="The measuredProperty of an [[Observation]], either a schema.org property, a property"
+     "from other RDF-compatible systems, e.g. W3C RDF Data Cube, or schema.org extensions"
+     "such as [GS1's](https://www.gs1.org/voc/?show=properties).",
+    )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Property import Property
-    from pydantic_schemaorg.DateTime import DateTime
-    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
     from pydantic_schemaorg.StatisticalPopulation import StatisticalPopulation
+    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
     from pydantic_schemaorg.DataType import DataType
+    from pydantic_schemaorg.DateTime import DateTime
+    from pydantic_schemaorg.Property import Property

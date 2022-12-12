@@ -16,14 +16,14 @@ class Patient(MedicalAudience, Person):
     Model depth: 3
     """
     type_: str = Field(default="Patient", alias='@type', const=True)
+    healthCondition: Optional[Union[List[Union['MedicalCondition', str]], 'MedicalCondition', str]] = Field(
+        default=None,
+        description="Specifying the health condition(s) of a patient, medical study, or other target audience.",
+    )
     diagnosis: Optional[Union[List[Union['MedicalCondition', str]], 'MedicalCondition', str]] = Field(
         default=None,
         description="One or more alternative conditions considered in the differential diagnosis process"
      "as output of a diagnosis process.",
-    )
-    healthCondition: Optional[Union[List[Union['MedicalCondition', str]], 'MedicalCondition', str]] = Field(
-        default=None,
-        description="Specifying the health condition(s) of a patient, medical study, or other target audience.",
     )
     drug: Optional[Union[List[Union['Drug', str]], 'Drug', str]] = Field(
         default=None,

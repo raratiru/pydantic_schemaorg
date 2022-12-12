@@ -15,6 +15,11 @@ class AudioObject(MediaObject):
     Model depth: 4
     """
     type_: str = Field(default="AudioObject", alias='@type', const=True)
+    caption: Optional[Union[List[Union[str, 'Text', 'MediaObject']], str, 'Text', 'MediaObject']] = Field(
+        default=None,
+        description="The caption for this object. For downloadable machine formats (closed caption, subtitles"
+     "etc.) use MediaObject and indicate the [[encodingFormat]].",
+    )
     embeddedTextCaption: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Represents textual captioning from a [[MediaObject]], e.g. text of a 'meme'.",
@@ -22,11 +27,6 @@ class AudioObject(MediaObject):
     transcript: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="If this MediaObject is an AudioObject or VideoObject, the transcript of that object.",
-    )
-    caption: Optional[Union[List[Union[str, 'Text', 'MediaObject']], str, 'Text', 'MediaObject']] = Field(
-        default=None,
-        description="The caption for this object. For downloadable machine formats (closed caption, subtitles"
-     "etc.) use MediaObject and indicate the [[encodingFormat]].",
     )
     
 

@@ -1,9 +1,9 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from pydantic import AnyUrl, StrictInt, StrictFloat
 from typing import List, Optional, Union
 from datetime import date
+from pydantic import AnyUrl, StrictInt, StrictFloat
 
 
 from pydantic import Field
@@ -18,42 +18,29 @@ class Vehicle(Product):
     Model depth: 3
     """
     type_: str = Field(default="Vehicle", alias='@type', const=True)
-    meetsEmissionStandard: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
-        default=None,
-        description="Indicates that the vehicle meets the respective emission standard.",
-    )
-    knownVehicleDamages: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="A textual description of known damages, both repaired and unrepaired.",
-    )
-    numberOfDoors: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The number of doors. Typical unit code(s): C62",
-    )
     vehicleSpecialUsage: Optional[Union[List[Union[str, 'Text', 'CarUsageType']], str, 'Text', 'CarUsageType']] = Field(
         default=None,
         description="Indicates whether the vehicle has been used for special purposes, like commercial rental,"
      "driving school, or as a taxi. The legislation in many countries requires this information"
      "to be revealed when offering a car for sale.",
     )
-    productionDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+    trailerWeight: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
-        description="The date of production of the item, e.g. vehicle.",
+        description="The permitted weight of a trailer attached to the vehicle. Typical unit code(s): KGM"
+     "for kilogram, LBR for pound * Note 1: You can indicate additional information in the [[name]]"
+     "of the [[QuantitativeValue]] node. * Note 2: You may also link to a [[QualitativeValue]]"
+     "node that provides additional information using [[valueReference]]. * Note 3: Note"
+     "that you can use [[minValue]] and [[maxValue]] to indicate ranges.",
     )
-    mileageFromOdometer: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+    cargoVolume: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
-        description="The total distance travelled by the particular vehicle since its initial production,"
-     "as read from its odometer. Typical unit code(s): KMT for kilometers, SMI for statute"
-     "miles",
+        description="The available volume for cargo or luggage. For automobiles, this is usually the trunk"
+     "volume. Typical unit code(s): LTR for liters, FTQ for cubic foot/feet Note: You can use"
+     "[[minValue]] and [[maxValue]] to indicate ranges.",
     )
-    vehicleIdentificationNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    steeringPosition: Optional[Union[List[Union['SteeringPositionValue', str]], 'SteeringPositionValue', str]] = Field(
         default=None,
-        description="The Vehicle Identification Number (VIN) is a unique serial number used by the automotive"
-     "industry to identify individual motor vehicles.",
-    )
-    numberOfAxles: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The number of axles. Typical unit code(s): C62",
+        description="The position of the steering wheel or similar device (mostly for cars).",
     )
     fuelConsumption: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
@@ -66,21 +53,144 @@ class Vehicle(Product):
      "speed (\"at 80 km/h\") or usage pattern (\"city traffic\"). You can use [[valueReference]]"
      "to link the value for the fuel consumption to another value.",
     )
+    modelDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+        default=None,
+        description="The release date of a vehicle model (often used to differentiate versions of the same"
+     "make and model).",
+    )
+    vehicleTransmission: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
+        default=None,
+        description="The type of component used for transmitting the power from a rotating power source to"
+     "the wheels or other relevant component(s) (\"gearbox\" for cars).",
+    )
+    emissionsCO2: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
+        default=None,
+        description="The CO2 emissions in g/km. When used in combination with a QuantitativeValue, put \"g/km\""
+     "into the unitText property of that value, since there is no UN/CEFACT Common Code for"
+     "\"g/km\".",
+    )
+    meetsEmissionStandard: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
+        default=None,
+        description="Indicates that the vehicle meets the respective emission standard.",
+    )
+    payload: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The permitted weight of passengers and cargo, EXCLUDING the weight of the empty vehicle."
+     "Typical unit code(s): KGM for kilogram, LBR for pound * Note 1: Many databases specify"
+     "the permitted TOTAL weight instead, which is the sum of [[weight]] and [[payload]] *"
+     "Note 2: You can indicate additional information in the [[name]] of the [[QuantitativeValue]]"
+     "node. * Note 3: You may also link to a [[QualitativeValue]] node that provides additional"
+     "information using [[valueReference]]. * Note 4: Note that you can use [[minValue]]"
+     "and [[maxValue]] to indicate ranges.",
+    )
+    fuelCapacity: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The capacity of the fuel tank or in the case of electric cars, the battery. If there are"
+     "multiple components for storage, this should indicate the total of all storage of the"
+     "same type. Typical unit code(s): LTR for liters, GLL of US gallons, GLI for UK / imperial"
+     "gallons, AMH for ampere-hours (for electrical vehicles).",
+    )
+    wheelbase: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The distance between the centers of the front and rear wheels. Typical unit code(s):"
+     "CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet",
+    )
+    vehicleIdentificationNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The Vehicle Identification Number (VIN) is a unique serial number used by the automotive"
+     "industry to identify individual motor vehicles.",
+    )
+    vehicleInteriorType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The type or material of the interior of the vehicle (e.g. synthetic fabric, leather,"
+     "wood, etc.). While most interior types are characterized by the material used, an interior"
+     "type can also be based on vehicle usage or target audience.",
+    )
+    vehicleEngine: Optional[Union[List[Union['EngineSpecification', str]], 'EngineSpecification', str]] = Field(
+        default=None,
+        description="Information about the engine or engines of the vehicle.",
+    )
+    numberOfDoors: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The number of doors. Typical unit code(s): C62",
+    )
     vehicleInteriorColor: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The color or color combination of the interior of the vehicle.",
     )
-    seatingCapacity: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
+    driveWheelConfiguration: Optional[Union[List[Union[str, 'Text', 'DriveWheelConfigurationValue']], str, 'Text', 'DriveWheelConfigurationValue']] = Field(
         default=None,
-        description="The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical"
-     "space available, and in terms of limitations set by law. Typical unit code(s): C62 for"
-     "persons",
+        description="The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's"
+     "engine via the drivetrain.",
     )
-    cargoVolume: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+    numberOfAxles: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
         default=None,
-        description="The available volume for cargo or luggage. For automobiles, this is usually the trunk"
-     "volume. Typical unit code(s): LTR for liters, FTQ for cubic foot/feet Note: You can use"
-     "[[minValue]] and [[maxValue]] to indicate ranges.",
+        description="The number of axles. Typical unit code(s): C62",
+    )
+    vehicleSeatingCapacity: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The number of passengers that can be seated in the vehicle, both in terms of the physical"
+     "space available, and in terms of limitations set by law. Typical unit code(s): C62 for"
+     "persons.",
+    )
+    numberOfPreviousOwners: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The number of owners of the vehicle, including the current one. Typical unit code(s):"
+     "C62",
+    )
+    purchaseDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+        default=None,
+        description="The date the item, e.g. vehicle, was purchased by the current owner.",
+    )
+    bodyType: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
+        default=None,
+        description="Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.).",
+    )
+    fuelType: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
+        default=None,
+        description="The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only"
+     "one engine, this property can be attached directly to the vehicle.",
+    )
+    speed: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The speed range of the vehicle. If the vehicle is powered by an engine, the upper limit"
+     "of the speed range (indicated by [[maxValue]]) should be the maximum speed achievable"
+     "under regular conditions. Typical unit code(s): KMH for km/h, HM for mile per hour (0.447"
+     "04 m/s), KNT for knot *Note 1: Use [[minValue]] and [[maxValue]] to indicate the range."
+     "Typically, the minimal value is zero. * Note 2: There are many different ways of measuring"
+     "the speed range. You can link to information about how the given value has been determined"
+     "using the [[valueReference]] property.",
+    )
+    mileageFromOdometer: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The total distance travelled by the particular vehicle since its initial production,"
+     "as read from its odometer. Typical unit code(s): KMT for kilometers, SMI for statute"
+     "miles",
+    )
+    productionDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+        default=None,
+        description="The date of production of the item, e.g. vehicle.",
+    )
+    knownVehicleDamages: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="A textual description of known damages, both repaired and unrepaired.",
+    )
+    dateVehicleFirstRegistered: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+        default=None,
+        description="The date of the first registration of the vehicle with the respective public authorities.",
+    )
+    weightTotal: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The permitted total weight of the loaded vehicle, including passengers and cargo and"
+     "the weight of the empty vehicle. Typical unit code(s): KGM for kilogram, LBR for pound"
+     "* Note 1: You can indicate additional information in the [[name]] of the [[QuantitativeValue]]"
+     "node. * Note 2: You may also link to a [[QualitativeValue]] node that provides additional"
+     "information using [[valueReference]]. * Note 3: Note that you can use [[minValue]]"
+     "and [[maxValue]] to indicate ranges.",
+    )
+    numberOfAirbags: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str, 'Text']], StrictInt, StrictFloat, 'Number', str, 'Text']] = Field(
+        default=None,
+        description="The number or type of airbags in the vehicle.",
     )
     fuelEfficiency: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
@@ -93,103 +203,34 @@ class Vehicle(Product):
      "speed (\"at 80 km/h\") or usage pattern (\"city traffic\"). You can use [[valueReference]]"
      "to link the value for the fuel economy to another value.",
     )
-    driveWheelConfiguration: Optional[Union[List[Union[str, 'Text', 'DriveWheelConfigurationValue']], str, 'Text', 'DriveWheelConfigurationValue']] = Field(
+    vehicleModelDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
         default=None,
-        description="The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's"
-     "engine via the drivetrain.",
-    )
-    wheelbase: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The distance between the centers of the front and rear wheels. Typical unit code(s):"
-     "CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet",
-    )
-    fuelCapacity: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The capacity of the fuel tank or in the case of electric cars, the battery. If there are"
-     "multiple components for storage, this should indicate the total of all storage of the"
-     "same type. Typical unit code(s): LTR for liters, GLL of US gallons, GLI for UK / imperial"
-     "gallons, AMH for ampere-hours (for electrical vehicles).",
-    )
-    vehicleConfiguration: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5"
-     "MT 225 hp' or 'limited edition'.",
-    )
-    payload: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The permitted weight of passengers and cargo, EXCLUDING the weight of the empty vehicle."
-     "Typical unit code(s): KGM for kilogram, LBR for pound * Note 1: Many databases specify"
-     "the permitted TOTAL weight instead, which is the sum of [[weight]] and [[payload]] *"
-     "Note 2: You can indicate additional information in the [[name]] of the [[QuantitativeValue]]"
-     "node. * Note 3: You may also link to a [[QualitativeValue]] node that provides additional"
-     "information using [[valueReference]]. * Note 4: Note that you can use [[minValue]]"
-     "and [[maxValue]] to indicate ranges.",
-    )
-    fuelType: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
-        default=None,
-        description="The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only"
-     "one engine, this property can be attached directly to the vehicle.",
-    )
-    vehicleInteriorType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The type or material of the interior of the vehicle (e.g. synthetic fabric, leather,"
-     "wood, etc.). While most interior types are characterized by the material used, an interior"
-     "type can also be based on vehicle usage or target audience.",
-    )
-    speed: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The speed range of the vehicle. If the vehicle is powered by an engine, the upper limit"
-     "of the speed range (indicated by [[maxValue]] should be the maximum speed achievable"
-     "under regular conditions. Typical unit code(s): KMH for km/h, HM for mile per hour (0.447"
-     "04 m/s), KNT for knot *Note 1: Use [[minValue]] and [[maxValue]] to indicate the range."
-     "Typically, the minimal value is zero. * Note 2: There are many different ways of measuring"
-     "the speed range. You can link to information about how the given value has been determined"
-     "using the [[valueReference]] property.",
-    )
-    emissionsCO2: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
-        default=None,
-        description="The CO2 emissions in g/km. When used in combination with a QuantitativeValue, put \"g/km\""
-     "into the unitText property of that value, since there is no UN/CEFACT Common Code for"
-     "\"g/km\".",
-    )
-    bodyType: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
-        default=None,
-        description="Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.).",
-    )
-    trailerWeight: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The permitted weight of a trailer attached to the vehicle. Typical unit code(s): KGM"
-     "for kilogram, LBR for pound * Note 1: You can indicate additional information in the [[name]]"
-     "of the [[QuantitativeValue]] node. * Note 2: You may also link to a [[QualitativeValue]]"
-     "node that provides additional information using [[valueReference]]. * Note 3: Note"
-     "that you can use [[minValue]] and [[maxValue]] to indicate ranges.",
+        description="The release date of a vehicle model (often used to differentiate versions of the same"
+     "make and model).",
     )
     numberOfForwardGears: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
         default=None,
         description="The total number of forward gears available for the transmission system of the vehicle."
      "Typical unit code(s): C62",
     )
-    numberOfAirbags: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str, 'Text']], StrictInt, StrictFloat, 'Number', str, 'Text']] = Field(
+    callSign: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The number or type of airbags in the vehicle.",
+        description="A [callsign](https://en.wikipedia.org/wiki/Call_sign), as used in broadcasting"
+     "and radio communications to identify people, radio and TV stations, or vehicles.",
     )
-    modelDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+    vehicleConfiguration: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The release date of a vehicle model (often used to differentiate versions of the same"
-     "make and model).",
+        description="A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5"
+     "MT 225 hp' or 'limited edition'.",
     )
-    dateVehicleFirstRegistered: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+    tongueWeight: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
-        description="The date of the first registration of the vehicle with the respective public authorities.",
-    )
-    steeringPosition: Optional[Union[List[Union['SteeringPositionValue', str]], 'SteeringPositionValue', str]] = Field(
-        default=None,
-        description="The position of the steering wheel or similar device (mostly for cars).",
-    )
-    numberOfPreviousOwners: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The number of owners of the vehicle, including the current one. Typical unit code(s):"
-     "C62",
+        description="The permitted vertical load (TWR) of a trailer attached to the vehicle. Also referred"
+     "to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR). Typical unit code(s): KGM"
+     "for kilogram, LBR for pound * Note 1: You can indicate additional information in the [[name]]"
+     "of the [[QuantitativeValue]] node. * Note 2: You may also link to a [[QualitativeValue]]"
+     "node that provides additional information using [[valueReference]]. * Note 3: Note"
+     "that you can use [[minValue]] and [[maxValue]] to indicate ranges.",
     )
     accelerationTime: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
@@ -199,63 +240,22 @@ class Vehicle(Product):
      "and indicate the velocities in the [[name]] of the [[QuantitativeValue]], or use [[valueReference]]"
      "with a [[QuantitativeValue]] of 0..60 mph or 0..100 km/h to specify the reference speeds.",
     )
-    weightTotal: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+    seatingCapacity: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
         default=None,
-        description="The permitted total weight of the loaded vehicle, including passengers and cargo and"
-     "the weight of the empty vehicle. Typical unit code(s): KGM for kilogram, LBR for pound"
-     "* Note 1: You can indicate additional information in the [[name]] of the [[QuantitativeValue]]"
-     "node. * Note 2: You may also link to a [[QualitativeValue]] node that provides additional"
-     "information using [[valueReference]]. * Note 3: Note that you can use [[minValue]]"
-     "and [[maxValue]] to indicate ranges.",
-    )
-    vehicleTransmission: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'QualitativeValue']], AnyUrl, 'URL', str, 'Text', 'QualitativeValue']] = Field(
-        default=None,
-        description="The type of component used for transmitting the power from a rotating power source to"
-     "the wheels or other relevant component(s) (\"gearbox\" for cars).",
-    )
-    vehicleEngine: Optional[Union[List[Union['EngineSpecification', str]], 'EngineSpecification', str]] = Field(
-        default=None,
-        description="Information about the engine or engines of the vehicle.",
-    )
-    callSign: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="A [callsign](https://en.wikipedia.org/wiki/Call_sign), as used in broadcasting"
-     "and radio communications to identify people, radio and TV stations, or vehicles.",
-    )
-    tongueWeight: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The permitted vertical load (TWR) of a trailer attached to the vehicle. Also referred"
-     "to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR) Typical unit code(s): KGM"
-     "for kilogram, LBR for pound * Note 1: You can indicate additional information in the [[name]]"
-     "of the [[QuantitativeValue]] node. * Note 2: You may also link to a [[QualitativeValue]]"
-     "node that provides additional information using [[valueReference]]. * Note 3: Note"
-     "that you can use [[minValue]] and [[maxValue]] to indicate ranges.",
-    )
-    vehicleSeatingCapacity: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The number of passengers that can be seated in the vehicle, both in terms of the physical"
+        description="The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical"
      "space available, and in terms of limitations set by law. Typical unit code(s): C62 for"
-     "persons.",
-    )
-    vehicleModelDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
-        default=None,
-        description="The release date of a vehicle model (often used to differentiate versions of the same"
-     "make and model).",
-    )
-    purchaseDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
-        default=None,
-        description="The date the item e.g. vehicle was purchased by the current owner.",
+     "persons",
     )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Text import Text
+    from pydantic_schemaorg.CarUsageType import CarUsageType
+    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
+    from pydantic_schemaorg.SteeringPositionValue import SteeringPositionValue
+    from pydantic_schemaorg.Date import Date
+    from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.QualitativeValue import QualitativeValue
     from pydantic_schemaorg.Number import Number
-    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
-    from pydantic_schemaorg.CarUsageType import CarUsageType
-    from pydantic_schemaorg.Date import Date
-    from pydantic_schemaorg.DriveWheelConfigurationValue import DriveWheelConfigurationValue
-    from pydantic_schemaorg.SteeringPositionValue import SteeringPositionValue
     from pydantic_schemaorg.EngineSpecification import EngineSpecification
+    from pydantic_schemaorg.DriveWheelConfigurationValue import DriveWheelConfigurationValue

@@ -18,17 +18,22 @@ class Article(CreativeWork):
     Model depth: 3
     """
     type_: str = Field(default="Article", alias='@type', const=True)
-    backstory: Optional[Union[List[Union[str, 'Text', 'CreativeWork']], str, 'Text', 'CreativeWork']] = Field(
+    pageEnd: Optional[Union[List[Union[int, 'Integer', str, 'Text']], int, 'Integer', str, 'Text']] = Field(
         default=None,
-        description="For an [[Article]], typically a [[NewsArticle]], the backstory property provides"
-     "a textual summary giving a brief explanation of why and how an article was created. In"
-     "a journalistic setting this could include information about reporting process, methods,"
-     "interviews, data sources, etc.",
+        description="The page on which the work ends; for example \"138\" or \"xvi\".",
+    )
+    wordCount: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+        default=None,
+        description="The number of words in the text of the Article.",
     )
     articleSection: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports,"
      "Lifestyle, etc.",
+    )
+    articleBody: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The actual body of the article.",
     )
     speakable: Optional[Union[List[Union[AnyUrl, 'URL', 'SpeakableSpecification', str]], AnyUrl, 'URL', 'SpeakableSpecification', str]] = Field(
         default=None,
@@ -40,39 +45,34 @@ class Article(CreativeWork):
      "of possible 'content-locator' values: 1.) *id-value* URL references - uses *id-value*"
      "of an element in the page being annotated. The simplest use of *speakable* has (potentially"
      "relative) URL values, referencing identified sections of the document concerned."
-     "2.) CSS Selectors - addresses content in the annotated page, eg. via class attribute."
+     "2.) CSS Selectors - addresses content in the annotated page, e.g. via class attribute."
      "Use the [[cssSelector]] property. 3.) XPaths - addresses content via XPaths (assuming"
      "an XML view of the content). Use the [[xpath]] property. For more sophisticated markup"
      "of speakable sections beyond simple ID references, either CSS selectors or XPath expressions"
      "to pick out document section(s) as speakable. For this we define a supporting type, [[SpeakableSpecification]]"
      "which is defined to be a possible value of the *speakable* property.",
     )
-    wordCount: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+    backstory: Optional[Union[List[Union[str, 'Text', 'CreativeWork']], str, 'Text', 'CreativeWork']] = Field(
         default=None,
-        description="The number of words in the text of the Article.",
-    )
-    articleBody: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The actual body of the article.",
-    )
-    pageStart: Optional[Union[List[Union[int, 'Integer', str, 'Text']], int, 'Integer', str, 'Text']] = Field(
-        default=None,
-        description="The page on which the work starts; for example \"135\" or \"xiii\".",
+        description="For an [[Article]], typically a [[NewsArticle]], the backstory property provides"
+     "a textual summary giving a brief explanation of why and how an article was created. In"
+     "a journalistic setting this could include information about reporting process, methods,"
+     "interviews, data sources, etc.",
     )
     pagination: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Any description of pages that is not separated into pageStart and pageEnd; for example,"
      "\"1-6, 9, 55\" or \"10-12, 46-49\".",
     )
-    pageEnd: Optional[Union[List[Union[int, 'Integer', str, 'Text']], int, 'Integer', str, 'Text']] = Field(
+    pageStart: Optional[Union[List[Union[int, 'Integer', str, 'Text']], int, 'Integer', str, 'Text']] = Field(
         default=None,
-        description="The page on which the work ends; for example \"138\" or \"xvi\".",
+        description="The page on which the work starts; for example \"135\" or \"xiii\".",
     )
     
 
 if TYPE_CHECKING:
+    from pydantic_schemaorg.Integer import Integer
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.CreativeWork import CreativeWork
     from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.SpeakableSpecification import SpeakableSpecification
-    from pydantic_schemaorg.Integer import Integer
+    from pydantic_schemaorg.CreativeWork import CreativeWork

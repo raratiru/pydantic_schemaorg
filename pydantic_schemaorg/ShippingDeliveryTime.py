@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from typing import List, Optional, Union
 from datetime import time
+from typing import List, Optional, Union
 
 
 from pydantic import Field
@@ -17,11 +17,6 @@ class ShippingDeliveryTime(StructuredValue):
     Model depth: 4
     """
     type_: str = Field(default="ShippingDeliveryTime", alias='@type', const=True)
-    transitTime: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The typical delay the order has been sent for delivery and the goods reach the final customer."
-     "Typical properties: minValue, maxValue, unitCode (d for DAY).",
-    )
     cutoffTime: Optional[Union[List[Union[time, 'Time', str]], time, 'Time', str]] = Field(
         default=None,
         description="Order cutoff time allows merchants to describe the time after which they will no longer"
@@ -30,6 +25,11 @@ class ShippingDeliveryTime(StructuredValue):
      "used via the [[ShippingRateSettings]] publication pattern. The time is indicated"
      "using the ISO-8601 Time format, e.g. \"23:30:00-05:00\" would represent 6:30 pm Eastern"
      "Standard Time (EST) which is 5 hours behind Coordinated Universal Time (UTC).",
+    )
+    transitTime: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The typical delay the order has been sent for delivery and the goods reach the final customer."
+     "Typical properties: minValue, maxValue, unitCode (d for DAY).",
     )
     handlingTime: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
@@ -46,6 +46,6 @@ class ShippingDeliveryTime(StructuredValue):
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
     from pydantic_schemaorg.Time import Time
+    from pydantic_schemaorg.QuantitativeValue import QuantitativeValue
     from pydantic_schemaorg.OpeningHoursSpecification import OpeningHoursSpecification

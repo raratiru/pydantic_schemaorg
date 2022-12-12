@@ -6,7 +6,7 @@ from pydantic_schemaorg.PhysicalExam import PhysicalExam
 
 
 class CardiovascularExam(PhysicalExam):
-    """Cardiovascular system assessment withclinical examination.
+    """Cardiovascular system assessment with clinical examination.
 
     See: https://schema.org/CardiovascularExam
     Model depth: 5

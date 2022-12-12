@@ -19,10 +19,6 @@ class MedicalTherapy(TherapeuticProcedure):
     Model depth: 5
     """
     type_: str = Field(default="MedicalTherapy", alias='@type', const=True)
-    duplicateTherapy: Optional[Union[List[Union['MedicalTherapy', str]], 'MedicalTherapy', str]] = Field(
-        default=None,
-        description="A therapy that duplicates or overlaps this one.",
-    )
     seriousAdverseOutcome: Optional[Union[List[Union['MedicalEntity', str]], 'MedicalEntity', str]] = Field(
         default=None,
         description="A possible serious complication and/or serious side effect of this therapy. Serious"
@@ -30,6 +26,10 @@ class MedicalTherapy(TherapeuticProcedure):
      "or permanent damage; require hospitalization or prolong existing hospitalization;"
      "cause congenital anomalies or birth defects; or jeopardize the patient and may require"
      "medical or surgical intervention to prevent one of the outcomes in this definition.",
+    )
+    duplicateTherapy: Optional[Union[List[Union['MedicalTherapy', str]], 'MedicalTherapy', str]] = Field(
+        default=None,
+        description="A therapy that duplicates or overlaps this one.",
     )
     contraindication: Optional[Union[List[Union[str, 'Text', 'MedicalContraindication']], str, 'Text', 'MedicalContraindication']] = Field(
         default=None,

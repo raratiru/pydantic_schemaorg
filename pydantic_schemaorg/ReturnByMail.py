@@ -6,7 +6,7 @@ from pydantic_schemaorg.ReturnMethodEnumeration import ReturnMethodEnumeration
 
 
 class ReturnByMail(ReturnMethodEnumeration):
-    """Specifies that product returns must to be done by mail.
+    """Specifies that product returns must be done by mail.
 
     See: https://schema.org/ReturnByMail
     Model depth: 5

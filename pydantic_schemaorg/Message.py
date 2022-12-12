@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from typing import List, Optional, Union
 from datetime import date, datetime
+from typing import List, Optional, Union
 
 
 from pydantic import Field
@@ -16,25 +16,25 @@ class Message(CreativeWork):
     Model depth: 3
     """
     type_: str = Field(default="Message", alias='@type', const=True)
-    sender: Optional[Union[List[Union['Person', 'Audience', 'Organization', str]], 'Person', 'Audience', 'Organization', str]] = Field(
+    dateReceived: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
         default=None,
-        description="A sub property of participant. The participant who is at the sending end of the action.",
+        description="The date/time the message was received if a single recipient exists.",
     )
-    ccRecipient: Optional[Union[List[Union['ContactPoint', 'Organization', 'Person', str]], 'ContactPoint', 'Organization', 'Person', str]] = Field(
-        default=None,
-        description="A sub property of recipient. The recipient copied on a message.",
-    )
-    toRecipient: Optional[Union[List[Union['ContactPoint', 'Audience', 'Organization', 'Person', str]], 'ContactPoint', 'Audience', 'Organization', 'Person', str]] = Field(
-        default=None,
-        description="A sub property of recipient. The recipient who was directly sent the message.",
-    )
-    recipient: Optional[Union[List[Union['ContactPoint', 'Audience', 'Organization', 'Person', str]], 'ContactPoint', 'Audience', 'Organization', 'Person', str]] = Field(
+    recipient: Optional[Union[List[Union['Audience', 'Organization', 'Person', 'ContactPoint', str]], 'Audience', 'Organization', 'Person', 'ContactPoint', str]] = Field(
         default=None,
         description="A sub property of participant. The participant who is at the receiving end of the action.",
     )
     messageAttachment: Optional[Union[List[Union['CreativeWork', str]], 'CreativeWork', str]] = Field(
         default=None,
         description="A CreativeWork attached to the message.",
+    )
+    ccRecipient: Optional[Union[List[Union['Organization', 'Person', 'ContactPoint', str]], 'Organization', 'Person', 'ContactPoint', str]] = Field(
+        default=None,
+        description="A sub property of recipient. The recipient copied on a message.",
+    )
+    bccRecipient: Optional[Union[List[Union['Organization', 'Person', 'ContactPoint', str]], 'Organization', 'Person', 'ContactPoint', str]] = Field(
+        default=None,
+        description="A sub property of recipient. The recipient blind copied on a message.",
     )
     dateRead: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
@@ -45,21 +45,21 @@ class Message(CreativeWork):
         default=None,
         description="The date/time at which the message was sent.",
     )
-    dateReceived: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
+    sender: Optional[Union[List[Union['Audience', 'Organization', 'Person', str]], 'Audience', 'Organization', 'Person', str]] = Field(
         default=None,
-        description="The date/time the message was received if a single recipient exists.",
+        description="A sub property of participant. The participant who is at the sending end of the action.",
     )
-    bccRecipient: Optional[Union[List[Union['ContactPoint', 'Organization', 'Person', str]], 'ContactPoint', 'Organization', 'Person', str]] = Field(
+    toRecipient: Optional[Union[List[Union['Audience', 'Organization', 'ContactPoint', 'Person', str]], 'Audience', 'Organization', 'ContactPoint', 'Person', str]] = Field(
         default=None,
-        description="A sub property of recipient. The recipient blind copied on a message.",
+        description="A sub property of recipient. The recipient who was directly sent the message.",
     )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Person import Person
+    from pydantic_schemaorg.DateTime import DateTime
     from pydantic_schemaorg.Audience import Audience
     from pydantic_schemaorg.Organization import Organization
+    from pydantic_schemaorg.Person import Person
     from pydantic_schemaorg.ContactPoint import ContactPoint
     from pydantic_schemaorg.CreativeWork import CreativeWork
-    from pydantic_schemaorg.DateTime import DateTime
     from pydantic_schemaorg.Date import Date

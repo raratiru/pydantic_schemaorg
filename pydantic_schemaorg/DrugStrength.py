@@ -24,13 +24,13 @@ class DrugStrength(MedicalIntangible):
         default=None,
         description="The location in which the strength is available.",
     )
-    strengthUnit: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The units of an active ingredient's strength, e.g. mg.",
-    )
     strengthValue: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
         default=None,
         description="The value of an active ingredient's strength, e.g. 325.",
+    )
+    strengthUnit: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The units of an active ingredient's strength, e.g. mg.",
     )
     maximumIntake: Optional[Union[List[Union['MaximumDoseSchedule', str]], 'MaximumDoseSchedule', str]] = Field(
         default=None,

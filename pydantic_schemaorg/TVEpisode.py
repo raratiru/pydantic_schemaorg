@@ -16,6 +16,20 @@ class TVEpisode(Episode):
     Model depth: 4
     """
     type_: str = Field(default="TVEpisode", alias='@type', const=True)
+    partOfTVSeries: Optional[Union[List[Union['TVSeries', str]], 'TVSeries', str]] = Field(
+        default=None,
+        description="The TV series to which this episode or season belongs.",
+    )
+    titleEIDR: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
+        default=None,
+        description="An [EIDR](https://eidr.org/) (Entertainment Identifier Registry) [[identifier]]"
+     "representing at the most general/abstract level, a work of film or television. For example,"
+     "the motion picture known as \"Ghostbusters\" has a titleEIDR of \"10.5240/7EC7-228A-510A-053E-CBB8-J\"."
+     "This title (or work) may have several variants, which EIDR calls \"edits\". See [[editEIDR]]."
+     "Since schema.org types like [[Movie]] and [[TVEpisode]] can be used for both works and"
+     "their multiple expressions, it is possible to use [[titleEIDR]] alone (for a general"
+     "description), or alongside [[editEIDR]] for a more edit-specific description.",
+    )
     subtitleLanguage: Optional[Union[List[Union[str, 'Text', 'Language']], str, 'Text', 'Language']] = Field(
         default=None,
         description="Languages in which subtitles/captions are available, in [IETF BCP 47 standard format](http://tools.ietf.org/html/bcp47).",
@@ -30,25 +44,11 @@ class TVEpisode(Episode):
      "case of products, the country of origin of the product. The exact interpretation of this"
      "may vary by context and product type, and cannot be fully enumerated here.",
     )
-    titleEIDR: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
-        default=None,
-        description="An [EIDR](https://eidr.org/) (Entertainment Identifier Registry) [[identifier]]"
-     "representing at the most general/abstract level, a work of film or television. For example,"
-     "the motion picture known as \"Ghostbusters\" has a titleEIDR of \"10.5240/7EC7-228A-510A-053E-CBB8-J\"."
-     "This title (or work) may have several variants, which EIDR calls \"edits\". See [[editEIDR]]."
-     "Since schema.org types like [[Movie]] and [[TVEpisode]] can be used for both works and"
-     "their multiple expressions, it is possible to use [[titleEIDR]] alone (for a general"
-     "description), or alongside [[editEIDR]] for a more edit-specific description.",
-    )
-    partOfTVSeries: Optional[Union[List[Union['TVSeries', str]], 'TVSeries', str]] = Field(
-        default=None,
-        description="The TV series to which this episode or season belongs.",
-    )
     
 
 if TYPE_CHECKING:
+    from pydantic_schemaorg.TVSeries import TVSeries
+    from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.Language import Language
     from pydantic_schemaorg.Country import Country
-    from pydantic_schemaorg.URL import URL
-    from pydantic_schemaorg.TVSeries import TVSeries

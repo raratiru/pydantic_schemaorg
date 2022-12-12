@@ -15,15 +15,7 @@ class ProductModel(Product):
     Model depth: 3
     """
     type_: str = Field(default="ProductModel", alias='@type', const=True)
-    predecessorOf: Optional[Union[List[Union['ProductModel', str]], 'ProductModel', str]] = Field(
-        default=None,
-        description="A pointer from a previous, often discontinued variant of the product to its newer variant.",
-    )
-    successorOf: Optional[Union[List[Union['ProductModel', str]], 'ProductModel', str]] = Field(
-        default=None,
-        description="A pointer from a newer variant of a product to its previous, often discontinued predecessor.",
-    )
-    isVariantOf: Optional[Union[List[Union['ProductModel', 'ProductGroup', str]], 'ProductModel', 'ProductGroup', str]] = Field(
+    isVariantOf: Optional[Union[List[Union['ProductGroup', 'ProductModel', str]], 'ProductGroup', 'ProductModel', str]] = Field(
         default=None,
         description="Indicates the kind of product that this is a variant of. In the case of [[ProductModel]],"
      "this is a pointer (from a ProductModel) to a base product from which this product is a variant."
@@ -33,6 +25,14 @@ class ProductModel(Product):
      "on explicitly defined, specific dimensions only (so it defines both a set of variants,"
      "as well as which values distinguish amongst those variants). When used with [[ProductGroup]],"
      "this property can apply to any [[Product]] included in the group.",
+    )
+    successorOf: Optional[Union[List[Union['ProductModel', str]], 'ProductModel', str]] = Field(
+        default=None,
+        description="A pointer from a newer variant of a product to its previous, often discontinued predecessor.",
+    )
+    predecessorOf: Optional[Union[List[Union['ProductModel', str]], 'ProductModel', str]] = Field(
+        default=None,
+        description="A pointer from a previous, often discontinued variant of the product to its newer variant.",
     )
     
 

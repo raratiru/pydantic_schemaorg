@@ -21,15 +21,15 @@ class BankAccount(FinancialProduct):
         default=None,
         description="A minimum amount that has to be paid in every month.",
     )
-    bankAccountType: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
-        default=None,
-        description="The type of a bank account.",
-    )
     accountOverdraftLimit: Optional[Union[List[Union['MonetaryAmount', str]], 'MonetaryAmount', str]] = Field(
         default=None,
         description="An overdraft is an extension of credit from a lending institution when an account reaches"
      "zero. An overdraft allows the individual to continue withdrawing money even if the account"
      "has no funds in it. Basically the bank allows people to borrow a set amount of money.",
+    )
+    bankAccountType: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
+        default=None,
+        description="The type of a bank account.",
     )
     
 

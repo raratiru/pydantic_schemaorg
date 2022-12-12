@@ -28,10 +28,6 @@ class Role(Intangible):
      "of creators for a comic book might fill the roles named 'inker', 'penciller', and 'letterer';"
      "or an athlete in a SportsTeam might play in the position named 'Quarterback'.",
     )
-    endDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
-        default=None,
-        description="The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
-    )
     namedPosition: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
         default=None,
         description="A position played, performed or filled by a person or organization, as part of an organization."
@@ -40,6 +36,10 @@ class Role(Intangible):
     startDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
         description="The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
+    )
+    endDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
+        default=None,
+        description="The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     )
     
 

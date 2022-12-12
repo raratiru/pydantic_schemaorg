@@ -29,13 +29,13 @@ class ProductGroup(Product):
      "e.g. their size, color etc. Schema.org properties can be referenced by their short name"
      "e.g. \"color\"; terms defined elsewhere can be referenced with their URIs.",
     )
-    productGroupID: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="Indicates a textual identifier for a ProductGroup.",
-    )
     hasVariant: Optional[Union[List[Union['Product', str]], 'Product', str]] = Field(
         default=None,
         description="Indicates a [[Product]] that is a member of this [[ProductGroup]] (or [[ProductModel]]).",
+    )
+    productGroupID: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="Indicates a textual identifier for a ProductGroup.",
     )
     
 

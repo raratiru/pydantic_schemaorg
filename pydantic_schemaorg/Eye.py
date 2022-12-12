@@ -6,7 +6,7 @@ from pydantic_schemaorg.PhysicalExam import PhysicalExam
 
 
 class Eye(PhysicalExam):
-    """Eye or ophtalmological function assessment with clinical examination.
+    """Eye or ophthalmological function assessment with clinical examination.
 
     See: https://schema.org/Eye
     Model depth: 5

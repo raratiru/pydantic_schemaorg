@@ -17,28 +17,84 @@ class JobPosting(Intangible):
     Model depth: 3
     """
     type_: str = Field(default="JobPosting", alias='@type', const=True)
-    experienceRequirements: Optional[Union[List[Union[str, 'Text', 'OccupationalExperienceRequirements']], str, 'Text', 'OccupationalExperienceRequirements']] = Field(
+    incentiveCompensation: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="Description of skills and experience needed for the position or Occupation.",
+        description="Description of bonus and commission compensation aspects of the job.",
     )
-    hiringOrganization: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
+    securityClearanceRequirement: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
         default=None,
-        description="Organization offering the job position.",
+        description="A description of any security clearance requirements of the job.",
     )
-    directApply: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+    hiringOrganization: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
         default=None,
-        description="Indicates whether an [[url]] that is associated with a [[JobPosting]] enables direct"
-     "application for the job, via the posting website. A job posting is considered to have"
-     "directApply of [[True]] if an application process for the specified job can be directly"
-     "initiated via the url(s) given (noting that e.g. multiple internet domains might nevertheless"
-     "be involved at an implementation level). A value of [[False]] is appropriate if there"
-     "is no clear path to applying directly online for the specified job, navigating directly"
-     "from the JobPosting url(s) supplied.",
+        description="Organization or Person offering the job position.",
+    )
+    baseSalary: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'PriceSpecification', 'MonetaryAmount', str]], StrictInt, StrictFloat, 'Number', 'PriceSpecification', 'MonetaryAmount', str]] = Field(
+        default=None,
+        description="The base salary of the job or of an employee in an EmployeeRole.",
+    )
+    workHours: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The typical working hours for this job (e.g. 1st shift, night shift, 8am-5pm).",
+    )
+    jobImmediateStart: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+        default=None,
+        description="An indicator as to whether a position is available for an immediate start.",
+    )
+    employerOverview: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="A description of the employer, career opportunities and work environment for this position.",
     )
     skills: Optional[Union[List[Union[str, 'Text', 'DefinedTerm']], str, 'Text', 'DefinedTerm']] = Field(
         default=None,
         description="A statement of knowledge, skill, ability, task or any other assertion expressing a competency"
      "that is desired or required to fulfill this role or to work in this occupation.",
+    )
+    physicalRequirement: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'DefinedTerm']], AnyUrl, 'URL', str, 'Text', 'DefinedTerm']] = Field(
+        default=None,
+        description="A description of the types of physical activity associated with the job. Defined terms"
+     "such as those in O*net may be used, but note that there is no way to specify the level of ability"
+     "as well as its nature when using a defined term.",
+    )
+    experienceRequirements: Optional[Union[List[Union[str, 'Text', 'OccupationalExperienceRequirements']], str, 'Text', 'OccupationalExperienceRequirements']] = Field(
+        default=None,
+        description="Description of skills and experience needed for the position or Occupation.",
+    )
+    qualifications: Optional[Union[List[Union[str, 'Text', 'EducationalOccupationalCredential']], str, 'Text', 'EducationalOccupationalCredential']] = Field(
+        default=None,
+        description="Specific qualifications required for this role or Occupation.",
+    )
+    specialCommitments: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="Any special commitments associated with this job posting. Valid entries include VeteranCommit,"
+     "MilitarySpouseCommit, etc.",
+    )
+    jobStartDate: Optional[Union[List[Union[date, 'Date', str, 'Text']], date, 'Date', str, 'Text']] = Field(
+        default=None,
+        description="The date on which a successful applicant for this job would be expected to start work."
+     "Choose a specific date in the future or use the jobImmediateStart property to indicate"
+     "the position is to be filled as soon as possible.",
+    )
+    title: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The title of the job.",
+    )
+    relevantOccupation: Optional[Union[List[Union['Occupation', str]], 'Occupation', str]] = Field(
+        default=None,
+        description="The Occupation for the JobPosting.",
+    )
+    jobLocation: Optional[Union[List[Union['Place', str]], 'Place', str]] = Field(
+        default=None,
+        description="A (typically single) geographic location associated with the job position.",
+    )
+    educationRequirements: Optional[Union[List[Union[str, 'Text', 'EducationalOccupationalCredential']], str, 'Text', 'EducationalOccupationalCredential']] = Field(
+        default=None,
+        description="Educational background needed for the position or Occupation.",
+    )
+    eligibilityToWorkRequirement: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The legal requirements such as citizenship, visa and other documentation required"
+     "for an applicant to this job.",
     )
     estimatedSalary: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'MonetaryAmountDistribution', 'MonetaryAmount', str]], StrictInt, StrictFloat, 'Number', 'MonetaryAmountDistribution', 'MonetaryAmount', str]] = Field(
         default=None,
@@ -47,9 +103,10 @@ class JobPosting(Intangible):
      "by outside organizations rather than the hiring organization, who may not have committed"
      "to the estimated value.",
     )
-    benefits: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    validThrough: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
-        description="Description of benefits associated with the job.",
+        description="The date after when the item is not valid. For example the end of an offer, salary period,"
+     "or a period of opening hours.",
     )
     sensoryRequirement: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'DefinedTerm']], AnyUrl, 'URL', str, 'Text', 'DefinedTerm']] = Field(
         default=None,
@@ -58,40 +115,9 @@ class JobPosting(Intangible):
      "that there is no way to specify the level of ability as well as its nature when using a defined"
      "term.",
     )
-    jobImmediateStart: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+    employmentType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="An indicator as to whether a position is available for an immediate start.",
-    )
-    physicalRequirement: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'DefinedTerm']], AnyUrl, 'URL', str, 'Text', 'DefinedTerm']] = Field(
-        default=None,
-        description="A description of the types of physical activity associated with the job. Defined terms"
-     "such as those in O*net may be used, but note that there is no way to specify the level of ability"
-     "as well as its nature when using a defined term.",
-    )
-    jobLocation: Optional[Union[List[Union['Place', str]], 'Place', str]] = Field(
-        default=None,
-        description="A (typically single) geographic location associated with the job position.",
-    )
-    incentives: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="Description of bonus and commission compensation aspects of the job.",
-    )
-    employerOverview: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="A description of the employer, career opportunities and work environment for this position.",
-    )
-    specialCommitments: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="Any special commitments associated with this job posting. Valid entries include VeteranCommit,"
-     "MilitarySpouseCommit, etc.",
-    )
-    jobLocationType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="A description of the job location (e.g TELECOMMUTE for telecommute jobs).",
-    )
-    title: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The title of the job.",
+        description="Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).",
     )
     totalJobOpenings: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
         default=None,
@@ -100,62 +126,22 @@ class JobPosting(Intangible):
     )
     salaryCurrency: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The currency (coded using [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) )"
+        description="The currency (coded using [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217))"
      "used for the main salary information in this job posting or for this employee.",
     )
-    responsibilities: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    applicationContact: Optional[Union[List[Union['ContactPoint', str]], 'ContactPoint', str]] = Field(
         default=None,
-        description="Responsibilities associated with this role or Occupation.",
-    )
-    securityClearanceRequirement: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
-        default=None,
-        description="A description of any security clearance requirements of the job.",
-    )
-    datePosted: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
-        default=None,
-        description="Publication date of an online listing.",
-    )
-    qualifications: Optional[Union[List[Union[str, 'Text', 'EducationalOccupationalCredential']], str, 'Text', 'EducationalOccupationalCredential']] = Field(
-        default=None,
-        description="Specific qualifications required for this role or Occupation.",
-    )
-    jobStartDate: Optional[Union[List[Union[date, 'Date', str, 'Text']], date, 'Date', str, 'Text']] = Field(
-        default=None,
-        description="The date on which a successful applicant for this job would be expected to start work."
-     "Choose a specific date in the future or use the jobImmediateStart property to indicate"
-     "the position is to be filled as soon as possible.",
-    )
-    incentiveCompensation: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="Description of bonus and commission compensation aspects of the job.",
-    )
-    industry: Optional[Union[List[Union[str, 'Text', 'DefinedTerm']], str, 'Text', 'DefinedTerm']] = Field(
-        default=None,
-        description="The industry associated with the job position.",
-    )
-    employmentUnit: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
-        default=None,
-        description="Indicates the department, unit and/or facility where the employee reports and/or in"
-     "which the job is to be performed.",
-    )
-    baseSalary: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'MonetaryAmount', 'PriceSpecification', str]], StrictInt, StrictFloat, 'Number', 'MonetaryAmount', 'PriceSpecification', str]] = Field(
-        default=None,
-        description="The base salary of the job or of an employee in an EmployeeRole.",
-    )
-    validThrough: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
-        default=None,
-        description="The date after when the item is not valid. For example the end of an offer, salary period,"
-     "or a period of opening hours.",
-    )
-    workHours: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The typical working hours for this job (e.g. 1st shift, night shift, 8am-5pm).",
+        description="Contact details for further information relevant to this job posting.",
     )
     experienceInPlaceOfEducation: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
         default=None,
         description="Indicates whether a [[JobPosting]] will accept experience (as indicated by [[OccupationalExperienceRequirements]])"
      "in place of its formal educational qualifications (as indicated by [[educationRequirements]])."
      "If true, indicates that satisfying one of these requirements is sufficient.",
+    )
+    datePosted: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
+        default=None,
+        description="Publication date of an online listing.",
     )
     jobBenefits: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
@@ -176,46 +162,61 @@ class JobPosting(Intangible):
      "be provided. Note: for historical reasons, any textual label and formal code provided"
      "as a literal may be assumed to be from O*NET-SOC.",
     )
-    employmentType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    industry: Optional[Union[List[Union[str, 'Text', 'DefinedTerm']], str, 'Text', 'DefinedTerm']] = Field(
         default=None,
-        description="Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).",
+        description="The industry associated with the job position.",
     )
-    educationRequirements: Optional[Union[List[Union[str, 'Text', 'EducationalOccupationalCredential']], str, 'Text', 'EducationalOccupationalCredential']] = Field(
+    employmentUnit: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
         default=None,
-        description="Educational background needed for the position or Occupation.",
+        description="Indicates the department, unit and/or facility where the employee reports and/or in"
+     "which the job is to be performed.",
     )
-    applicationContact: Optional[Union[List[Union['ContactPoint', str]], 'ContactPoint', str]] = Field(
+    benefits: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="Contact details for further information relevant to this job posting.",
+        description="Description of benefits associated with the job.",
     )
-    relevantOccupation: Optional[Union[List[Union['Occupation', str]], 'Occupation', str]] = Field(
+    jobLocationType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The Occupation for the JobPosting.",
+        description="A description of the job location (e.g. TELECOMMUTE for telecommute jobs).",
     )
-    eligibilityToWorkRequirement: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    responsibilities: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The legal requirements such as citizenship, visa and other documentation required"
-     "for an applicant to this job.",
+        description="Responsibilities associated with this role or Occupation.",
+    )
+    directApply: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+        default=None,
+        description="Indicates whether an [[url]] that is associated with a [[JobPosting]] enables direct"
+     "application for the job, via the posting website. A job posting is considered to have"
+     "directApply of [[True]] if an application process for the specified job can be directly"
+     "initiated via the url(s) given (noting that e.g. multiple internet domains might nevertheless"
+     "be involved at an implementation level). A value of [[False]] is appropriate if there"
+     "is no clear path to applying directly online for the specified job, navigating directly"
+     "from the JobPosting url(s) supplied.",
+    )
+    incentives: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="Description of bonus and commission compensation aspects of the job.",
     )
     
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.OccupationalExperienceRequirements import OccupationalExperienceRequirements
+    from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Organization import Organization
+    from pydantic_schemaorg.Person import Person
+    from pydantic_schemaorg.Number import Number
+    from pydantic_schemaorg.PriceSpecification import PriceSpecification
+    from pydantic_schemaorg.MonetaryAmount import MonetaryAmount
     from pydantic_schemaorg.Boolean import Boolean
     from pydantic_schemaorg.DefinedTerm import DefinedTerm
-    from pydantic_schemaorg.Number import Number
-    from pydantic_schemaorg.MonetaryAmountDistribution import MonetaryAmountDistribution
-    from pydantic_schemaorg.MonetaryAmount import MonetaryAmount
-    from pydantic_schemaorg.URL import URL
-    from pydantic_schemaorg.Place import Place
-    from pydantic_schemaorg.Integer import Integer
-    from pydantic_schemaorg.DateTime import DateTime
-    from pydantic_schemaorg.Date import Date
+    from pydantic_schemaorg.OccupationalExperienceRequirements import OccupationalExperienceRequirements
     from pydantic_schemaorg.EducationalOccupationalCredential import EducationalOccupationalCredential
-    from pydantic_schemaorg.PriceSpecification import PriceSpecification
+    from pydantic_schemaorg.Date import Date
+    from pydantic_schemaorg.Occupation import Occupation
+    from pydantic_schemaorg.Place import Place
+    from pydantic_schemaorg.MonetaryAmountDistribution import MonetaryAmountDistribution
+    from pydantic_schemaorg.DateTime import DateTime
+    from pydantic_schemaorg.Integer import Integer
+    from pydantic_schemaorg.ContactPoint import ContactPoint
     from pydantic_schemaorg.AdministrativeArea import AdministrativeArea
     from pydantic_schemaorg.CategoryCode import CategoryCode
-    from pydantic_schemaorg.ContactPoint import ContactPoint
-    from pydantic_schemaorg.Occupation import Occupation

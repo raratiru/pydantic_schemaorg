@@ -20,13 +20,13 @@ class BroadcastFrequencySpecification(Intangible):
         default=None,
         description="The modulation (e.g. FM, AM, etc) used by a particular broadcast service.",
     )
-    broadcastFrequencyValue: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The frequency in MHz for a particular broadcast.",
-    )
     broadcastSubChannel: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The subchannel used for the broadcast.",
+    )
+    broadcastFrequencyValue: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]], StrictInt, StrictFloat, 'Number', 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The frequency in MHz for a particular broadcast.",
     )
     
 

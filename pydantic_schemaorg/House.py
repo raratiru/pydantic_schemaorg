@@ -11,7 +11,7 @@ from pydantic_schemaorg.Accommodation import Accommodation
 
 class House(Accommodation):
     """A house is a building or structure that has the ability to be occupied for habitation by"
-     "humans or other creatures (Source: Wikipedia, the free encyclopedia, see <a href=\"http://en.wikipedia.org/wiki/House\">http://en.wikipedia.org/wiki/House</a>).
+     "humans or other creatures (source: Wikipedia, the free encyclopedia, see <a href=\"http://en.wikipedia.org/wiki/House\">http://en.wikipedia.org/wiki/House</a>).
 
     See: https://schema.org/House
     Model depth: 4

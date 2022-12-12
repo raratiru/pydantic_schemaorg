@@ -23,11 +23,11 @@ class TouristAttraction(Place):
         default=None,
         description="A language someone may use with or at the item, service or place. Please use one of the language"
      "codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also"
-     "[[inLanguage]]",
+     "[[inLanguage]].",
     )
     touristType: Optional[Union[List[Union[str, 'Text', 'Audience']], str, 'Text', 'Audience']] = Field(
         default=None,
-        description="Attraction suitable for type(s) of tourist. eg. Children, visitors from a particular"
+        description="Attraction suitable for type(s) of tourist. E.g. children, visitors from a particular"
      "country, etc.",
     )
     

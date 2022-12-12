@@ -20,13 +20,13 @@ class CommunicateAction(InteractAction):
         default=None,
         description="The subject matter of the content.",
     )
+    recipient: Optional[Union[List[Union['Audience', 'Organization', 'Person', 'ContactPoint', str]], 'Audience', 'Organization', 'Person', 'ContactPoint', str]] = Field(
+        default=None,
+        description="A sub property of participant. The participant who is at the receiving end of the action.",
+    )
     language: Optional[Union[List[Union['Language', str]], 'Language', str]] = Field(
         default=None,
         description="A sub property of instrument. The language used on this action.",
-    )
-    recipient: Optional[Union[List[Union['ContactPoint', 'Audience', 'Organization', 'Person', str]], 'ContactPoint', 'Audience', 'Organization', 'Person', str]] = Field(
-        default=None,
-        description="A sub property of participant. The participant who is at the receiving end of the action.",
     )
     inLanguage: Optional[Union[List[Union[str, 'Text', 'Language']], str, 'Text', 'Language']] = Field(
         default=None,
@@ -38,9 +38,9 @@ class CommunicateAction(InteractAction):
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Thing import Thing
-    from pydantic_schemaorg.Language import Language
-    from pydantic_schemaorg.ContactPoint import ContactPoint
     from pydantic_schemaorg.Audience import Audience
     from pydantic_schemaorg.Organization import Organization
     from pydantic_schemaorg.Person import Person
+    from pydantic_schemaorg.ContactPoint import ContactPoint
+    from pydantic_schemaorg.Language import Language
     from pydantic_schemaorg.Text import Text

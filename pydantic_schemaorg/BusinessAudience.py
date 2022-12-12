@@ -16,17 +16,17 @@ class BusinessAudience(Audience):
     Model depth: 4
     """
     type_: str = Field(default="BusinessAudience", alias='@type', const=True)
-    yearsInOperation: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The age of the business.",
-    )
-    numberOfEmployees: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
-        default=None,
-        description="The number of employees in an organization e.g. business.",
-    )
     yearlyRevenue: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
         default=None,
         description="The size of the business in annual revenue.",
+    )
+    numberOfEmployees: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The number of employees in an organization, e.g. business.",
+    )
+    yearsInOperation: Optional[Union[List[Union['QuantitativeValue', str]], 'QuantitativeValue', str]] = Field(
+        default=None,
+        description="The age of the business.",
     )
     
 

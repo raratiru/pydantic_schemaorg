@@ -13,7 +13,7 @@ class StatisticalPopulation(Intangible):
      "set of constraints. The property [[populationType]] is used to specify the type. Any"
      "property that can be used on instances of that type can appear on the statistical population."
      "For example, a [[StatisticalPopulation]] representing all [[Person]]s with a [[homeLocation]]"
-     "of East Podunk California, would be described by applying the appropriate [[homeLocation]]"
+     "of East Podunk California would be described by applying the appropriate [[homeLocation]]"
      "and [[populationType]] properties to a [[StatisticalPopulation]] item that stands"
      "for that set of people. The properties [[numConstraints]] and [[constrainingProperty]]"
      "are used to specify which of the populations properties are used to specify the population."
@@ -26,12 +26,6 @@ class StatisticalPopulation(Intangible):
     Model depth: 3
     """
     type_: str = Field(default="StatisticalPopulation", alias='@type', const=True)
-    numConstraints: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
-        default=None,
-        description="Indicates the number of constraints (not counting [[populationType]]) defined for"
-     "a particular [[StatisticalPopulation]]. This helps applications understand if they"
-     "have access to a sufficiently complete description of a [[StatisticalPopulation]].",
-    )
     constrainingProperty: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
         default=None,
         description="Indicates a property used as a constraint to define a [[StatisticalPopulation]] with"
@@ -40,6 +34,12 @@ class StatisticalPopulation(Intangible):
     populationType: Optional[Union[List[Union['Class', str]], 'Class', str]] = Field(
         default=None,
         description="Indicates the populationType common to all members of a [[StatisticalPopulation]].",
+    )
+    numConstraints: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+        default=None,
+        description="Indicates the number of constraints (not counting [[populationType]]) defined for"
+     "a particular [[StatisticalPopulation]]. This helps applications understand if they"
+     "have access to a sufficiently complete description of a [[StatisticalPopulation]].",
     )
     
 

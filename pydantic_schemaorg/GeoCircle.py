@@ -21,7 +21,7 @@ class GeoCircle(GeoShape):
     type_: str = Field(default="GeoCircle", alias='@type', const=True)
     geoMidpoint: Optional[Union[List[Union['GeoCoordinates', str]], 'GeoCoordinates', str]] = Field(
         default=None,
-        description="Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.",
+        description="Indicates the GeoCoordinates at the centre of a GeoShape, e.g. GeoCircle.",
     )
     geoRadius: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str, 'Text', 'Distance']], StrictInt, StrictFloat, 'Number', str, 'Text', 'Distance']] = Field(
         default=None,

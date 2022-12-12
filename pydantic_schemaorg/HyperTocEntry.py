@@ -21,6 +21,10 @@ class HyperTocEntry(CreativeWork):
     Model depth: 3
     """
     type_: str = Field(default="HyperTocEntry", alias='@type', const=True)
+    associatedMedia: Optional[Union[List[Union['MediaObject', str]], 'MediaObject', str]] = Field(
+        default=None,
+        description="A media object that encodes this CreativeWork. This property is a synonym for encoding.",
+    )
     utterances: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Text of an utterances (spoken words, lyrics etc.) that occurs at a certain section of"
@@ -31,12 +35,8 @@ class HyperTocEntry(CreativeWork):
         description="A [[HyperTocEntry]] can have a [[tocContinuation]] indicated, which is another [[HyperTocEntry]]"
      "that would be the default next item to play or render.",
     )
-    associatedMedia: Optional[Union[List[Union['MediaObject', str]], 'MediaObject', str]] = Field(
-        default=None,
-        description="A media object that encodes this CreativeWork. This property is a synonym for encoding.",
-    )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.MediaObject import MediaObject
+    from pydantic_schemaorg.Text import Text

@@ -15,17 +15,17 @@ class PaymentChargeSpecification(PriceSpecification):
     Model depth: 5
     """
     type_: str = Field(default="PaymentChargeSpecification", alias='@type', const=True)
+    appliesToPaymentMethod: Optional[Union[List[Union['PaymentMethod', str]], 'PaymentMethod', str]] = Field(
+        default=None,
+        description="The payment method(s) to which the payment charge specification applies.",
+    )
     appliesToDeliveryMethod: Optional[Union[List[Union['DeliveryMethod', str]], 'DeliveryMethod', str]] = Field(
         default=None,
         description="The delivery method(s) to which the delivery charge or payment charge specification"
      "applies.",
     )
-    appliesToPaymentMethod: Optional[Union[List[Union['PaymentMethod', str]], 'PaymentMethod', str]] = Field(
-        default=None,
-        description="The payment method(s) to which the payment charge specification applies.",
-    )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.DeliveryMethod import DeliveryMethod
     from pydantic_schemaorg.PaymentMethod import PaymentMethod
+    from pydantic_schemaorg.DeliveryMethod import DeliveryMethod

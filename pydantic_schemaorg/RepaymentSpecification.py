@@ -20,6 +20,10 @@ class RepaymentSpecification(StructuredValue):
         default=None,
         description="The amount of money to pay in a single payment.",
     )
+    earlyPrepaymentPenalty: Optional[Union[List[Union['MonetaryAmount', str]], 'MonetaryAmount', str]] = Field(
+        default=None,
+        description="The amount to be paid as a penalty in the event of early payment of the loan.",
+    )
     numberOfLoanPayments: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
         default=None,
         description="The number of payments contractually required at origination to repay the loan. For"
@@ -30,10 +34,6 @@ class RepaymentSpecification(StructuredValue):
         default=None,
         description="Frequency of payments due, i.e. number of months between payments. This is defined as"
      "a frequency, i.e. the reciprocal of a period of time.",
-    )
-    earlyPrepaymentPenalty: Optional[Union[List[Union['MonetaryAmount', str]], 'MonetaryAmount', str]] = Field(
-        default=None,
-        description="The amount to be paid as a penalty in the event of early payment of the loan.",
     )
     downPayment: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'MonetaryAmount', str]], StrictInt, StrictFloat, 'Number', 'MonetaryAmount', str]] = Field(
         default=None,

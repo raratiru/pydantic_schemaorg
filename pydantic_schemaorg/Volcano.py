@@ -6,7 +6,7 @@ from pydantic_schemaorg.Landform import Landform
 
 
 class Volcano(Landform):
-    """A volcano, like Fuji san.
+    """A volcano, like Fujisan.
 
     See: https://schema.org/Volcano
     Model depth: 4

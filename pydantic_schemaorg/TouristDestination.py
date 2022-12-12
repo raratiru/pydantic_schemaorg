@@ -16,7 +16,7 @@ class TouristDestination(Place):
      "is defined as a [[Place]] that contains, or is colocated with, one or more [[TouristAttraction]]s,"
      "often linked by a similar theme or interest to a particular [[touristType]]. The [UNWTO](http://www2.unwto.org/)"
      "defines Destination (main destination of a tourism trip) as the place visited that is"
-     "central to the decision to take the trip. (See examples below).
+     "central to the decision to take the trip. (See examples below.)
 
     See: https://schema.org/TouristDestination
     Model depth: 3
@@ -28,7 +28,7 @@ class TouristDestination(Place):
     )
     touristType: Optional[Union[List[Union[str, 'Text', 'Audience']], str, 'Text', 'Audience']] = Field(
         default=None,
-        description="Attraction suitable for type(s) of tourist. eg. Children, visitors from a particular"
+        description="Attraction suitable for type(s) of tourist. E.g. children, visitors from a particular"
      "country, etc.",
     )
     

@@ -15,13 +15,13 @@ class Seat(Intangible):
     Model depth: 3
     """
     type_: str = Field(default="Seat", alias='@type', const=True)
-    seatNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The location of the reserved seat (e.g., 27).",
-    )
     seatSection: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The section location of the reserved seat (e.g. Orchestra).",
+    )
+    seatNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The location of the reserved seat (e.g., 27).",
     )
     seatingType: Optional[Union[List[Union[str, 'Text', 'QualitativeValue']], str, 'Text', 'QualitativeValue']] = Field(
         default=None,

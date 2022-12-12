@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from pydantic import AnyUrl
 from typing import List, Optional, Union
+from pydantic import AnyUrl
 
 
 from pydantic import Field
@@ -16,10 +16,6 @@ class MusicGroup(PerformingGroup):
     Model depth: 4
     """
     type_: str = Field(default="MusicGroup", alias='@type', const=True)
-    genre: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
-        default=None,
-        description="Genre of the creative work, broadcast channel or group.",
-    )
     album: Optional[Union[List[Union['MusicAlbum', str]], 'MusicAlbum', str]] = Field(
         default=None,
         description="A music album.",
@@ -37,6 +33,10 @@ class MusicGroup(PerformingGroup):
         default=None,
         description="A collection of music albums.",
     )
+    genre: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
+        default=None,
+        description="Genre of the creative work, broadcast channel or group.",
+    )
     musicGroupMember: Optional[Union[List[Union['Person', str]], 'Person', str]] = Field(
         default=None,
         description="A member of a music group&#x2014;for example, John, Paul, George, or Ringo.",
@@ -44,9 +44,9 @@ class MusicGroup(PerformingGroup):
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.URL import URL
-    from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.MusicAlbum import MusicAlbum
     from pydantic_schemaorg.MusicRecording import MusicRecording
     from pydantic_schemaorg.ItemList import ItemList
+    from pydantic_schemaorg.URL import URL
+    from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.Person import Person

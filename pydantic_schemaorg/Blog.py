@@ -10,7 +10,7 @@ from pydantic_schemaorg.CreativeWork import CreativeWork
 
 class Blog(CreativeWork):
     """A [blog](https://en.wikipedia.org/wiki/Blog), sometimes known as a \"weblog\"."
-     "Note that the individual posts ([[BlogPosting]]s) in a [[Blog]] are often colloqually"
+     "Note that the individual posts ([[BlogPosting]]s) in a [[Blog]] are often colloquially"
      "referred to by the same term.
 
     See: https://schema.org/Blog

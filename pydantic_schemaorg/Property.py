@@ -16,15 +16,14 @@ class Property(Intangible):
     Model depth: 3
     """
     type_: str = Field(default="Property", alias='@type', const=True)
+    supersededBy: Optional[Union[List[Union['Class', 'Enumeration', 'Property', str]], 'Class', 'Enumeration', 'Property', str]] = Field(
+        default=None,
+        description="Relates a term (i.e. a property, class or enumeration) to one that supersedes it.",
+    )
     domainIncludes: Optional[Union[List[Union['Class', str]], 'Class', str]] = Field(
         default=None,
         description="Relates a property to a class that is (one of) the type(s) the property is expected to be"
      "used on.",
-    )
-    rangeIncludes: Optional[Union[List[Union['Class', str]], 'Class', str]] = Field(
-        default=None,
-        description="Relates a property to a class that constitutes (one of) the expected type(s) for values"
-     "of the property.",
     )
     inverseOf: Optional[Union[List[Union['Property', str]], 'Property', str]] = Field(
         default=None,
@@ -34,9 +33,10 @@ class Property(Intangible):
      "inverses; in these situations RDFa and JSON-LD syntax for reverse properties can be"
      "used.",
     )
-    supersededBy: Optional[Union[List[Union['Property', 'Enumeration', 'Class', str]], 'Property', 'Enumeration', 'Class', str]] = Field(
+    rangeIncludes: Optional[Union[List[Union['Class', str]], 'Class', str]] = Field(
         default=None,
-        description="Relates a term (i.e. a property, class or enumeration) to one that supersedes it.",
+        description="Relates a property to a class that constitutes (one of) the expected type(s) for values"
+     "of the property.",
     )
     
 

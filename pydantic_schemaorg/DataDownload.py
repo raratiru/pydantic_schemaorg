@@ -10,7 +10,7 @@ from pydantic_schemaorg.MediaObject import MediaObject
 
 
 class DataDownload(MediaObject):
-    """A dataset in downloadable form.
+    """All or part of a [[Dataset]] in downloadable form.
 
     See: https://schema.org/DataDownload
     Model depth: 4

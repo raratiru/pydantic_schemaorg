@@ -24,13 +24,13 @@ class Muscle(AnatomicalStructure):
         default=None,
         description="The movement the muscle generates.",
     )
-    antagonist: Optional[Union[List[Union['Muscle', str]], 'Muscle', str]] = Field(
-        default=None,
-        description="The muscle whose action counteracts the specified muscle.",
-    )
     bloodSupply: Optional[Union[List[Union['Vessel', str]], 'Vessel', str]] = Field(
         default=None,
         description="The blood vessel that carries blood from the heart to the muscle.",
+    )
+    antagonist: Optional[Union[List[Union['Muscle', str]], 'Muscle', str]] = Field(
+        default=None,
+        description="The muscle whose action counteracts the specified muscle.",
     )
     insertion: Optional[Union[List[Union['AnatomicalStructure', str]], 'AnatomicalStructure', str]] = Field(
         default=None,

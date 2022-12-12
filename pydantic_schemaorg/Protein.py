@@ -22,7 +22,7 @@ class Protein(BioChemEntity):
     type_: str = Field(default="Protein", alias='@type', const=True)
     hasBioPolymerSequence: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="A symbolic representation of a BioChemEnity. For example, a nucleotide sequence of"
+        description="A symbolic representation of a BioChemEntity. For example, a nucleotide sequence of"
      "a Gene or an amino acid sequence of a Protein.",
     )
     

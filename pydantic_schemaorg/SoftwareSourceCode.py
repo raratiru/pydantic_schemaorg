@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from pydantic import AnyUrl
 from typing import List, Optional, Union
+from pydantic import AnyUrl
 
 
 from pydantic import Field
@@ -17,44 +17,44 @@ class SoftwareSourceCode(CreativeWork):
     Model depth: 3
     """
     type_: str = Field(default="SoftwareSourceCode", alias='@type', const=True)
-    codeRepository: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
+    targetProduct: Optional[Union[List[Union['SoftwareApplication', str]], 'SoftwareApplication', str]] = Field(
         default=None,
-        description="Link to the repository where the un-compiled, human readable code and related code is"
-     "located (SVN, github, CodePlex).",
+        description="Target Operating System / Product to which the code applies. If applies to several versions,"
+     "just the product name can be used.",
     )
     runtimePlatform: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3,"
-     ".Net Framework 3.0).",
-    )
-    programmingLanguage: Optional[Union[List[Union[str, 'Text', 'ComputerLanguage']], str, 'Text', 'ComputerLanguage']] = Field(
-        default=None,
-        description="The computer programming language.",
-    )
-    runtime: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3,"
-     ".Net Framework 3.0).",
+        description="Runtime platform or script interpreter dependencies (example: Java v1, Python 2.3,"
+     ".NET Framework 3.0).",
     )
     codeSampleType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="What type of code sample: full (compile ready) solution, code snippet, inline code,"
      "scripts, template.",
     )
+    runtime: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="Runtime platform or script interpreter dependencies (example: Java v1, Python 2.3,"
+     ".NET Framework 3.0).",
+    )
+    programmingLanguage: Optional[Union[List[Union[str, 'Text', 'ComputerLanguage']], str, 'Text', 'ComputerLanguage']] = Field(
+        default=None,
+        description="The computer programming language.",
+    )
     sampleType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="What type of code sample: full (compile ready) solution, code snippet, inline code,"
      "scripts, template.",
     )
-    targetProduct: Optional[Union[List[Union['SoftwareApplication', str]], 'SoftwareApplication', str]] = Field(
+    codeRepository: Optional[Union[List[Union[AnyUrl, 'URL', str]], AnyUrl, 'URL', str]] = Field(
         default=None,
-        description="Target Operating System / Product to which the code applies. If applies to several versions,"
-     "just the product name can be used.",
+        description="Link to the repository where the un-compiled, human readable code and related code is"
+     "located (SVN, GitHub, CodePlex).",
     )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.URL import URL
+    from pydantic_schemaorg.SoftwareApplication import SoftwareApplication
     from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.ComputerLanguage import ComputerLanguage
-    from pydantic_schemaorg.SoftwareApplication import SoftwareApplication
+    from pydantic_schemaorg.URL import URL

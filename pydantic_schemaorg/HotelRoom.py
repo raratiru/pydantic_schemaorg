@@ -16,7 +16,7 @@ class HotelRoom(Room):
     Model depth: 5
     """
     type_: str = Field(default="HotelRoom", alias='@type', const=True)
-    bed: Optional[Union[List[Union[str, 'Text', 'BedDetails', 'BedType']], str, 'Text', 'BedDetails', 'BedType']] = Field(
+    bed: Optional[Union[List[Union[str, 'Text', 'BedType', 'BedDetails']], str, 'Text', 'BedType', 'BedDetails']] = Field(
         default=None,
         description="The type of bed or beds included in the accommodation. For the single case of just one bed"
      "of a certain type, you use bed directly with a text. If you want to indicate the quantity"
@@ -34,6 +34,6 @@ class HotelRoom(Room):
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.BedDetails import BedDetails
     from pydantic_schemaorg.BedType import BedType
+    from pydantic_schemaorg.BedDetails import BedDetails
     from pydantic_schemaorg.QuantitativeValue import QuantitativeValue

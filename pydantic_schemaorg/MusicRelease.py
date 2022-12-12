@@ -19,34 +19,34 @@ class MusicRelease(MusicPlaylist):
         default=None,
         description="The album this is a release of.",
     )
+    musicReleaseFormat: Optional[Union[List[Union['MusicReleaseFormatType', str]], 'MusicReleaseFormatType', str]] = Field(
+        default=None,
+        description="Format of this release (the type of recording media used, i.e. compact disc, digital"
+     "media, LP, etc.).",
+    )
     duration: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
         default=None,
         description="The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601).",
-    )
-    catalogNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The catalog number for the release.",
-    )
-    musicReleaseFormat: Optional[Union[List[Union['MusicReleaseFormatType', str]], 'MusicReleaseFormatType', str]] = Field(
-        default=None,
-        description="Format of this release (the type of recording media used, ie. compact disc, digital media,"
-     "LP, etc.).",
-    )
-    creditedTo: Optional[Union[List[Union['Person', 'Organization', str]], 'Person', 'Organization', str]] = Field(
-        default=None,
-        description="The group the release is credited to if different than the byArtist. For example, Red"
-     "and Blue is credited to \"Stefani Germanotta Band\", but by Lady Gaga.",
     )
     recordLabel: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
         default=None,
         description="The label that issued the release.",
     )
+    catalogNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The catalog number for the release.",
+    )
+    creditedTo: Optional[Union[List[Union['Organization', 'Person', str]], 'Organization', 'Person', str]] = Field(
+        default=None,
+        description="The group the release is credited to if different than the byArtist. For example, Red"
+     "and Blue is credited to \"Stefani Germanotta Band\", but by Lady Gaga.",
+    )
     
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.MusicAlbum import MusicAlbum
-    from pydantic_schemaorg.Duration import Duration
-    from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.MusicReleaseFormatType import MusicReleaseFormatType
-    from pydantic_schemaorg.Person import Person
+    from pydantic_schemaorg.Duration import Duration
     from pydantic_schemaorg.Organization import Organization
+    from pydantic_schemaorg.Text import Text
+    from pydantic_schemaorg.Person import Person

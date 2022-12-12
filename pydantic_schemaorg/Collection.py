@@ -9,7 +9,7 @@ from pydantic_schemaorg.CreativeWork import CreativeWork
 
 
 class Collection(CreativeWork):
-    """A collection of items e.g. creative works or products.
+    """A collection of items, e.g. creative works or products.
 
     See: https://schema.org/Collection
     Model depth: 3

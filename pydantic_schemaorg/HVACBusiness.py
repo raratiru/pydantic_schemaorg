@@ -6,7 +6,7 @@ from pydantic_schemaorg.HomeAndConstructionBusiness import HomeAndConstructionBu
 
 
 class HVACBusiness(HomeAndConstructionBusiness):
-    """A business that provide Heating, Ventilation and Air Conditioning services.
+    """A business that provides Heating, Ventilation and Air Conditioning services.
 
     See: https://schema.org/HVACBusiness
     Model depth: 5

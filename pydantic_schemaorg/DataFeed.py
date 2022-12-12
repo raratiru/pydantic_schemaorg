@@ -17,7 +17,7 @@ class DataFeed(Dataset):
     type_: str = Field(default="DataFeed", alias='@type', const=True)
     dataFeedElement: Optional[Union[List[Union[str, 'Text', 'DataFeedItem', 'Thing']], str, 'Text', 'DataFeedItem', 'Thing']] = Field(
         default=None,
-        description="An item within in a data feed. Data feeds may have many elements.",
+        description="An item within a data feed. Data feeds may have many elements.",
     )
     
 

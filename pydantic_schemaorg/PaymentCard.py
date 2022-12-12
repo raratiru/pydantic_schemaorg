@@ -1,16 +1,16 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from pydantic import StrictBool, StrictInt, StrictFloat
 from typing import List, Optional, Union
+from pydantic import StrictBool, StrictInt, StrictFloat
 
 
 from pydantic import Field
-from pydantic_schemaorg.FinancialProduct import FinancialProduct
 from pydantic_schemaorg.PaymentMethod import PaymentMethod
+from pydantic_schemaorg.FinancialProduct import FinancialProduct
 
 
-class PaymentCard(FinancialProduct, PaymentMethod):
+class PaymentCard(PaymentMethod, FinancialProduct):
     """A payment method using a credit, debit, store or other card to associate the payment with"
      "an account.
 
@@ -18,18 +18,18 @@ class PaymentCard(FinancialProduct, PaymentMethod):
     Model depth: 5
     """
     type_: str = Field(default="PaymentCard", alias='@type', const=True)
-    contactlessPayment: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
+    floorLimit: Optional[Union[List[Union['MonetaryAmount', str]], 'MonetaryAmount', str]] = Field(
         default=None,
-        description="A secure method for consumers to purchase products or services via debit, credit or smartcards"
-     "by using RFID or NFC technology.",
+        description="A floor limit is the amount of money above which credit card transactions must be authorized.",
     )
     cashBack: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', StrictBool, 'Boolean', str]], StrictInt, StrictFloat, 'Number', StrictBool, 'Boolean', str]] = Field(
         default=None,
         description="A cardholder benefit that pays the cardholder a small percentage of their net expenditures.",
     )
-    floorLimit: Optional[Union[List[Union['MonetaryAmount', str]], 'MonetaryAmount', str]] = Field(
+    contactlessPayment: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
         default=None,
-        description="A floor limit is the amount of money above which credit card transactions must be authorized.",
+        description="A secure method for consumers to purchase products or services via debit, credit or smartcards"
+     "by using RFID or NFC technology.",
     )
     monthlyMinimumRepaymentAmount: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'MonetaryAmount', str]], StrictInt, StrictFloat, 'Number', 'MonetaryAmount', str]] = Field(
         default=None,
@@ -39,6 +39,6 @@ class PaymentCard(FinancialProduct, PaymentMethod):
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Boolean import Boolean
-    from pydantic_schemaorg.Number import Number
     from pydantic_schemaorg.MonetaryAmount import MonetaryAmount
+    from pydantic_schemaorg.Number import Number
+    from pydantic_schemaorg.Boolean import Boolean

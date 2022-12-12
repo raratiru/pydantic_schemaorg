@@ -17,18 +17,13 @@ class NewsArticle(Article):
     Model depth: 4
     """
     type_: str = Field(default="NewsArticle", alias='@type', const=True)
-    dateline: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    printColumn: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="A [dateline](https://en.wikipedia.org/wiki/Dateline) is a brief piece of text included"
-     "in news articles that describes where and when the story was written or filed though the"
-     "date is often omitted. Sometimes only a placename is provided. Structured representations"
-     "of dateline-related information can also be expressed more explicitly using [[locationCreated]]"
-     "(which represents where a work was created e.g. where a news report was written). For"
-     "location depicted or described in the content, use [[contentLocation]]. Dateline"
-     "summaries are oriented more towards human readers than towards automated processing,"
-     "and can vary substantially. Some examples: \"BEIRUT, Lebanon, June 2.\", \"Paris,"
-     "France\", \"December 19, 2017 11:43AM Reporting from Washington\", \"Beijing/Moscow\","
-     "\"QUEZON CITY, Philippines\".",
+        description="The number of the column in which the NewsArticle appears in the print edition.",
+    )
+    printEdition: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The edition of the print product in which the NewsArticle appears.",
     )
     printSection: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
@@ -41,13 +36,18 @@ class NewsArticle(Article):
      "the article is found. Please note that this field is intended for the exact page name (e.g."
      "A5, B18).",
     )
-    printColumn: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+    dateline: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The number of the column in which the NewsArticle appears in the print edition.",
-    )
-    printEdition: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The edition of the print product in which the NewsArticle appears.",
+        description="A [dateline](https://en.wikipedia.org/wiki/Dateline) is a brief piece of text included"
+     "in news articles that describes where and when the story was written or filed though the"
+     "date is often omitted. Sometimes only a placename is provided. Structured representations"
+     "of dateline-related information can also be expressed more explicitly using [[locationCreated]]"
+     "(which represents where a work was created, e.g. where a news report was written). For"
+     "location depicted or described in the content, use [[contentLocation]]. Dateline"
+     "summaries are oriented more towards human readers than towards automated processing,"
+     "and can vary substantially. Some examples: \"BEIRUT, Lebanon, June 2.\", \"Paris,"
+     "France\", \"December 19, 2017 11:43AM Reporting from Washington\", \"Beijing/Moscow\","
+     "\"QUEZON CITY, Philippines\".",
     )
     
 

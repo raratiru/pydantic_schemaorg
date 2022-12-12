@@ -19,6 +19,15 @@ class OpeningHoursSpecification(StructuredValue):
     Model depth: 4
     """
     type_: str = Field(default="OpeningHoursSpecification", alias='@type', const=True)
+    closes: Optional[Union[List[Union[time, 'Time', str]], time, 'Time', str]] = Field(
+        default=None,
+        description="The closing hour of the place or service on the given day(s) of the week.",
+    )
+    validThrough: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
+        default=None,
+        description="The date after when the item is not valid. For example the end of an offer, salary period,"
+     "or a period of opening hours.",
+    )
     opens: Optional[Union[List[Union[time, 'Time', str]], time, 'Time', str]] = Field(
         default=None,
         description="The opening hour of the place or service on the given day(s) of the week.",
@@ -26,15 +35,6 @@ class OpeningHoursSpecification(StructuredValue):
     validFrom: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
         description="The date when the item becomes valid.",
-    )
-    validThrough: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
-        default=None,
-        description="The date after when the item is not valid. For example the end of an offer, salary period,"
-     "or a period of opening hours.",
-    )
-    closes: Optional[Union[List[Union[time, 'Time', str]], time, 'Time', str]] = Field(
-        default=None,
-        description="The closing hour of the place or service on the given day(s) of the week.",
     )
     dayOfWeek: Optional[Union[List[Union['DayOfWeek', str]], 'DayOfWeek', str]] = Field(
         default=None,

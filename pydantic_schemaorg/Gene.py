@@ -18,9 +18,14 @@ class Gene(BioChemEntity):
     Model depth: 3
     """
     type_: str = Field(default="Gene", alias='@type', const=True)
+    expressedIn: Optional[Union[List[Union['AnatomicalSystem', 'BioChemEntity', 'DefinedTerm', 'AnatomicalStructure', str]], 'AnatomicalSystem', 'BioChemEntity', 'DefinedTerm', 'AnatomicalStructure', str]] = Field(
+        default=None,
+        description="Tissue, organ, biological sample, etc in which activity of this gene has been observed"
+     "experimentally. For example brain, digestive system.",
+    )
     hasBioPolymerSequence: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="A symbolic representation of a BioChemEnity. For example, a nucleotide sequence of"
+        description="A symbolic representation of a BioChemEntity. For example, a nucleotide sequence of"
      "a Gene or an amino acid sequence of a Protein.",
     )
     encodesBioChemEntity: Optional[Union[List[Union['BioChemEntity', str]], 'BioChemEntity', str]] = Field(
@@ -31,16 +36,11 @@ class Gene(BioChemEntity):
         default=None,
         description="Another gene which is a variation of this one.",
     )
-    expressedIn: Optional[Union[List[Union['DefinedTerm', 'BioChemEntity', 'AnatomicalSystem', 'AnatomicalStructure', str]], 'DefinedTerm', 'BioChemEntity', 'AnatomicalSystem', 'AnatomicalStructure', str]] = Field(
-        default=None,
-        description="Tissue, organ, biological sample, etc in which activity of this gene has been observed"
-     "experimentally. For example brain, digestive system.",
-    )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Text import Text
+    from pydantic_schemaorg.AnatomicalSystem import AnatomicalSystem
     from pydantic_schemaorg.BioChemEntity import BioChemEntity
     from pydantic_schemaorg.DefinedTerm import DefinedTerm
-    from pydantic_schemaorg.AnatomicalSystem import AnatomicalSystem
     from pydantic_schemaorg.AnatomicalStructure import AnatomicalStructure
+    from pydantic_schemaorg.Text import Text

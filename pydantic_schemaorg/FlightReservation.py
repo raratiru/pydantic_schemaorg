@@ -17,13 +17,13 @@ class FlightReservation(Reservation):
     Model depth: 4
     """
     type_: str = Field(default="FlightReservation", alias='@type', const=True)
-    passengerSequenceNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The passenger's sequence number as assigned by the airline.",
-    )
     securityScreening: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The type of security screening the passenger is subject to.",
+    )
+    passengerSequenceNumber: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The passenger's sequence number as assigned by the airline.",
     )
     passengerPriorityStatus: Optional[Union[List[Union[str, 'Text', 'QualitativeValue']], str, 'Text', 'QualitativeValue']] = Field(
         default=None,

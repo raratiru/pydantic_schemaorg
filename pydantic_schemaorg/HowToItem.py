@@ -10,7 +10,7 @@ from pydantic_schemaorg.ListItem import ListItem
 
 
 class HowToItem(ListItem):
-    """An item used as either a tool or supply when performing the instructions for how to to achieve"
+    """An item used as either a tool or supply when performing the instructions for how to achieve"
      "a result.
 
     See: https://schema.org/HowToItem

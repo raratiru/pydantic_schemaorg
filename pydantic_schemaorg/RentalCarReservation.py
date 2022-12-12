@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from typing import List, Optional, Union
 from datetime import datetime
+from typing import List, Optional, Union
 
 
 from pydantic import Field
@@ -17,6 +17,10 @@ class RentalCarReservation(Reservation):
     Model depth: 4
     """
     type_: str = Field(default="RentalCarReservation", alias='@type', const=True)
+    pickupTime: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
+        default=None,
+        description="When a taxi will pick up a passenger or a rental car can be picked up.",
+    )
     pickupLocation: Optional[Union[List[Union['Place', str]], 'Place', str]] = Field(
         default=None,
         description="Where a taxi will pick up a passenger or a rental car can be picked up.",
@@ -25,10 +29,6 @@ class RentalCarReservation(Reservation):
         default=None,
         description="Where a rental car can be dropped off.",
     )
-    pickupTime: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
-        default=None,
-        description="When a taxi will pickup a passenger or a rental car can be picked up.",
-    )
     dropoffTime: Optional[Union[List[Union[datetime, 'DateTime', str]], datetime, 'DateTime', str]] = Field(
         default=None,
         description="When a rental car can be dropped off.",
@@ -36,5 +36,5 @@ class RentalCarReservation(Reservation):
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Place import Place
     from pydantic_schemaorg.DateTime import DateTime
+    from pydantic_schemaorg.Place import Place

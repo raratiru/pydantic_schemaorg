@@ -18,10 +18,6 @@ class WorkBasedProgram(EducationalOccupationalProgram):
     Model depth: 4
     """
     type_: str = Field(default="WorkBasedProgram", alias='@type', const=True)
-    trainingSalary: Optional[Union[List[Union['MonetaryAmountDistribution', str]], 'MonetaryAmountDistribution', str]] = Field(
-        default=None,
-        description="The estimated salary earned while in the program.",
-    )
     occupationalCategory: Optional[Union[List[Union[str, 'Text', 'CategoryCode']], str, 'Text', 'CategoryCode']] = Field(
         default=None,
         description="A category describing the job, preferably using a term from a taxonomy such as [BLS O*NET-SOC](http://www.onetcenter.org/taxonomy.html),"
@@ -31,9 +27,13 @@ class WorkBasedProgram(EducationalOccupationalProgram):
      "be provided. Note: for historical reasons, any textual label and formal code provided"
      "as a literal may be assumed to be from O*NET-SOC.",
     )
+    trainingSalary: Optional[Union[List[Union['MonetaryAmountDistribution', str]], 'MonetaryAmountDistribution', str]] = Field(
+        default=None,
+        description="The estimated salary earned while in the program.",
+    )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.MonetaryAmountDistribution import MonetaryAmountDistribution
     from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.CategoryCode import CategoryCode
+    from pydantic_schemaorg.MonetaryAmountDistribution import MonetaryAmountDistribution

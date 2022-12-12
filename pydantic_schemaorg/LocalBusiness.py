@@ -22,6 +22,22 @@ class LocalBusiness(Place, Organization):
         default=None,
         description="The price range of the business, for example ```$$$```.",
     )
+    currenciesAccepted: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The currency accepted. Use standard formats: [ISO 4217 currency format](http://en.wikipedia.org/wiki/ISO_4217),"
+     "e.g. \"USD\"; [Ticker symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies)"
+     "for cryptocurrencies, e.g. \"BTC\"; well known names for [Local Exchange Trading Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)"
+     "(LETS) and other currency types, e.g. \"Ithaca HOUR\".",
+    )
+    branchOf: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
+        default=None,
+        description="The larger organization that this local business is a branch of, if any. Not to be confused"
+     "with (anatomical) [[branch]].",
+    )
+    paymentAccepted: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.",
+    )
     openingHours: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The general opening hours for a business. Opening hours can be specified as a weekly time"
@@ -34,22 +50,6 @@ class LocalBusiness(Place, Organization):
      "and Thursdays 4-8pm&lt;/time&gt;</code>. * If a business is open 7 days a week, then"
      "it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday"
      "through Sunday, all day&lt;/time&gt;</code>.",
-    )
-    branchOf: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
-        default=None,
-        description="The larger organization that this local business is a branch of, if any. Not to be confused"
-     "with (anatomical)[[branch]].",
-    )
-    currenciesAccepted: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The currency accepted. Use standard formats: [ISO 4217 currency format](http://en.wikipedia.org/wiki/ISO_4217)"
-     "e.g. \"USD\"; [Ticker symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies)"
-     "for cryptocurrencies e.g. \"BTC\"; well known names for [Local Exchange Tradings Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)"
-     "(LETS) and other currency types e.g. \"Ithaca HOUR\".",
-    )
-    paymentAccepted: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc.",
     )
     
 

@@ -17,8 +17,9 @@ class ConsumeAction(Action):
     type_: str = Field(default="ConsumeAction", alias='@type', const=True)
     actionAccessibilityRequirement: Optional[Union[List[Union['ActionAccessSpecification', str]], 'ActionAccessSpecification', str]] = Field(
         default=None,
-        description="A set of requirements that a must be fulfilled in order to perform an Action. If more than"
-     "one value is specied, fulfilling one set of requirements will allow the Action to be performed.",
+        description="A set of requirements that must be fulfilled in order to perform an Action. If more than"
+     "one value is specified, fulfilling one set of requirements will allow the Action to be"
+     "performed.",
     )
     expectsAcceptanceOf: Optional[Union[List[Union['Offer', str]], 'Offer', str]] = Field(
         default=None,

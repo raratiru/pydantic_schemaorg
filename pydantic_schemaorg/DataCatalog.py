@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-from pydantic import AnyUrl
 from typing import List, Optional, Union
+from pydantic import AnyUrl
 
 
 from pydantic import Field
@@ -16,6 +16,10 @@ class DataCatalog(CreativeWork):
     Model depth: 3
     """
     type_: str = Field(default="DataCatalog", alias='@type', const=True)
+    dataset: Optional[Union[List[Union['Dataset', str]], 'Dataset', str]] = Field(
+        default=None,
+        description="A dataset contained in this catalog.",
+    )
     measurementTechnique: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text']], AnyUrl, 'URL', str, 'Text']] = Field(
         default=None,
         description="A technique or technology used in a [[Dataset]] (or [[DataDownload]], [[DataCatalog]]),"
@@ -30,13 +34,9 @@ class DataCatalog(CreativeWork):
      "several [[variableMeasured]] properties recorded for some given data object, use"
      "a [[PropertyValue]] for each [[variableMeasured]] and attach the corresponding [[measurementTechnique]].",
     )
-    dataset: Optional[Union[List[Union['Dataset', str]], 'Dataset', str]] = Field(
-        default=None,
-        description="A dataset contained in this catalog.",
-    )
     
 
 if TYPE_CHECKING:
+    from pydantic_schemaorg.Dataset import Dataset
     from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.Dataset import Dataset

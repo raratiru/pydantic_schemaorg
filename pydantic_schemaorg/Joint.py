@@ -15,13 +15,13 @@ class Joint(AnatomicalStructure):
     Model depth: 4
     """
     type_: str = Field(default="Joint", alias='@type', const=True)
-    functionalClass: Optional[Union[List[Union[str, 'Text', 'MedicalEntity']], str, 'Text', 'MedicalEntity']] = Field(
-        default=None,
-        description="The degree of mobility the joint allows.",
-    )
     structuralClass: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The name given to how bone physically connects to each other.",
+    )
+    functionalClass: Optional[Union[List[Union[str, 'Text', 'MedicalEntity']], str, 'Text', 'MedicalEntity']] = Field(
+        default=None,
+        description="The degree of mobility the joint allows.",
     )
     biomechnicalClass: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,

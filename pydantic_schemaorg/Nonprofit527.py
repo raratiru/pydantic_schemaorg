@@ -6,7 +6,7 @@ from pydantic_schemaorg.USNonprofitType import USNonprofitType
 
 
 class Nonprofit527(USNonprofitType):
-    """Nonprofit527: Non-profit type referring to Political organizations.
+    """Nonprofit527: Non-profit type referring to political organizations.
 
     See: https://schema.org/Nonprofit527
     Model depth: 6

@@ -7,7 +7,7 @@ from pydantic_schemaorg.MedicalBusiness import MedicalBusiness
 
 
 class DietNutrition(MedicalSpecialty, MedicalBusiness):
-    """Dietetic and nutrition as a medical specialty.
+    """Dietetics and nutrition as a medical specialty.
 
     See: https://schema.org/DietNutrition
     Model depth: 5

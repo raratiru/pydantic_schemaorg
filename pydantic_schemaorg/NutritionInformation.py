@@ -15,57 +15,57 @@ class NutritionInformation(StructuredValue):
     Model depth: 4
     """
     type_: str = Field(default="NutritionInformation", alias='@type', const=True)
-    calories: Optional[Union[List[Union['Energy', str]], 'Energy', str]] = Field(
+    sodiumContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
         default=None,
-        description="The number of calories.",
-    )
-    cholesterolContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
-        default=None,
-        description="The number of milligrams of cholesterol.",
-    )
-    fatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
-        default=None,
-        description="The number of grams of fat.",
-    )
-    transFatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
-        default=None,
-        description="The number of grams of trans fat.",
-    )
-    servingSize: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
-        default=None,
-        description="The serving size, in terms of the number of volume or mass.",
-    )
-    unsaturatedFatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
-        default=None,
-        description="The number of grams of unsaturated fat.",
-    )
-    saturatedFatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
-        default=None,
-        description="The number of grams of saturated fat.",
+        description="The number of milligrams of sodium.",
     )
     carbohydrateContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
         default=None,
         description="The number of grams of carbohydrates.",
     )
-    proteinContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+    fatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
         default=None,
-        description="The number of grams of protein.",
+        description="The number of grams of fat.",
     )
-    sodiumContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+    cholesterolContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
         default=None,
-        description="The number of milligrams of sodium.",
+        description="The number of milligrams of cholesterol.",
     )
-    fiberContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+    calories: Optional[Union[List[Union['Energy', str]], 'Energy', str]] = Field(
         default=None,
-        description="The number of grams of fiber.",
+        description="The number of calories.",
+    )
+    unsaturatedFatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+        default=None,
+        description="The number of grams of unsaturated fat.",
     )
     sugarContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
         default=None,
         description="The number of grams of sugar.",
     )
+    transFatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+        default=None,
+        description="The number of grams of trans fat.",
+    )
+    proteinContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+        default=None,
+        description="The number of grams of protein.",
+    )
+    saturatedFatContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+        default=None,
+        description="The number of grams of saturated fat.",
+    )
+    servingSize: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The serving size, in terms of the number of volume or mass.",
+    )
+    fiberContent: Optional[Union[List[Union['Mass', str]], 'Mass', str]] = Field(
+        default=None,
+        description="The number of grams of fiber.",
+    )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Energy import Energy
     from pydantic_schemaorg.Mass import Mass
+    from pydantic_schemaorg.Energy import Energy
     from pydantic_schemaorg.Text import Text

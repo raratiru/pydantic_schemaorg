@@ -23,11 +23,11 @@ class HealthPlanNetwork(Intangible):
     healthPlanNetworkId: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Name or unique ID of network. (Networks are often reused across different insurance"
-     "plans).",
+     "plans.)",
     )
     healthPlanCostSharing: Optional[Union[List[Union[StrictBool, 'Boolean', str]], StrictBool, 'Boolean', str]] = Field(
         default=None,
-        description="Whether The costs to the patient for services under this network or formulary.",
+        description="The costs to the patient for services under this network or formulary.",
     )
     
 

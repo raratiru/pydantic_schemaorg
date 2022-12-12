@@ -16,23 +16,23 @@ class Physician(MedicalBusiness, MedicalOrganization):
     Model depth: 4
     """
     type_: str = Field(default="Physician", alias='@type', const=True)
-    medicalSpecialty: Optional[Union[List[Union['MedicalSpecialty', str]], 'MedicalSpecialty', str]] = Field(
-        default=None,
-        description="A medical specialty of the provider.",
-    )
     hospitalAffiliation: Optional[Union[List[Union['Hospital', str]], 'Hospital', str]] = Field(
         default=None,
         description="A hospital with which the physician or office is affiliated.",
     )
-    availableService: Optional[Union[List[Union['MedicalTherapy', 'MedicalProcedure', 'MedicalTest', str]], 'MedicalTherapy', 'MedicalProcedure', 'MedicalTest', str]] = Field(
+    medicalSpecialty: Optional[Union[List[Union['MedicalSpecialty', str]], 'MedicalSpecialty', str]] = Field(
+        default=None,
+        description="A medical specialty of the provider.",
+    )
+    availableService: Optional[Union[List[Union['MedicalTest', 'MedicalTherapy', 'MedicalProcedure', str]], 'MedicalTest', 'MedicalTherapy', 'MedicalProcedure', str]] = Field(
         default=None,
         description="A medical service available from this provider.",
     )
     
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.MedicalSpecialty import MedicalSpecialty
     from pydantic_schemaorg.Hospital import Hospital
+    from pydantic_schemaorg.MedicalSpecialty import MedicalSpecialty
+    from pydantic_schemaorg.MedicalTest import MedicalTest
     from pydantic_schemaorg.MedicalTherapy import MedicalTherapy
     from pydantic_schemaorg.MedicalProcedure import MedicalProcedure
-    from pydantic_schemaorg.MedicalTest import MedicalTest
