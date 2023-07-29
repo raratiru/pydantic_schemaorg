@@ -2,8 +2,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from typing import List, Optional, Union
-from pydantic import StrictInt, StrictFloat
 from datetime import date, datetime
+from pydantic import StrictInt, StrictFloat
 
 
 from pydantic import Field
@@ -19,60 +19,32 @@ class DatedMoneySpecification(StructuredValue):
     See: https://schema.org/DatedMoneySpecification
     Model depth: 4
     """
-
-    type_: str = Field(default="DatedMoneySpecification", alias="@type", const=True)
-    currency: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
+    type_: str = Field(default="DatedMoneySpecification", alias='@type', const=True)
+    currency: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The currency in which the monetary amount is expressed. Use standard formats: [ISO 4217"
-        'currency format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker'
-        "symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for cryptocurrencies,"
-        'e.g. "BTC"; well known names for [Local Exchange Trading Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)'
-        '(LETS) and other currency types, e.g. "Ithaca HOUR".',
+     "currency format](http://en.wikipedia.org/wiki/ISO_4217), e.g. \"USD\"; [Ticker"
+     "symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for cryptocurrencies,"
+     "e.g. \"BTC\"; well known names for [Local Exchange Trading Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)"
+     "(LETS) and other currency types, e.g. \"Ithaca HOUR\".",
     )
-    amount: Optional[
-        Union[
-            List[Union[StrictInt, StrictFloat, "Number", "MonetaryAmount", str]],
-            StrictInt,
-            StrictFloat,
-            "Number",
-            "MonetaryAmount",
-            str,
-        ]
-    ] = Field(
-        default=None,
-        description="The amount of money.",
-    )
-    startDate: Optional[
-        Union[
-            List[Union[datetime, "DateTime", date, "Date", str]],
-            datetime,
-            "DateTime",
-            date,
-            "Date",
-            str,
-        ]
-    ] = Field(
+    startDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
         description="The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     )
-    endDate: Optional[
-        Union[
-            List[Union[datetime, "DateTime", date, "Date", str]],
-            datetime,
-            "DateTime",
-            date,
-            "Date",
-            str,
-        ]
-    ] = Field(
+    amount: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', 'MonetaryAmount', str]], StrictInt, StrictFloat, 'Number', 'MonetaryAmount', str]] = Field(
+        default=None,
+        description="The amount of money.",
+    )
+    endDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
         description="The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.Number import Number
-    from pydantic_schemaorg.MonetaryAmount import MonetaryAmount
     from pydantic_schemaorg.DateTime import DateTime
     from pydantic_schemaorg.Date import Date
+    from pydantic_schemaorg.Number import Number
+    from pydantic_schemaorg.MonetaryAmount import MonetaryAmount

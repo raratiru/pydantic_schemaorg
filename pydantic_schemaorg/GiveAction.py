@@ -17,25 +17,15 @@ class GiveAction(TransferAction):
     See: https://schema.org/GiveAction
     Model depth: 4
     """
-
-    type_: str = Field(default="GiveAction", alias="@type", const=True)
-    recipient: Optional[
-        Union[
-            List[Union["Audience", "Organization", "Person", "ContactPoint", str]],
-            "Audience",
-            "Organization",
-            "Person",
-            "ContactPoint",
-            str,
-        ]
-    ] = Field(
+    type_: str = Field(default="GiveAction", alias='@type', const=True)
+    recipient: Optional[Union[List[Union['Audience', 'ContactPoint', 'Person', 'Organization', str]], 'Audience', 'ContactPoint', 'Person', 'Organization', str]] = Field(
         default=None,
         description="A sub property of participant. The participant who is at the receiving end of the action.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Audience import Audience
-    from pydantic_schemaorg.Organization import Organization
-    from pydantic_schemaorg.Person import Person
     from pydantic_schemaorg.ContactPoint import ContactPoint
+    from pydantic_schemaorg.Person import Person
+    from pydantic_schemaorg.Organization import Organization

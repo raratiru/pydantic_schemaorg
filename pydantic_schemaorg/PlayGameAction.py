@@ -14,24 +14,14 @@ class PlayGameAction(ConsumeAction):
     See: https://schema.org/PlayGameAction
     Model depth: 4
     """
-
-    type_: str = Field(default="PlayGameAction", alias="@type", const=True)
-    gameAvailabilityType: Optional[
-        Union[
-            List[Union[str, "Text", "GameAvailabilityEnumeration"]],
-            str,
-            "Text",
-            "GameAvailabilityEnumeration",
-        ]
-    ] = Field(
+    type_: str = Field(default="PlayGameAction", alias='@type', const=True)
+    gameAvailabilityType: Optional[Union[List[Union[str, 'Text', 'GameAvailabilityEnumeration']], str, 'Text', 'GameAvailabilityEnumeration']] = Field(
         default=None,
         description="Indicates the availability type of the game content associated with this action, such"
-        "as whether it is a full version or a demo.",
+     "as whether it is a full version or a demo.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.GameAvailabilityEnumeration import (
-        GameAvailabilityEnumeration,
-    )
+    from pydantic_schemaorg.GameAvailabilityEnumeration import GameAvailabilityEnumeration

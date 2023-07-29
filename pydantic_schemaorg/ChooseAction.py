@@ -14,21 +14,16 @@ class ChooseAction(AssessAction):
     See: https://schema.org/ChooseAction
     Model depth: 4
     """
-
-    type_: str = Field(default="ChooseAction", alias="@type", const=True)
-    option: Optional[
-        Union[List[Union[str, "Text", "Thing"]], str, "Text", "Thing"]
-    ] = Field(
+    type_: str = Field(default="ChooseAction", alias='@type', const=True)
+    option: Optional[Union[List[Union[str, 'Text', 'Thing']], str, 'Text', 'Thing']] = Field(
         default=None,
         description="A sub property of object. The options subject to this action.",
     )
-    actionOption: Optional[
-        Union[List[Union[str, "Text", "Thing"]], str, "Text", "Thing"]
-    ] = Field(
+    actionOption: Optional[Union[List[Union[str, 'Text', 'Thing']], str, 'Text', 'Thing']] = Field(
         default=None,
         description="A sub property of object. The options subject to this action.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

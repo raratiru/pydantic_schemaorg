@@ -14,5 +14,5 @@ class Radiography(MedicalSpecialty, MedicalImagingTechnique):
     See: https://schema.org/Radiography
     Model depth: 6
     """
-
-    type_: str = Field(default="Radiography", alias="@type", const=True)
+    type_: str = Field(default="Radiography", alias='@type', const=True)
+    

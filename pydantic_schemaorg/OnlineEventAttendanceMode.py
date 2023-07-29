@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.EventAttendanceModeEnumeration import (
-    EventAttendanceModeEnumeration,
-)
+from pydantic_schemaorg.EventAttendanceModeEnumeration import EventAttendanceModeEnumeration
 
 
 class OnlineEventAttendanceMode(EventAttendanceModeEnumeration):
@@ -13,5 +11,5 @@ class OnlineEventAttendanceMode(EventAttendanceModeEnumeration):
     See: https://schema.org/OnlineEventAttendanceMode
     Model depth: 5
     """
-
-    type_: str = Field(default="OnlineEventAttendanceMode", alias="@type", const=True)
+    type_: str = Field(default="OnlineEventAttendanceMode", alias='@type', const=True)
+    

@@ -15,39 +15,32 @@ class Question(Comment):
     See: https://schema.org/Question
     Model depth: 4
     """
-
-    type_: str = Field(default="Question", alias="@type", const=True)
-    acceptedAnswer: Optional[
-        Union[List[Union["ItemList", "Answer", str]], "ItemList", "Answer", str]
-    ] = Field(
+    type_: str = Field(default="Question", alias='@type', const=True)
+    eduQuestionType: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
-        description="The answer(s) that has been accepted as best, typically on a Question/Answer site. Sites"
-        "vary in their selection mechanisms, e.g. drawing on community opinion and/or the view"
-        "of the Question author.",
+        description="For questions that are part of learning resources (e.g. Quiz), eduQuestionType indicates"
+     "the format of question being given. Example: \"Multiple choice\", \"Open ended\","
+     "\"Flashcard\".",
     )
-    suggestedAnswer: Optional[
-        Union[List[Union["ItemList", "Answer", str]], "ItemList", "Answer", str]
-    ] = Field(
+    suggestedAnswer: Optional[Union[List[Union['Answer', 'ItemList', str]], 'Answer', 'ItemList', str]] = Field(
         default=None,
         description="An answer (possibly one of several, possibly incorrect) to a Question, e.g. on a Question/Answer"
-        "site.",
+     "site.",
     )
-    answerCount: Optional[
-        Union[List[Union[int, "Integer", str]], int, "Integer", str]
-    ] = Field(
+    acceptedAnswer: Optional[Union[List[Union['Answer', 'ItemList', str]], 'Answer', 'ItemList', str]] = Field(
+        default=None,
+        description="The answer(s) that has been accepted as best, typically on a Question/Answer site. Sites"
+     "vary in their selection mechanisms, e.g. drawing on community opinion and/or the view"
+     "of the Question author.",
+    )
+    answerCount: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
         default=None,
         description="The number of answers this question has received.",
     )
-    eduQuestionType: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
-        default=None,
-        description="For questions that are part of learning resources (e.g. Quiz), eduQuestionType indicates"
-        'the format of question being given. Example: "Multiple choice", "Open ended",'
-        '"Flashcard".',
-    )
-
+    
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.ItemList import ItemList
-    from pydantic_schemaorg.Answer import Answer
-    from pydantic_schemaorg.Integer import Integer
     from pydantic_schemaorg.Text import Text
+    from pydantic_schemaorg.Answer import Answer
+    from pydantic_schemaorg.ItemList import ItemList
+    from pydantic_schemaorg.Integer import Integer

@@ -19,39 +19,17 @@ class Recommendation(Review):
     See: https://schema.org/Recommendation
     Model depth: 4
     """
-
-    type_: str = Field(default="Recommendation", alias="@type", const=True)
-    category: Optional[
-        Union[
-            List[
-                Union[
-                    AnyUrl,
-                    "URL",
-                    str,
-                    "Text",
-                    "PhysicalActivityCategory",
-                    "Thing",
-                    "CategoryCode",
-                ]
-            ],
-            AnyUrl,
-            "URL",
-            str,
-            "Text",
-            "PhysicalActivityCategory",
-            "Thing",
-            "CategoryCode",
-        ]
-    ] = Field(
+    type_: str = Field(default="Recommendation", alias='@type', const=True)
+    category: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'CategoryCode', 'Thing', 'PhysicalActivityCategory']], AnyUrl, 'URL', str, 'Text', 'CategoryCode', 'Thing', 'PhysicalActivityCategory']] = Field(
         default=None,
         description="A category for the item. Greater signs or slashes can be used to informally indicate a"
-        "category hierarchy.",
+     "category hierarchy.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.PhysicalActivityCategory import PhysicalActivityCategory
-    from pydantic_schemaorg.Thing import Thing
     from pydantic_schemaorg.CategoryCode import CategoryCode
+    from pydantic_schemaorg.Thing import Thing
+    from pydantic_schemaorg.PhysicalActivityCategory import PhysicalActivityCategory

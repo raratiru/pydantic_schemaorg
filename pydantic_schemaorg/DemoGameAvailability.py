@@ -12,5 +12,5 @@ class DemoGameAvailability(GameAvailabilityEnumeration):
     See: https://schema.org/DemoGameAvailability
     Model depth: 5
     """
-
-    type_: str = Field(default="DemoGameAvailability", alias="@type", const=True)
+    type_: str = Field(default="DemoGameAvailability", alias='@type', const=True)
+    

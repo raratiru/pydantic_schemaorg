@@ -14,15 +14,12 @@ class OrderAction(TradeAction):
     See: https://schema.org/OrderAction
     Model depth: 4
     """
-
-    type_: str = Field(default="OrderAction", alias="@type", const=True)
-    deliveryMethod: Optional[
-        Union[List[Union["DeliveryMethod", str]], "DeliveryMethod", str]
-    ] = Field(
+    type_: str = Field(default="OrderAction", alias='@type', const=True)
+    deliveryMethod: Optional[Union[List[Union['DeliveryMethod', str]], 'DeliveryMethod', str]] = Field(
         default=None,
         description="A sub property of instrument. The method of delivery.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.DeliveryMethod import DeliveryMethod

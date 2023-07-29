@@ -22,25 +22,22 @@ class ProductGroup(Product):
     See: https://schema.org/ProductGroup
     Model depth: 3
     """
-
-    type_: str = Field(default="ProductGroup", alias="@type", const=True)
-    variesBy: Optional[
-        Union[List[Union[str, "Text", "DefinedTerm"]], str, "Text", "DefinedTerm"]
-    ] = Field(
-        default=None,
-        description="Indicates the property or properties by which the variants in a [[ProductGroup]] vary,"
-        "e.g. their size, color etc. Schema.org properties can be referenced by their short name"
-        'e.g. "color"; terms defined elsewhere can be referenced with their URIs.',
-    )
-    hasVariant: Optional[Union[List[Union["Product", str]], "Product", str]] = Field(
-        default=None,
-        description="Indicates a [[Product]] that is a member of this [[ProductGroup]] (or [[ProductModel]]).",
-    )
-    productGroupID: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
+    type_: str = Field(default="ProductGroup", alias='@type', const=True)
+    productGroupID: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Indicates a textual identifier for a ProductGroup.",
     )
-
+    variesBy: Optional[Union[List[Union[str, 'Text', 'DefinedTerm']], str, 'Text', 'DefinedTerm']] = Field(
+        default=None,
+        description="Indicates the property or properties by which the variants in a [[ProductGroup]] vary,"
+     "e.g. their size, color etc. Schema.org properties can be referenced by their short name"
+     "e.g. \"color\"; terms defined elsewhere can be referenced with their URIs.",
+    )
+    hasVariant: Optional[Union[List[Union['Product', str]], 'Product', str]] = Field(
+        default=None,
+        description="Indicates a [[Product]] that is a member of this [[ProductGroup]] (or [[ProductModel]]).",
+    )
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

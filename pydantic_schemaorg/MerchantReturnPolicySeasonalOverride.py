@@ -15,67 +15,29 @@ class MerchantReturnPolicySeasonalOverride(Intangible):
     See: https://schema.org/MerchantReturnPolicySeasonalOverride
     Model depth: 3
     """
-
-    type_: str = Field(
-        default="MerchantReturnPolicySeasonalOverride", alias="@type", const=True
-    )
-    returnPolicyCategory: Optional[
-        Union[
-            List[Union["MerchantReturnEnumeration", str]],
-            "MerchantReturnEnumeration",
-            str,
-        ]
-    ] = Field(
+    type_: str = Field(default="MerchantReturnPolicySeasonalOverride", alias='@type', const=True)
+    returnPolicyCategory: Optional[Union[List[Union['MerchantReturnEnumeration', str]], 'MerchantReturnEnumeration', str]] = Field(
         default=None,
         description="Specifies an applicable return policy (from an enumeration).",
     )
-    merchantReturnDays: Optional[
-        Union[
-            List[Union[datetime, "DateTime", int, "Integer", date, "Date", str]],
-            datetime,
-            "DateTime",
-            int,
-            "Integer",
-            date,
-            "Date",
-            str,
-        ]
-    ] = Field(
-        default=None,
-        description="Specifies either a fixed return date or the number of days (from the delivery date) that"
-        "a product can be returned. Used when the [[returnPolicyCategory]] property is specified"
-        "as [[MerchantReturnFiniteReturnWindow]].",
-    )
-    startDate: Optional[
-        Union[
-            List[Union[datetime, "DateTime", date, "Date", str]],
-            datetime,
-            "DateTime",
-            date,
-            "Date",
-            str,
-        ]
-    ] = Field(
+    startDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
         description="The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     )
-    endDate: Optional[
-        Union[
-            List[Union[datetime, "DateTime", date, "Date", str]],
-            datetime,
-            "DateTime",
-            date,
-            "Date",
-            str,
-        ]
-    ] = Field(
+    merchantReturnDays: Optional[Union[List[Union[datetime, 'DateTime', int, 'Integer', date, 'Date', str]], datetime, 'DateTime', int, 'Integer', date, 'Date', str]] = Field(
+        default=None,
+        description="Specifies either a fixed return date or the number of days (from the delivery date) that"
+     "a product can be returned. Used when the [[returnPolicyCategory]] property is specified"
+     "as [[MerchantReturnFiniteReturnWindow]].",
+    )
+    endDate: Optional[Union[List[Union[datetime, 'DateTime', date, 'Date', str]], datetime, 'DateTime', date, 'Date', str]] = Field(
         default=None,
         description="The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.MerchantReturnEnumeration import MerchantReturnEnumeration
     from pydantic_schemaorg.DateTime import DateTime
-    from pydantic_schemaorg.Integer import Integer
     from pydantic_schemaorg.Date import Date
+    from pydantic_schemaorg.Integer import Integer

@@ -11,7 +11,5 @@ class MerchantReturnFiniteReturnWindow(MerchantReturnEnumeration):
     See: https://schema.org/MerchantReturnFiniteReturnWindow
     Model depth: 5
     """
-
-    type_: str = Field(
-        default="MerchantReturnFiniteReturnWindow", alias="@type", const=True
-    )
+    type_: str = Field(default="MerchantReturnFiniteReturnWindow", alias='@type', const=True)
+    

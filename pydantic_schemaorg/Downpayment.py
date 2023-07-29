@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.PriceComponentTypeEnumeration import (
-    PriceComponentTypeEnumeration,
-)
+from pydantic_schemaorg.PriceComponentTypeEnumeration import PriceComponentTypeEnumeration
 
 
 class Downpayment(PriceComponentTypeEnumeration):
@@ -14,5 +12,5 @@ class Downpayment(PriceComponentTypeEnumeration):
     See: https://schema.org/Downpayment
     Model depth: 5
     """
-
-    type_: str = Field(default="Downpayment", alias="@type", const=True)
+    type_: str = Field(default="Downpayment", alias='@type', const=True)
+    

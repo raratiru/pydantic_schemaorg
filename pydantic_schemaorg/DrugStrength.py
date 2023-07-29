@@ -15,45 +15,32 @@ class DrugStrength(MedicalIntangible):
     See: https://schema.org/DrugStrength
     Model depth: 4
     """
-
-    type_: str = Field(default="DrugStrength", alias="@type", const=True)
-    activeIngredient: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
-        default=None,
-        description="An active ingredient, typically chemical compounds and/or biologic substances.",
-    )
-    availableIn: Optional[
-        Union[List[Union["AdministrativeArea", str]], "AdministrativeArea", str]
-    ] = Field(
-        default=None,
-        description="The location in which the strength is available.",
-    )
-    strengthValue: Optional[
-        Union[
-            List[Union[StrictInt, StrictFloat, "Number", str]],
-            StrictInt,
-            StrictFloat,
-            "Number",
-            str,
-        ]
-    ] = Field(
-        default=None,
-        description="The value of an active ingredient's strength, e.g. 325.",
-    )
-    strengthUnit: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
+    type_: str = Field(default="DrugStrength", alias='@type', const=True)
+    strengthUnit: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="The units of an active ingredient's strength, e.g. mg.",
     )
-    maximumIntake: Optional[
-        Union[List[Union["MaximumDoseSchedule", str]], "MaximumDoseSchedule", str]
-    ] = Field(
+    activeIngredient: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="An active ingredient, typically chemical compounds and/or biologic substances.",
+    )
+    strengthValue: Optional[Union[List[Union[StrictInt, StrictFloat, 'Number', str]], StrictInt, StrictFloat, 'Number', str]] = Field(
+        default=None,
+        description="The value of an active ingredient's strength, e.g. 325.",
+    )
+    maximumIntake: Optional[Union[List[Union['MaximumDoseSchedule', str]], 'MaximumDoseSchedule', str]] = Field(
         default=None,
         description="Recommended intake of this supplement for a given population as defined by a specific"
-        "recommending authority.",
+     "recommending authority.",
     )
-
+    availableIn: Optional[Union[List[Union['AdministrativeArea', str]], 'AdministrativeArea', str]] = Field(
+        default=None,
+        description="The location in which the strength is available.",
+    )
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.AdministrativeArea import AdministrativeArea
     from pydantic_schemaorg.Number import Number
     from pydantic_schemaorg.MaximumDoseSchedule import MaximumDoseSchedule
+    from pydantic_schemaorg.AdministrativeArea import AdministrativeArea

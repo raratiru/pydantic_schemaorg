@@ -12,7 +12,5 @@ class ReducedRelevanceForChildrenConsideration(AdultOrientedEnumeration):
     See: https://schema.org/ReducedRelevanceForChildrenConsideration
     Model depth: 5
     """
-
-    type_: str = Field(
-        default="ReducedRelevanceForChildrenConsideration", alias="@type", const=True
-    )
+    type_: str = Field(default="ReducedRelevanceForChildrenConsideration", alias='@type', const=True)
+    

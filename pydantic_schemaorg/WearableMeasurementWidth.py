@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.WearableMeasurementTypeEnumeration import (
-    WearableMeasurementTypeEnumeration,
-)
+from pydantic_schemaorg.WearableMeasurementTypeEnumeration import WearableMeasurementTypeEnumeration
 
 
 class WearableMeasurementWidth(WearableMeasurementTypeEnumeration):
@@ -13,5 +11,5 @@ class WearableMeasurementWidth(WearableMeasurementTypeEnumeration):
     See: https://schema.org/WearableMeasurementWidth
     Model depth: 6
     """
-
-    type_: str = Field(default="WearableMeasurementWidth", alias="@type", const=True)
+    type_: str = Field(default="WearableMeasurementWidth", alias='@type', const=True)
+    

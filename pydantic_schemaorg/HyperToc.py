@@ -18,22 +18,17 @@ class HyperToc(CreativeWork):
     See: https://schema.org/HyperToc
     Model depth: 3
     """
-
-    type_: str = Field(default="HyperToc", alias="@type", const=True)
-    associatedMedia: Optional[
-        Union[List[Union["MediaObject", str]], "MediaObject", str]
-    ] = Field(
-        default=None,
-        description="A media object that encodes this CreativeWork. This property is a synonym for encoding.",
-    )
-    tocEntry: Optional[
-        Union[List[Union["HyperTocEntry", str]], "HyperTocEntry", str]
-    ] = Field(
+    type_: str = Field(default="HyperToc", alias='@type', const=True)
+    tocEntry: Optional[Union[List[Union['HyperTocEntry', str]], 'HyperTocEntry', str]] = Field(
         default=None,
         description="Indicates a [[HyperTocEntry]] in a [[HyperToc]].",
     )
-
+    associatedMedia: Optional[Union[List[Union['MediaObject', str]], 'MediaObject', str]] = Field(
+        default=None,
+        description="A media object that encodes this CreativeWork. This property is a synonym for encoding.",
+    )
+    
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.MediaObject import MediaObject
     from pydantic_schemaorg.HyperTocEntry import HyperTocEntry
+    from pydantic_schemaorg.MediaObject import MediaObject

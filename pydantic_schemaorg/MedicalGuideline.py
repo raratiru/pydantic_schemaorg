@@ -20,34 +20,27 @@ class MedicalGuideline(MedicalEntity):
     See: https://schema.org/MedicalGuideline
     Model depth: 3
     """
-
-    type_: str = Field(default="MedicalGuideline", alias="@type", const=True)
-    evidenceLevel: Optional[
-        Union[List[Union["MedicalEvidenceLevel", str]], "MedicalEvidenceLevel", str]
-    ] = Field(
-        default=None,
-        description="Strength of evidence of the data used to formulate the guideline (enumerated).",
-    )
-    guidelineSubject: Optional[
-        Union[List[Union["MedicalEntity", str]], "MedicalEntity", str]
-    ] = Field(
+    type_: str = Field(default="MedicalGuideline", alias='@type', const=True)
+    guidelineSubject: Optional[Union[List[Union['MedicalEntity', str]], 'MedicalEntity', str]] = Field(
         default=None,
         description="The medical conditions, treatments, etc. that are the subject of the guideline.",
     )
-    guidelineDate: Optional[
-        Union[List[Union[date, "Date", str]], date, "Date", str]
-    ] = Field(
+    evidenceLevel: Optional[Union[List[Union['MedicalEvidenceLevel', str]], 'MedicalEvidenceLevel', str]] = Field(
         default=None,
-        description="Date on which this guideline's recommendation was made.",
+        description="Strength of evidence of the data used to formulate the guideline (enumerated).",
     )
-    evidenceOrigin: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
+    evidenceOrigin: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Source of the data used to formulate the guidance, e.g. RCT, consensus opinion, etc.",
     )
-
+    guidelineDate: Optional[Union[List[Union[date, 'Date', str]], date, 'Date', str]] = Field(
+        default=None,
+        description="Date on which this guideline's recommendation was made.",
+    )
+    
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.MedicalEvidenceLevel import MedicalEvidenceLevel
     from pydantic_schemaorg.MedicalEntity import MedicalEntity
-    from pydantic_schemaorg.Date import Date
+    from pydantic_schemaorg.MedicalEvidenceLevel import MedicalEvidenceLevel
     from pydantic_schemaorg.Text import Text
+    from pydantic_schemaorg.Date import Date

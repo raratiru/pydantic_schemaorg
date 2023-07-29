@@ -15,25 +15,20 @@ class Comment(CreativeWork):
     See: https://schema.org/Comment
     Model depth: 3
     """
-
-    type_: str = Field(default="Comment", alias="@type", const=True)
-    parentItem: Optional[Union[List[Union["Comment", str]], "Comment", str]] = Field(
+    type_: str = Field(default="Comment", alias='@type', const=True)
+    parentItem: Optional[Union[List[Union['Comment', str]], 'Comment', str]] = Field(
         default=None,
         description="The parent of a question, answer or item in general.",
     )
-    downvoteCount: Optional[
-        Union[List[Union[int, "Integer", str]], int, "Integer", str]
-    ] = Field(
-        default=None,
-        description="The number of downvotes this question, answer or comment has received from the community.",
-    )
-    upvoteCount: Optional[
-        Union[List[Union[int, "Integer", str]], int, "Integer", str]
-    ] = Field(
+    upvoteCount: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
         default=None,
         description="The number of upvotes this question, answer or comment has received from the community.",
     )
-
+    downvoteCount: Optional[Union[List[Union[int, 'Integer', str]], int, 'Integer', str]] = Field(
+        default=None,
+        description="The number of downvotes this question, answer or comment has received from the community.",
+    )
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Integer import Integer

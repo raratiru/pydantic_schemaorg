@@ -12,7 +12,5 @@ class TobaccoNicotineConsideration(AdultOrientedEnumeration):
     See: https://schema.org/TobaccoNicotineConsideration
     Model depth: 5
     """
-
-    type_: str = Field(
-        default="TobaccoNicotineConsideration", alias="@type", const=True
-    )
+    type_: str = Field(default="TobaccoNicotineConsideration", alias='@type', const=True)
+    

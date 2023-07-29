@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.MedicalObservationalStudyDesign import (
-    MedicalObservationalStudyDesign,
-)
+from pydantic_schemaorg.MedicalObservationalStudyDesign import MedicalObservationalStudyDesign
 
 
 class CohortStudy(MedicalObservationalStudyDesign):
@@ -20,5 +18,5 @@ class CohortStudy(MedicalObservationalStudyDesign):
     See: https://schema.org/CohortStudy
     Model depth: 6
     """
-
-    type_: str = Field(default="CohortStudy", alias="@type", const=True)
+    type_: str = Field(default="CohortStudy", alias='@type', const=True)
+    

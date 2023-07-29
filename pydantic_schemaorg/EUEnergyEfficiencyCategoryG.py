@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.EUEnergyEfficiencyEnumeration import (
-    EUEnergyEfficiencyEnumeration,
-)
+from pydantic_schemaorg.EUEnergyEfficiencyEnumeration import EUEnergyEfficiencyEnumeration
 
 
 class EUEnergyEfficiencyCategoryG(EUEnergyEfficiencyEnumeration):
@@ -13,5 +11,5 @@ class EUEnergyEfficiencyCategoryG(EUEnergyEfficiencyEnumeration):
     See: https://schema.org/EUEnergyEfficiencyCategoryG
     Model depth: 6
     """
-
-    type_: str = Field(default="EUEnergyEfficiencyCategoryG", alias="@type", const=True)
+    type_: str = Field(default="EUEnergyEfficiencyCategoryG", alias='@type', const=True)
+    

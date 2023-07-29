@@ -33,3 +33,11 @@ print(scholarly_article.json())
 ```
 {"@type": "ScholarlyArticle", "url": "https://github.com/lexiq-legal/pydantic_schemaorg", "sameAs": "https://github.com/lexiq-legal/pydantic_schemaorg", "copyrightNotice": "Free to use under the MIT license", "dateCreated": "15-12-2021"}
 ```
+
+## Update schema
+```
+poetry install
+poetry update
+poetry run src/main.py
+find -name "*pyc" -exec rm {} \;
+```

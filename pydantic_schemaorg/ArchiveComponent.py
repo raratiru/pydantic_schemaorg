@@ -15,30 +15,19 @@ class ArchiveComponent(CreativeWork):
     See: https://schema.org/ArchiveComponent
     Model depth: 3
     """
-
-    type_: str = Field(default="ArchiveComponent", alias="@type", const=True)
-    holdingArchive: Optional[
-        Union[List[Union["ArchiveOrganization", str]], "ArchiveOrganization", str]
-    ] = Field(
+    type_: str = Field(default="ArchiveComponent", alias='@type', const=True)
+    holdingArchive: Optional[Union[List[Union['ArchiveOrganization', str]], 'ArchiveOrganization', str]] = Field(
         default=None,
         description="[[ArchiveOrganization]] that holds, keeps or maintains the [[ArchiveComponent]].",
     )
-    itemLocation: Optional[
-        Union[
-            List[Union[str, "Text", "Place", "PostalAddress"]],
-            str,
-            "Text",
-            "Place",
-            "PostalAddress",
-        ]
-    ] = Field(
+    itemLocation: Optional[Union[List[Union[str, 'Text', 'PostalAddress', 'Place']], str, 'Text', 'PostalAddress', 'Place']] = Field(
         default=None,
         description="Current location of the item.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.ArchiveOrganization import ArchiveOrganization
     from pydantic_schemaorg.Text import Text
-    from pydantic_schemaorg.Place import Place
     from pydantic_schemaorg.PostalAddress import PostalAddress
+    from pydantic_schemaorg.Place import Place

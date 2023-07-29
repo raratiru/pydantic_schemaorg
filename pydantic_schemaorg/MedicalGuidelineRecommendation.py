@@ -15,17 +15,12 @@ class MedicalGuidelineRecommendation(MedicalGuideline):
     See: https://schema.org/MedicalGuidelineRecommendation
     Model depth: 4
     """
-
-    type_: str = Field(
-        default="MedicalGuidelineRecommendation", alias="@type", const=True
-    )
-    recommendationStrength: Optional[
-        Union[List[Union[str, "Text"]], str, "Text"]
-    ] = Field(
+    type_: str = Field(default="MedicalGuidelineRecommendation", alias='@type', const=True)
+    recommendationStrength: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="Strength of the guideline's recommendation (e.g. 'class I').",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Text import Text

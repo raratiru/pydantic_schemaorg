@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.DigitalDocumentPermissionType import (
-    DigitalDocumentPermissionType,
-)
+from pydantic_schemaorg.DigitalDocumentPermissionType import DigitalDocumentPermissionType
 
 
 class CommentPermission(DigitalDocumentPermissionType):
@@ -13,5 +11,5 @@ class CommentPermission(DigitalDocumentPermissionType):
     See: https://schema.org/CommentPermission
     Model depth: 5
     """
-
-    type_: str = Field(default="CommentPermission", alias="@type", const=True)
+    type_: str = Field(default="CommentPermission", alias='@type', const=True)
+    

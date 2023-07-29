@@ -17,25 +17,22 @@ class InfectiousDisease(MedicalCondition):
     See: https://schema.org/InfectiousDisease
     Model depth: 4
     """
-
-    type_: str = Field(default="InfectiousDisease", alias="@type", const=True)
-    infectiousAgent: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
-        default=None,
-        description="The actual infectious agent, such as a specific bacterium.",
-    )
-    infectiousAgentClass: Optional[
-        Union[List[Union["InfectiousAgentClass", str]], "InfectiousAgentClass", str]
-    ] = Field(
+    type_: str = Field(default="InfectiousDisease", alias='@type', const=True)
+    infectiousAgentClass: Optional[Union[List[Union['InfectiousAgentClass', str]], 'InfectiousAgentClass', str]] = Field(
         default=None,
         description="The class of infectious agent (bacteria, prion, etc.) that causes the disease.",
     )
-    transmissionMethod: Optional[Union[List[Union[str, "Text"]], str, "Text"]] = Field(
+    infectiousAgent: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
+        default=None,
+        description="The actual infectious agent, such as a specific bacterium.",
+    )
+    transmissionMethod: Optional[Union[List[Union[str, 'Text']], str, 'Text']] = Field(
         default=None,
         description="How the disease spreads, either as a route or vector, for example 'direct contact', 'Aedes"
-        "aegypti', etc.",
+     "aegypti', etc.",
     )
-
+    
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.InfectiousAgentClass import InfectiousAgentClass
+    from pydantic_schemaorg.Text import Text

@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.PriceComponentTypeEnumeration import (
-    PriceComponentTypeEnumeration,
-)
+from pydantic_schemaorg.PriceComponentTypeEnumeration import PriceComponentTypeEnumeration
 
 
 class DistanceFee(PriceComponentTypeEnumeration):
@@ -14,5 +12,5 @@ class DistanceFee(PriceComponentTypeEnumeration):
     See: https://schema.org/DistanceFee
     Model depth: 5
     """
-
-    type_: str = Field(default="DistanceFee", alias="@type", const=True)
+    type_: str = Field(default="DistanceFee", alias='@type', const=True)
+    

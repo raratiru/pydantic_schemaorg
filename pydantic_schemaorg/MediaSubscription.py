@@ -14,24 +14,19 @@ class MediaSubscription(Intangible):
     See: https://schema.org/MediaSubscription
     Model depth: 3
     """
-
-    type_: str = Field(default="MediaSubscription", alias="@type", const=True)
-    expectsAcceptanceOf: Optional[
-        Union[List[Union["Offer", str]], "Offer", str]
-    ] = Field(
+    type_: str = Field(default="MediaSubscription", alias='@type', const=True)
+    expectsAcceptanceOf: Optional[Union[List[Union['Offer', str]], 'Offer', str]] = Field(
         default=None,
         description="An Offer which must be accepted before the user can perform the Action. For example, the"
-        "user may need to buy a movie before being able to watch it.",
+     "user may need to buy a movie before being able to watch it.",
     )
-    authenticator: Optional[
-        Union[List[Union["Organization", str]], "Organization", str]
-    ] = Field(
+    authenticator: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
         default=None,
         description="The Organization responsible for authenticating the user's subscription. For example,"
-        "many media apps require a cable/satellite provider to authenticate your subscription"
-        "before playing media.",
+     "many media apps require a cable/satellite provider to authenticate your subscription"
+     "before playing media.",
     )
-
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.Offer import Offer

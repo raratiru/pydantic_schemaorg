@@ -2,9 +2,7 @@ from __future__ import annotations
 
 
 from pydantic import Field
-from pydantic_schemaorg.MediaManipulationRatingEnumeration import (
-    MediaManipulationRatingEnumeration,
-)
+from pydantic_schemaorg.MediaManipulationRatingEnumeration import MediaManipulationRatingEnumeration
 
 
 class TransformedContent(MediaManipulationRatingEnumeration):
@@ -23,5 +21,5 @@ class TransformedContent(MediaManipulationRatingEnumeration):
     See: https://schema.org/TransformedContent
     Model depth: 5
     """
-
-    type_: str = Field(default="TransformedContent", alias="@type", const=True)
+    type_: str = Field(default="TransformedContent", alias='@type', const=True)
+    

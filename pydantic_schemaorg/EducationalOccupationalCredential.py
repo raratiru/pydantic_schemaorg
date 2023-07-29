@@ -17,77 +17,43 @@ class EducationalOccupationalCredential(CreativeWork):
     See: https://schema.org/EducationalOccupationalCredential
     Model depth: 3
     """
-
-    type_: str = Field(
-        default="EducationalOccupationalCredential", alias="@type", const=True
-    )
-    educationalLevel: Optional[
-        Union[
-            List[Union[AnyUrl, "URL", str, "Text", "DefinedTerm"]],
-            AnyUrl,
-            "URL",
-            str,
-            "Text",
-            "DefinedTerm",
-        ]
-    ] = Field(
+    type_: str = Field(default="EducationalOccupationalCredential", alias='@type', const=True)
+    educationalLevel: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'DefinedTerm']], AnyUrl, 'URL', str, 'Text', 'DefinedTerm']] = Field(
         default=None,
         description="The level in terms of progression through an educational or training context. Examples"
-        "of educational levels include 'beginner', 'intermediate' or 'advanced', and formal"
-        "sets of level indicators.",
+     "of educational levels include 'beginner', 'intermediate' or 'advanced', and formal"
+     "sets of level indicators.",
     )
-    competencyRequired: Optional[
-        Union[
-            List[Union[AnyUrl, "URL", str, "Text", "DefinedTerm"]],
-            AnyUrl,
-            "URL",
-            str,
-            "Text",
-            "DefinedTerm",
-        ]
-    ] = Field(
-        default=None,
-        description="Knowledge, skill, ability or personal attribute that must be demonstrated by a person"
-        "or other entity in order to do something such as earn an Educational Occupational Credential"
-        "or understand a LearningResource.",
-    )
-    recognizedBy: Optional[
-        Union[List[Union["Organization", str]], "Organization", str]
-    ] = Field(
+    recognizedBy: Optional[Union[List[Union['Organization', str]], 'Organization', str]] = Field(
         default=None,
         description="An organization that acknowledges the validity, value or utility of a credential. Note:"
-        "recognition may include a process of quality assurance or accreditation.",
+     "recognition may include a process of quality assurance or accreditation.",
     )
-    validFor: Optional[Union[List[Union["Duration", str]], "Duration", str]] = Field(
-        default=None,
-        description="The duration of validity of a permit or similar thing.",
-    )
-    validIn: Optional[
-        Union[List[Union["AdministrativeArea", str]], "AdministrativeArea", str]
-    ] = Field(
+    validIn: Optional[Union[List[Union['AdministrativeArea', str]], 'AdministrativeArea', str]] = Field(
         default=None,
         description="The geographic area where a permit or similar thing is valid.",
     )
-    credentialCategory: Optional[
-        Union[
-            List[Union[AnyUrl, "URL", str, "Text", "DefinedTerm"]],
-            AnyUrl,
-            "URL",
-            str,
-            "Text",
-            "DefinedTerm",
-        ]
-    ] = Field(
+    credentialCategory: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'DefinedTerm']], AnyUrl, 'URL', str, 'Text', 'DefinedTerm']] = Field(
         default=None,
-        description='The category or type of credential being described, for example "degree”, “certificate”,'
-        "“badge”, or more specific term.",
+        description="The category or type of credential being described, for example \"degree”, “certificate”,"
+     "“badge”, or more specific term.",
     )
-
+    validFor: Optional[Union[List[Union['Duration', str]], 'Duration', str]] = Field(
+        default=None,
+        description="The duration of validity of a permit or similar thing.",
+    )
+    competencyRequired: Optional[Union[List[Union[AnyUrl, 'URL', str, 'Text', 'DefinedTerm']], AnyUrl, 'URL', str, 'Text', 'DefinedTerm']] = Field(
+        default=None,
+        description="Knowledge, skill, ability or personal attribute that must be demonstrated by a person"
+     "or other entity in order to do something such as earn an Educational Occupational Credential"
+     "or understand a LearningResource.",
+    )
+    
 
 if TYPE_CHECKING:
     from pydantic_schemaorg.URL import URL
     from pydantic_schemaorg.Text import Text
     from pydantic_schemaorg.DefinedTerm import DefinedTerm
     from pydantic_schemaorg.Organization import Organization
-    from pydantic_schemaorg.Duration import Duration
     from pydantic_schemaorg.AdministrativeArea import AdministrativeArea
+    from pydantic_schemaorg.Duration import Duration

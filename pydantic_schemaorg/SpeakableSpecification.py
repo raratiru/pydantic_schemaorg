@@ -16,23 +16,20 @@ class SpeakableSpecification(Intangible):
     See: https://schema.org/SpeakableSpecification
     Model depth: 3
     """
-
-    type_: str = Field(default="SpeakableSpecification", alias="@type", const=True)
-    xpath: Optional[Union[List[Union[str, "XPathType"]], str, "XPathType"]] = Field(
-        default=None,
-        description="An XPath, e.g. of a [[SpeakableSpecification]] or [[WebPageElement]]. In the latter"
-        'case, multiple matches within a page can constitute a single conceptual "Web page element".',
-    )
-    cssSelector: Optional[
-        Union[List[Union[str, "CssSelectorType"]], str, "CssSelectorType"]
-    ] = Field(
+    type_: str = Field(default="SpeakableSpecification", alias='@type', const=True)
+    cssSelector: Optional[Union[List[Union[str, 'CssSelectorType']], str, 'CssSelectorType']] = Field(
         default=None,
         description="A CSS selector, e.g. of a [[SpeakableSpecification]] or [[WebPageElement]]. In the"
-        'latter case, multiple matches within a page can constitute a single conceptual "Web'
-        'page element".',
+     "latter case, multiple matches within a page can constitute a single conceptual \"Web"
+     "page element\".",
     )
-
+    xpath: Optional[Union[List[Union[str, 'XPathType']], str, 'XPathType']] = Field(
+        default=None,
+        description="An XPath, e.g. of a [[SpeakableSpecification]] or [[WebPageElement]]. In the latter"
+     "case, multiple matches within a page can constitute a single conceptual \"Web page element\".",
+    )
+    
 
 if TYPE_CHECKING:
-    from pydantic_schemaorg.XPathType import XPathType
     from pydantic_schemaorg.CssSelectorType import CssSelectorType
+    from pydantic_schemaorg.XPathType import XPathType
